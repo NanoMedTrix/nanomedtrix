@@ -6,9 +6,18 @@
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
 Spree.config do |config|
-  # Example:
-  # Uncomment to override the default site name.
-  # config.site_name = "Spree Demo Site"
+  config.site_name = "NanoMedTrix"
+  config.site_url  = "pcruagxk-nanomedtrix.herokuapp.com"
+
+  config.default_meta_keywords    = "nanomedtrix, nano, nanoparticles"
+  config.default_meta_description = "NanoMedTrix development site"
+
+  # S3 config for Heroku deployment
+	config.use_s3 = true
+	
+	config.s3_bucket     = ENV[ 'S3_BUCKET' ]
+	config.s3_access_key = ENV[ 'S3_KEY' ]
+	config.s3_secret     = ENV[ 'S3_SECRET' ]
 end
 
 Spree.user_class = "Spree::User"
