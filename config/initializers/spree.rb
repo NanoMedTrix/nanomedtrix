@@ -13,11 +13,13 @@ Spree.config do |config|
   config.default_meta_description = "NanoMedTrix development site"
 
   # S3 config for Heroku deployment
-	config.use_s3 = true
-	
-	config.s3_bucket     = ENV[ 'S3_BUCKET' ]
-	config.s3_access_key = ENV[ 'S3_KEY' ]
-	config.s3_secret     = ENV[ 'S3_SECRET' ]
+  if Rails.env.production?
+		config.use_s3 = true
+
+		config.s3_bucket     = ENV[ 'S3_BUCKET' ]
+		config.s3_access_key = ENV[ 'S3_KEY' ]
+		config.s3_secret     = ENV[ 'S3_SECRET' ]
+	end
 end
 
 Spree.user_class = "Spree::User"
