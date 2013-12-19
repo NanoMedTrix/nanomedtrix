@@ -29,3 +29,8 @@ group :production do
   gem 'pg',             '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+gem 'spree', '2.1.3'
+
+gem 'spree_gateway',     :git => 'https://github.com/spree/spree_gateway.git',     :branch => '2-1-stable'
+gem 'spree_auth_devise', :git => 'https://github.com/spree/spree_auth_devise.git', :branch => '2-1-stable'
