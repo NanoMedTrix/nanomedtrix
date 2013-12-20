@@ -38,5 +38,7 @@ module Nanomedtrix
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     I18n.config.enforce_available_locales = true # shut up deprecated message
+
+    Rails.application.config.assets.precompile += %w( icons.svg icons.ttf icons.eot icons.woff )
   end
 end
