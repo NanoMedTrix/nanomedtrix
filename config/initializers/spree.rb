@@ -9,6 +9,9 @@ Spree.config do |config|
   config.site_name = "NanoMedTrix"
   config.site_url  = "pcruagxk-nanomedtrix.herokuapp.com"
 
+  config.logo                 = "store/logo.png"
+  config.admin_interface_logo = "store/logo.png"
+
   config.default_meta_keywords    = "nanomedtrix, nano, nanoparticles"
   config.default_meta_description = "NanoMedTrix development site"
 
