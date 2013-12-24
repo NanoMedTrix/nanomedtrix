@@ -40,5 +40,6 @@ module Nanomedtrix
     I18n.config.enforce_available_locales = true # shut up deprecated message
 
     Rails.application.config.assets.precompile += %w( icons.svg icons.ttf icons.eot icons.woff )
+    config.assets.precompile += %w( *.png *.jpg *.jpeg *.gif )
   end
 end
