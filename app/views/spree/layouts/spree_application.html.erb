@@ -34,16 +34,7 @@
 
 			<%= breadcrumbs(@taxon) %>
 
-			<div id="home-image-big" class="jumbotron">
-				<h1 class="text-center"><small>[ image ]</small></h1>
-			</div>
-
-			<div id="news-headlines" class="well well-sm">
-				<dl class="dl-horizontal">
-					<dt>News Headlines</dt>
-					<dd>News Article One Title</dd>
-				</dl>
-			</div>
+			<%= yield %>
 		</div>
 
 		<%= render 'spree/shared/footer' %>
