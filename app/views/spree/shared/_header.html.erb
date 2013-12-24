@@ -1,0 +1,21 @@
+<header>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<ul id="header-nav-left" class="nav navbar-nav">
+				<li><%= link_to 'About NMTx', '#' %></li>
+				<li><%= link_to 'Careers',    '#' %></li>
+				<li><%= link_to 'News',       '#' %></li>
+			</ul>
+
+			<ul id="header-nav-right" class="nav navbar-nav navbar-right">
+				<li><a><%= image_tag( 'store/us.gif' ) %></a></li>
+				<li><%= link_to 'Sign in', '#' %></li>
+				<li>
+					<%= link_to '#' do %>
+						<span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span>
+					<% end %>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>
