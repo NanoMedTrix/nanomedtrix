@@ -1,0 +1,37 @@
+<%
+  paginated_products   = @searcher.retrieve_products if params.key?( :keywords )
+  paginated_products ||= products
+%>
+
+<% content_for :head do %>
+  <% if paginated_products.respond_to?( :num_pages ) %>
+    <%= rel_next_prev_link_tags paginated_products %>
+  <% end %>
+<% end %>
+
+<% if products.empty? %>
+  <%= Spree.t( :no_products_found ) %>
+<% elsif params.key?( :keywords ) %>
+  <h6 class="search-results-title"><%= Spree.t( :search_results, :keywords => h( params[ :keywords ] ) ) %></h6>
+<% end %>
+
+
+<% if products.any? %>
+  <% products.each do | product | %>
+    <div id="product_<%= product.id %>" class="media">
+      <%= link_to small_image( product, class: 'media-object', itemprop: 'image' ), product, itemprop: 'url', class: 'pull-left' %>
+      
+      <div class="meida-body">
+        <h4 class="media-heading">
+          <%= link_to truncate( product.name, length: 50 ), product, itemprop: 'name', title: product.name %> <small><%= display_price( product ) %></small>
+        </h4>
+        <%= product_description( product ) rescue Spree.t(:product_has_no_description) %>
+        
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if paginated_products.respond_to?(:num_pages) %>
+  <%= paginate paginated_products %>
+<% end %>
