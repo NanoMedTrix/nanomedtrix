@@ -1,0 +1,109 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]>     <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>        <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>        <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>        <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="<%= I18n.locale %>">            <!--<![endif]-->
+
+	<head>
+		<meta charset="utf-8">
+
+		<title><%= title %></title>
+
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+		<%== meta_data_tags %>
+	
+		<%= canonical_tag %>
+
+		<%= stylesheet_link_tag 'store/all', :media => 'screen' %>
+
+		<%= csrf_meta_tags %>
+
+		<%= render 'spree/shared/shim' %>
+
+		<%= yield :head %>
+	</head>
+
+	<body>
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="container">
+					<ul id="header-nav-left" class="nav navbar-nav">
+						<li><%= link_to 'About NMTx', '#' %></li>
+						<li><%= link_to 'Careers',    '#' %></li>
+						<li><%= link_to 'News',       '#' %></li>
+					</ul>
+
+					<ul id="header-nav-right" class="nav navbar-nav navbar-right">
+						<li><a><%= image_tag( 'store/us.gif' ) %></a></li>
+						<li><%= link_to 'Sign in', '#' %></li>
+						<li>
+							<%= link_to '#' do %>
+								<span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span>
+							<% end %>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<div class="container">
+			<div class="masthead" role="banner">
+				<div class="row">
+					<div id="masthead-left" class="col-lg-8">
+						
+						<h3><%= image_tag 'store/nmtx-2.svg', id: 'logo' %>NMTx <small>Small particles for a large contrast</small></h3>
+					</div>
+
+					<div class="clearfix visible-xs"></div>
+
+					<div id="masthead-right" class="col-lg-4">
+						<div class="input-group input-group-sm">
+							<input type="text" class="form-control" placeholder="Search...">
+
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div> 
+					</div>
+				</div>
+
+				<ul id="navigation" class="nav nav-justified" role="navigation">
+					<li><%= link_to 'Home', '#' %></li>
+					<li><%= link_to 'Technology', '#' %></li>
+					<li><%= link_to 'Gallery', '#' %></li>
+					<li><%= link_to 'Products', '#' %></li>
+				</ul>
+			</div>
+
+			<div id="home-image-big" class="jumbotron">
+				<h1 class="text-center"><small>[ image ]</small></h1>
+			</div>
+
+			<div id="news-headlines" class="well well-sm">
+				<dl class="dl-horizontal">
+					<dt>News Headlines</dt>
+					<dd>News Article One Title</dd>
+				</dl>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted">&copy; 2013-2014 NanoMedTrix, LLC</p>
+			</div>
+		</footer>
+		
+
+
+		<%= javascript_include_tag 'store/all' %>
+		<%= render "spree/shared/routes" %>
+		<script>
+      Spree.api_key = <%= raw(try_spree_current_user.try(:spree_api_key).to_s.inspect) %>;
+    </script>
+	</body>
+</html>

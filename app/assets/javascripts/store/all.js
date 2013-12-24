@@ -10,3 +10,5 @@
 //= require store/spree_frontend
 
 //= require_tree .
+
+//= require bootstrap
