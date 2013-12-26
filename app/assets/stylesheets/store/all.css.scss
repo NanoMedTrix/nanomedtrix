@@ -13,12 +13,13 @@
 }
 
 body { 
-	padding-top: 47px; 
+	padding-top: 37px; 
 	background-color: $body-grey; 
 }
 
 header {
 	.navbar { 
+		margin-bottom: 10px;
 		min-height: 0; 
 		background-color: #fff; 
 
@@ -93,12 +94,13 @@ header {
 	#masthead-brand { 
 		h3 { 
 			margin: 0;
-			padding: 12px 0 12px 55px;
+			padding: 19px 0 3px 55px;
 			background-image: url( image-path( 'store/nmtx-3.svg' ) );
 			background-size: 50px 50px;
 			background-repeat: no-repeat;
 			background-position: 0 50%;
 			text-transform: uppercase;
+			line-height: 50%;
 			letter-spacing: -2px;
 			color: #d2322d;
 
@@ -110,7 +112,7 @@ header {
 		} 
 	}
 
-	#masthead-search { padding: 9px 15px 11px; }
+	#masthead-search { padding: 15px 15px 5px; }
 
 	#navigation { 
 		margin-top: 10px; 
