@@ -82,7 +82,7 @@ header {
 
 	.badge { 
 		padding: 2px 5px;
-		background-color: $primary-blue; 
+		background-color: $primary-red; 
 		border-radius: 0; 
 	} 
 }
@@ -94,12 +94,19 @@ header {
 		h3 { 
 			margin: 0;
 			padding: 12px 0 12px 55px;
-			background-image: url( image-path( 'store/nmtx-2.svg' ) );
+			background-image: url( image-path( 'store/nmtx-3.svg' ) );
 			background-size: 50px 50px;
 			background-repeat: no-repeat;
 			background-position: 0 50%;
+			text-transform: uppercase;
+			letter-spacing: -2px;
+			color: #d2322d;
 
-			small { font-size: 12px; }
+			small { 
+				font-size: 12px;
+				text-transform: none;
+				letter-spacing: normal;
+			}
 		} 
 	}
 
