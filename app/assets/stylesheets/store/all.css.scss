@@ -1,38 +1,81 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 
+@import "variables";
+
 body { 
 	padding-top: 47px; 
-	background-color: #f8f8f8; 
+	background-color: $body-grey; 
 }
 
 header {
 	.navbar { 
 		min-height: 0; 
 		background-color: #fff; 
-	
-		.navbar-nav > li > a { 
-			padding-top: 3px;
-			padding-bottom: 3px;
-			border-left: 1px solid #fff;
-			border-right: 1px solid #d5d5d5;
-			font-size: 12px;
+
+		.navbar-header {
+			text-align: right;
+
+			.btn {
+				margin: 0;
+				padding: 7px 10px;
+				border: none;
+				border-left: 1px solid $light-grey;
+				border-radius: 0;
+				font-size: 12px;
+
+				&:first-child { padding: 4px 12px 5px; }
+				&:last-child { border-right: 0; }
+
+				.icon-bar { background-color: $dark-grey; }
+				.icon-bar + .icon-bar { margin-top: 3px; }
+
+				&:hover,
+				&:focus { 
+					background-color: $body-grey; 
+					.icon-bar { background-color: $darker-grey; }
+				}
+			}
+
+			a.btn {
+				padding: 5px 10px 4px;
+				color: $dark-grey;
+
+				&:hover,
+				&:focus { 
+					background-color: transparent;
+					color: $darker-grey; 
+				}
+			}
 		}
 
-		#header-nav-left > li:first-child > a { 
-			padding-left: 0; 
-			border-left: 0; 
-		}
+		.navbar-collapse {
+			background-color: $body-grey; 
+			.navbar-nav { 
+				margin-top: 10px;
+				margin-bottom: 10px;
 
-		#header-nav-right > li:last-child > a { 
-			border-right: 0; 
-
-			.badge { 
-				background-color: #428bca; 
-				border-radius: 0; 
-			} 
+				> li {
+					> a {
+						margin: 2px 15px;
+						padding: 5px;
+						padding: 3px 15px;
+						background-color: #fff;
+						font-size: 12px;
+					}
+					
+					&:first-child > a { margin-top: 0; }
+					&:last-child > a { margin-bottom: 0; }
+				}
+			}
 		}
 	}
+
+	.badge { 
+		padding: 2px 5px;
+		background-color: $primary-blue; 
+		border-radius: 0; 
+	} 
 }
 
 .masthead {
@@ -56,27 +99,29 @@ header {
 	#navigation { 
 		margin-top: 10px; 
 		background-color: #fff;
-		border: 1px solid #eee;
+		border: 1px solid $light-grey;
+		border-bottom: none;
 
 		> li > a {
+			margin: 0;
 			padding-top: 5px;
 			padding-bottom: 5px;
 			background-color: #fff; /* Old browsers */
 			background-repeat: repeat-x; /* Repeat the gradient */
-			background-image: -webkit-gradient( linear, left top, left bottom, color-stop( 0%, #fff ), color-stop( 100%, #eee ) ); /* Chrome,Safari4+ */
-			background-image: -webkit-linear-gradient( top, #fff 0%, #eee 100% ); /* Chrome 10+,Safari 5.1+ */
-			background-image:    -moz-linear-gradient( top, #fff 0%, #eee 100% ); /* FF3.6+ */
-			background-image:      -o-linear-gradient( top, #fff 0%, #eee 100% ); /* Opera 11.10+ */
-			background-image:         linear-gradient( top, #fff 0%, #eee 100% ); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#eee',GradientType=0 ); /* IE6-9 */
-			border-bottom: 1px solid #e5e5e5;
-			color: #777;
+			background-image: -webkit-gradient( linear, left top, left bottom, color-stop( 0%, #fff ), color-stop( 100%, $lighter-grey ) ); /* Chrome,Safari4+ */
+			background-image: -webkit-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* Chrome 10+,Safari 5.1+ */
+			background-image:    -moz-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* FF3.6+ */
+			background-image:      -o-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* Opera 11.10+ */
+			background-image:         linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='$lighter-grey',GradientType=0 ); /* IE6-9 */
+			border-bottom: 1px solid $light-grey;
+			color: $dark-grey;
 
 			&:hover,
 			&:focus {
-				background-color: #eee;
+				background-color: $lighter-grey;
 				background-position: 0 -15px;
-				color: #333;
+				color: $darker-grey;
 			}
 		}
 	}
@@ -93,7 +138,7 @@ header {
 	h1 { 
 		margin: 0;
 		height: 580px;
-		background-color: #f8f8f8; 
+		background-color: $body-grey; 
 		line-height: 580px; 
 
 		small { color: #e5e5e5; }
@@ -108,19 +153,6 @@ header {
 	background-image: none;
 	border: none;
 	border-radius: 0;
-
-	dl { 
-		margin-bottom: 0;
-
-		dt { 
-			padding-right: 5px; 
-			width: auto; 
-			border-right: 2px solid #000; 
-			text-align: left; 
-		}
-
-		dd { margin-left: 120px; }
-	}
 }
 
 .media {
@@ -134,21 +166,7 @@ header {
 	padding-bottom: 10px;
 	height: 100px;
 	background-color: #fff;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid $light-grey;
 }
 
-@media ( min-width: 768px ) {
-	.masthead {
-		#navigation {
-			> li {
-				> a {
-					border-left: 1px solid #fff;
-					border-right: 1px solid #e5e5e5;
-				}
-
-				&:first-child > a { border-left: 0;  }
-				&:last-child > a  { border-right: 0; }
-			}
-		}
-	}
-}
+@import "all-small";
