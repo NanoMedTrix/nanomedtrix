@@ -3,6 +3,15 @@
 
 @import "variables";
 
+/* debug dump */
+.debug_dump {
+	clear: both;
+	float: left;
+	margin: { top: 45px };
+	width: 100%;
+	@include box-sizing( border-box );
+}
+
 body { 
 	padding-top: 47px; 
 	background-color: $body-grey; 

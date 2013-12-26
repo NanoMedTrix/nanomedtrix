@@ -32,19 +32,18 @@
 		<div class="container">
 			<%= render 'spree/shared/masthead' %>
 
-			<%= breadcrumbs(@taxon) %>
+			<%= breadcrumbs( @taxon ) %>
 
 			<%= yield %>
 		</div>
 
+		<%= debug( params ) if Rails.env.development? %>
 		<%= render 'spree/shared/footer' %>
 		
-
-
 		<%= javascript_include_tag 'store/all' %>
 		<%= render "spree/shared/routes" %>
 		<script>
-      Spree.api_key = <%= raw(try_spree_current_user.try(:spree_api_key).to_s.inspect) %>;
+      Spree.api_key = <%= raw( try_spree_current_user.try( :spree_api_key ).to_s.inspect ) %>;
     </script>
 	</body>
 </html>
