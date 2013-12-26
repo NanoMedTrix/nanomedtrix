@@ -81,20 +81,18 @@ header {
 .masthead {
 	margin-bottom: 10px; 
 
-	#masthead-left { 
+	#masthead-brand { 
 		h3 { 
-			margin-top: 0; 
-			margin-bottom: 0;
-
-			#logo { 
-				margin-right: 5px; 
-				width: 50px; 
-				height: 50px; 
-			} 
+			margin: 0;
+			padding: 12px 0 12px 55px;
+			background-image: url( image-path( 'store/nmtx-2.svg' ) );
+			background-size: 50px 50px;
+			background-repeat: no-repeat;
+			background-position: 0 50%;
 		} 
 	}
 
-	#masthead-right { padding-top: 7px; }
+	#masthead-search { padding: 7px 15px 13px; }
 
 	#navigation { 
 		margin-top: 10px; 
@@ -113,7 +111,7 @@ header {
 			background-image:    -moz-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* FF3.6+ */
 			background-image:      -o-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* Opera 11.10+ */
 			background-image:         linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='$lighter-grey',GradientType=0 ); /* IE6-9 */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0 ); /* IE6-9 */
 			border-bottom: 1px solid $light-grey;
 			color: $dark-grey;
 
