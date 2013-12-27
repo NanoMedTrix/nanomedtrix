@@ -25,6 +25,10 @@ Spree.config do |config|
 		config.s3_bucket     = ENV[ 'S3_BUCKET' ]
 		config.s3_access_key = ENV[ 'S3_KEY' ]
 		config.s3_secret     = ENV[ 'S3_SECRET' ]
+	else
+		config.use_s3 = false
+
+		config.attachment_url = config.attachment_default_url
 	end
 end
 
