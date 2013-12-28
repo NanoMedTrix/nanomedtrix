@@ -121,8 +121,7 @@ namespace :bootstrap do
 	task tax_categories: :environment do 
 		print "Loading tax categories... "
 
-			Spree::TaxCategory.create!( :name => "Clothing" )
-			Spree::TaxCategory.create!( :name => "Food" )
+			Spree::TaxCategory.create!( :name => "Bio" )
 
 		puts "done."
 	end
@@ -132,17 +131,15 @@ namespace :bootstrap do
 		print "Loading tax rates... "
 
 		north_america = Spree::Zone.find_by_name!( "North America" )
-		clothing      = Spree::TaxCategory.find_by_name!( "Clothing" )
+		bio           = Spree::TaxCategory.find_by_name!( "Bio" )
 
 		tax_rate = Spree::TaxRate.create(
-			:name         => "North America",
-			:zone         => north_america, 
-			:amount       => 0.05,
-			:tax_category => clothing
+			:name         => "Tax",
+			:zone         => north_america,
+			:amount       => 0.07,
+			:tax_category => bio
 		)
-
 		tax_rate.calculator = Spree::Calculator::DefaultTax.create!
-
 		tax_rate.save!
 
 		puts "done."
@@ -152,7 +149,7 @@ namespace :bootstrap do
 	task products: :environment do 
 		print "Loading products... "
 
-		clothing          = Spree::TaxCategory.find_by_name!( "Clothing" )
+		bio               = Spree::TaxCategory.find_by_name!( "Bio" )
 		shipping_category = Spree::ShippingCategory.find_by_name!( "Default" )
 
 		default_attrs = {
@@ -162,127 +159,123 @@ namespace :bootstrap do
 
 		products = [
 			{
-				:name              => "Ruby on Rails Tote",
-				:tax_category      => clothing,
+				:name              => "NMT-RE -xxa",
+				:tax_category      => bio,
 				:shipping_category => shipping_category,
-				:price             => 15.99,
-				:eur_price         => 14
+				:price             => 249.99,
+				:eur_price         => 183
 			},
 
 			{
-				:name              => "Ruby on Rails Bag",
-				:tax_category      => clothing,
+				:name              => "NMT-RE -xxb",
+				:tax_category      => bio,
 				:shipping_category => shipping_category,
-				:price             => 22.99,
+				:price             => 599.99,
+				:eur_price         => 437
+			},
+
+			{
+				:name              => "NMT-RE -xxx",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 1499.99,
+				:eur_price         => 1090
+			},
+
+			{
+				:name              => "NMT-MSN -xxa",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 349.99,
+				:eur_price         => 255
+			},
+
+			{
+				:name              => "NMT-MSN -xxb",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 799.99,
+				:eur_price         => 583
+			},
+
+			{
+				:name              => "NMT-MSN -xxx",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 1999.99,
+				:eur_price         => 1453
+			},
+
+			{
+				:name              => "NMTx Stem Cells",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 499.99,
+				:eur_price         => 364
+			},
+
+			{
+				:name              => "NMTx Reagent 1",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 509.99,
+				:eur_price         => 371
+			},
+
+			{
+				:name              => "NMTx Reagent 2",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 299.99,
+				:eur_price         => 219
+			},
+
+			{
+				:name              => "NMTx Reagent 3",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 129.99,
+				:eur_price         => 95
+			},
+
+			{
+				:name              => "NMTx Petri Dishes - 50 Pack",
+				:tax_category      => bio,
+				:shipping_category => shipping_category,
+				:price             => 24.99,
 				:eur_price         => 19
 			},
 
 			{
-				:name              => "Ruby on Rails Baseball Jersey",
-				:tax_category      => clothing,
+				:name              => "NMTx 2 mL Vials - 100 Pack",
+				:tax_category      => bio,
 				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
+				:price             => 64.99,
+				:eur_price         => 47
 			},
 
 			{
-				:name              => "Ruby on Rails Jr. Spaghetti",
-				:tax_category      => clothing,
+				:name              => "NMTx 2 mL Vials - 500 Pack",
+				:tax_category      => bio,
 				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
+				:price             => 279.99,
+				:eur_price         => 204
 			},
 
 			{
-				:name              => "Ruby on Rails Ringer T-Shirt",
-				:tax_category      => clothing,
+				:name              => "NMTx 5 mL Vials - 100 Pack",
+				:tax_category      => bio,
 				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
+				:price             => 91.99,
+				:eur_price         => 67
 			},
 
 			{
-				:name              => "Ruby Baseball Jersey",
-				:tax_category      => clothing,
+				:name              => "NMTx 5 mL Vials - 500 Pack",
+				:tax_category      => bio,
 				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
-			},
-
-			{
-				:name              => "Apache Baseball Jersey",
-				:tax_category      => clothing,
-				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
-			},
-
-			{
-				:name              => "Spree Baseball Jersey",
-				:tax_category      => clothing,
-				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
-			},
-
-			{
-				:name              => "Spree Jr. Spaghetti",
-				:tax_category      => clothing,
-				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
-			},
-
-			{
-				:name              => "Spree Ringer T-Shirt",
-				:tax_category      => clothing,
-				:shipping_category => shipping_category,
-				:price             => 19.99,
-				:eur_price         => 16
-			},
-
-			{
-				:name              => "Spree Tote",
-				:tax_category      => clothing,
-				:shipping_category => shipping_category,
-				:price             => 15.99,
-				:eur_price         => 14
-			},
-
-			{
-				:name              => "Spree Bag",
-				:tax_category      => clothing,
-				:shipping_category => shipping_category,
-				:price             => 22.99,
-				:eur_price         => 19
-			},
-
-			{
-				:name              => "Ruby on Rails Mug",
-				:shipping_category => shipping_category,
-				:price             => 13.99,
-				:eur_price         => 12
-			},
-
-			{
-				:name              => "Ruby on Rails Stein",
-				:shipping_category => shipping_category,
-				:price             => 16.99,
-				:eur_price         => 14
-			},
-
-			{
-				:name              => "Spree Stein",
-				:shipping_category => shipping_category,
-				:price             => 16.99,
-				:eur_price         => 14
-			},
-
-			{
-				:name              => "Spree Mug",
-				:shipping_category => shipping_category,
-				:price             => 13.99,
-				:eur_price         => 12
+				:price             => 409.99,
+				:eur_price         => 299
 			}
 		]
 
@@ -330,26 +323,25 @@ namespace :bootstrap do
 		brands     = Spree::Taxonomy.find_by_name!( "Brand" )
 
 		products = { 
-			:ror_tote               => "Ruby on Rails Tote",
-			:ror_bag                => "Ruby on Rails Bag",
-			:ror_mug                => "Ruby on Rails Mug",
-			:ror_stein              => "Ruby on Rails Stein",
-			:ror_baseball_jersey    => "Ruby on Rails Baseball Jersey",
-			:ror_jr_spaghetti       => "Ruby on Rails Jr. Spaghetti",
-			:ror_ringer             => "Ruby on Rails Ringer T-Shirt",
-			:spree_stein            => "Spree Stein",
-			:spree_mug              => "Spree Mug",
-			:spree_ringer           => "Spree Ringer T-Shirt",
-			:spree_baseball_jersey  =>  "Spree Baseball Jersey",
-			:spree_tote             => "Spree Tote",
-			:spree_bag              => "Spree Bag",
-			:spree_jr_spaghetti     => "Spree Jr. Spaghetti",
-			:apache_baseball_jersey => "Apache Baseball Jersey",
-			:ruby_baseball_jersey   => "Ruby Baseball Jersey"
+			:nmt_re_xxa             => "NMT-RE -xxa",
+			:nmt_re_xxb             => "NMT-RE -xxb",
+			:nmt_re_xxx             => "NMT-RE -xxx",
+			:nmt_msn_xxa            => "NMT-MSN -xxa",
+			:nmt_msn_xxb            => "NMT-MSN -xxb",
+			:nmt_msn_xxx            => "NMT-MSN -xxx",
+			:nmtx_stem_cells        => "NMTx Stem Cells",
+			:nmtx_reagent_one       => "NMTx Reagent 1",
+			:nmtx_reagent_two       => "NMTx Reagent 2",
+			:nmtx_reagent_three     => "NMTx Reagent 3",
+			:nmtx_petri_dishes      => "NMTx Petri Dishes - 50 Pack",
+			:nmtx_small_vials_small => "NMTx 2 mL Vials - 100 Pack",
+			:nmtx_small_vials_large => "NMTx 2 mL Vials - 500 Pack",
+			:nmtx_large_vials_small => "NMTx 5 mL Vials - 100 Pack",
+			:nmtx_large_vials_large => "NMTx 5 mL Vials - 500 Pack"
 		}
 
 		products.each do | key, name |
-			products[key] = Spree::Product.find_by_name!( name )
+			products[ key ] = Spree::Product.find_by_name!( name )
 		end
 
 		taxons = [
@@ -360,60 +352,69 @@ namespace :bootstrap do
 			},
 
 			{
-				:name     => "Bags",
+				:name     => "Nanoparticles",
 				:taxonomy => categories,
 				:parent   => "Categories",
 				:position => 1,
 				:products => [
-					products[ :ror_tote ],
-					products[ :ror_bag ],
-					products[ :spree_tote ],
-					products[ :spree_bag ]
+					products[ :nmt_re_xxa ],
+					products[ :nmt_re_xxb ],
+					products[ :nmt_re_xxx ],
+					products[ :nmt_msn_xxa ],
+					products[ :nmt_msn_xxb ],
+					products[ :nmt_msn_xxx ]
 				]
 			},
 
 			{
-				:name     => "Mugs",
+				:name     => "Stem Cells",
 				:taxonomy => categories,
 				:parent   => "Categories",
 				:position => 2,
 				:products => [
-					products[ :ror_mug ],
-					products[ :ror_stein ],
-					products[ :spree_stein ],
-					products[ :spree_mug ]
+					products[ :nmtx_stem_cells ]
 				]
 			},
 
 			{
-				:name     => "Clothing",
+				:name     => "Reagents",
 				:taxonomy => categories,
-				:parent   => "Categories" 
-			},
-
-			{
-				:name     => "Shirts",
-				:taxonomy => categories,
-				:parent   => "Clothing",
-				:position => 0,
+				:parent   => "Categories",
+				:position => 3,
 				:products => [
-					products[ :ror_jr_spaghetti ],
-					products[ :spree_jr_spaghetti ]
+					products[ :nmtx_reagent_one ],
+					products[ :nmtx_reagent_two ],
+					products[ :nmtx_reagent_three ]
 				]
 			},
 
 			{
-				:name     => "T-Shirts",
+				:name     => "Glassware",
 				:taxonomy => categories,
-				:parent   => "Clothing",
+				:parent   => "Categories",
+				:position => 4
+			},
+
+			{
+				:name     => "Petri Dishes",
+				:taxonomy => categories,
+				:parent   => "Glassware",
 				:position => 0,
 				:products => [
-					products[ :ror_baseball_jersey ],
-					products[ :ror_ringer ],
-					products[ :apache_baseball_jersey ],
-					products[ :ruby_baseball_jersey ],
-					products[ :spree_baseball_jersey ],
-					products[ :spree_ringer ]
+					products[ :nmtx_petri_dishes ]
+				]
+			},
+
+			{
+				:name     => "Vials",
+				:taxonomy => categories,
+				:parent   => "Glassware",
+				:position => 1,
+				:products => [
+					products[ :nmtx_small_vials_small ],
+					products[ :nmtx_small_vials_large ],
+					products[ :nmtx_large_vials_small ],
+					products[ :nmtx_large_vials_large ]
 				]
 			},
 
@@ -423,27 +424,45 @@ namespace :bootstrap do
 			},
 
 			{
-				:name     => "Ruby",
+				:name     => "NMT-RE",
 				:taxonomy => brands,
-				:parent   => "Brand" 
+				:parent   => "Brand",
+				:position => 1,
+				:products => [
+					products[ :nmt_re_xxa ],
+					products[ :nmt_re_xxb ],
+					products[ :nmt_re_xxx ]
+				]
 			},
 
 			{
-				:name     => "Apache",
+				:name     => "NMT-MSN",
 				:taxonomy => brands,
-				:parent   => "Brand" 
+				:parent   => "Brand",
+				:position => 2,
+				:products => [
+					products[ :nmt_msn_xxa ],
+					products[ :nmt_msn_xxb ],
+					products[ :nmt_msn_xxx ]
+				]
 			},
 
 			{
-				:name     => "Spree",
+				:name     => "NMTx",
 				:taxonomy => brands,
-				:parent   => "Brand"
-			},
-
-			{
-				:name     => "Rails",
-				:taxonomy => brands,
-				:parent   => "Brand"
+				:parent   => "Brand",
+				:position => 3,
+				:products => [
+					products[ :nmtx_stem_cells ],
+					products[ :nmtx_reagent_one ],
+					products[ :nmtx_reagent_two ],
+					products[ :nmtx_reagent_three ],
+					products[ :nmtx_petri_dishes ],
+					products[ :nmtx_small_vials_small ],
+					products[ :nmtx_small_vials_large ],
+					products[ :nmtx_large_vials_small ],
+					products[ :nmtx_large_vials_large ]
+				]
 			}
 		]
 
@@ -464,15 +483,15 @@ namespace :bootstrap do
 
 		Spree::OptionType.create!([
 			{
-				:name         => "tshirt-size",
-				:presentation => "Size",
+				:name         => "species",
+				:presentation => "Species",
 				:position     => 1
 			},
 
 			{
-				:name         => "tshirt-color",
-				:presentation => "Color",
-				:position     => 2
+				:name         => "stem-cell-type",
+				:presentation => "Type",
+				:position     => 1
 			}
 		])
 
@@ -483,57 +502,43 @@ namespace :bootstrap do
 	task option_values: :environment do 
 		print "Loading option values... "
 
-		size  = Spree::OptionType.find_by_presentation!( "Size" )
-		color = Spree::OptionType.find_by_presentation!( "Color" )
+		species        = Spree::OptionType.find_by_presentation!( "Species" )
+		stem_cell_type = Spree::OptionType.find_by_presentation!( "Type" )
 
 		Spree::OptionValue.create!([
 			{
-				:name         => "Small",
-				:presentation => "S",
+				:name         => "Human",
+				:presentation => "Human",
 				:position     => 1,
-				:option_type  => size
+				:option_type  => species
 			},
 
 			{
-				:name         => "Medium",
-				:presentation => "M",
+				:name         => "Mouse",
+				:presentation => "Mouse",
 				:position     => 2,
-				:option_type  => size
+				:option_type  => species
 			},
 
 			{
-				:name         => "Large",
-				:presentation => "L",
-				:position     => 3,
-				:option_type  => size
-			},
-
-			{
-				:name         => "Extra Large",
-				:presentation => "XL",
-				:position     => 4,
-				:option_type  => size
-			},
-
-			{
-				:name         => "Red",
-				:presentation => "Red",
+				:name         => "Embryonic",
+				:presentation => "Embryonic",
 				:position     => 1,
-				:option_type  => color
+				:option_type  => stem_cell_type
 			},
 
 			{
-				:name         => "Green",
-				:presentation => "Green",
+				:name         => "Somatic",
+				:presentation => "Somatic",
 				:position     => 2,
-				:option_type  => color
+				:option_type  => stem_cell_type
 			},
 
 			{
-				:name         => "Blue",
-				:presentation => "Blue",
+				:name         => "Induced Pluripotent",
+				:presentation => "iPSC",
 				:position     => 3,
-				:option_type  => color
+				:option_type  => stem_cell_type
 			}
 		])
 
@@ -544,16 +549,26 @@ namespace :bootstrap do
 	task product_option_types: :environment do 
 		print "Loading product option types... "
 
-		size  = Spree::OptionType.find_by_presentation!( "Size" )
-		color = Spree::OptionType.find_by_presentation!( "Color" )
+		species        = Spree::OptionType.find_by_presentation!( "Species" )
+		stem_cell_type = Spree::OptionType.find_by_presentation!( "Type" )
 
-		ror_baseball_jersey              = Spree::Product.find_by_name!( "Ruby on Rails Baseball Jersey" )
-		ror_baseball_jersey.option_types = [ size, color ]
-		ror_baseball_jersey.save!
+		[ 
+			"NMT-RE -xxa",
+			"NMT-RE -xxb",
+			"NMT-RE -xxx",
+			"NMT-MSN -xxa",
+			"NMT-MSN -xxb",
+			"NMT-MSN -xxx"
+		].each do | name |
+			product              = Spree::Product.find_by_name!( name )
+			product.option_types = [ species ]
 
-		spree_baseball_jersey              = Spree::Product.find_by_name!( "Spree Baseball Jersey" )
-		spree_baseball_jersey.option_types = [ size, color ]
-		spree_baseball_jersey.save!
+			product.save!
+		end
+
+		nmtx_stem_cells              = Spree::Product.find_by_name!( "NMTx Stem Cells" )
+		nmtx_stem_cells.option_types = [ species, stem_cell_type ]
+		nmtx_stem_cells.save!
 
 		puts "done."
 	end
@@ -563,112 +578,105 @@ namespace :bootstrap do
 		print "Loading product properties... "
 
 		products = { 
-			"Ruby on Rails Baseball Jersey" => { 
-				"Manufacturer" => "Wilson",
-				"Brand"        => "Wannabe Sports",
-				"Model"        => "JK1002",
-				"Shirt Type"   => "Baseball Jersey",
-				"Sleeve Type"  => "Long",
-				"Made from"    => "100% cotton",
-				"Fit"          => "Loose",
-				"Gender"       => "Men's"
+			"NMT-RE -xxa" => { 
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMT-RE",
+				"Model"        => "NP0000"
+			}, 
+
+			"NMT-RE -xxb" => { 
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMT-RE",
+				"Model"        => "NP0001"
+			}, 
+
+			"NMT-RE -xxx" => { 
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMT-RE",
+				"Model"        => "NP0002"
+			}, 
+
+			"NMT-MSN -xxa" => { 
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMT-MSN",
+				"Model"        => "NP1000"
+			}, 
+
+			"NMT-MSN -xxb" => { 
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMT-MSN",
+				"Model"        => "NP1001"
+			}, 
+
+			"NMT-MSN -xxx" => { 
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMT-MSN",
+				"Model"        => "NP1002"
 			},
 
-			"Ruby on Rails Jr. Spaghetti" => {
-				"Manufacturer" => "Jerseys",
-				"Brand"        => "Resiliance",
-				"Model"        => "TL174",
-				"Shirt Type"   => "Jr. Spaghetti T",
-				"Sleeve Type"  => "None",
-				"Made from"    => "90% Cotton, 10% Nylon",
-				"Fit"          => "Form",
-				"Gender"       => "Women's"
+			"NMTx Stem Cells" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "SC0000"
 			},
 
-			"Ruby on Rails Ringer T-Shirt" => {
-				"Manufacturer" => "Jerseys",
-				"Brand"        => "Conditioned",
-				"Model"        => "TL9002",
-				"Shirt Type"   => "Ringer T",
-				"Sleeve Type"  => "Short",
-				"Made from"    => "100% Vellum",
-				"Fit"          => "Loose",
-				"Gender"       => "Men's"
+			"NMTx Reagent 1" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "RE0000"
 			},
 
-			"Ruby on Rails Tote" => {
-				"Type"     => "Tote",
-				"Size"     => %Q{ 15" x 18" x 6" },
-				"Material" => "Canvas"
+			"NMTx Reagent 2" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "RE0001"
 			},
 
-			"Ruby on Rails Bag" => {
-				"Type"     => "Messenger",
-				"Size"     => %Q{ 14 1/2" x 12" x 5" },
-				"Material" => "600 Denier Polyester"
+			"NMTx Reagent 3" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "RE0002"
 			},
 
-			"Ruby on Rails Mug" => {
-				"Type" => "Mug",
-				"Size" => %Q{ 4.5" tall, 3.25" dia. }
+			"NMTx Petri Dishes - 50 Pack" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "PD0000",
+				"Size"         => "Outside: 100mm dia. x 15mm H, Inside: 88mm dia. x 12mm H (with lid on)",
+				"Material"     => "Polystyrene",
+				"Quantity"     => "50"
 			},
 
-			"Ruby on Rails Stein" => {
-				"Type" => "Stein",
-				"Size" => %Q{ 6.75" tall, 3.75" dia. base, 3" dia. rim }
+			"NMTx 2 mL Vials - 100 Pack" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "VL0000",
+				"Size"         => "2 mL",
+				"Quantity"     => "100"
 			},
 
-			"Spree Stein" => {
-				"Type" => "Stein",
-				"Size" => %Q{ 6.75" tall, 3.75" dia. base, 3" dia. rim }
+			"NMTx 2 mL Vials - 500 Pack" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "VL0001",
+				"Size"         => "2 mL",
+				"Quantity"     => "500"
 			},
 
-			"Spree Mug" => {
-				"Type" => "Mug",
-				"Size" => %Q{ 4.5" tall, 3.25" dia. }
+			"NMTx 5 mL Vials - 100 Pack" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "VL1000",
+				"Size"         => "5 mL",
+				"Quantity"     => "100"
 			},
 
-			"Spree Tote" => {
-				"Type" => "Tote",
-				"Size" => %Q{ 15" x 18" x 6" }
-			},
-
-			"Spree Bag" => {
-				"Type" => "Messenger",
-				"Size" => %Q{ 14 1/2" x 12" x 5" }
-			},
-
-			"Spree Baseball Jersey" => {
-				"Manufacturer" => "Wilson",
-				"Brand"        => "Wannabe Sports",
-				"Model"        => "JK1002",
-				"Shirt Type"   => "Baseball Jersey",
-				"Sleeve Type"  => "Long",
-				"Made from"    => "100% cotton",
-				"Fit"          => "Loose",
-				"Gender"       => "Men's"
-			},
-
-			"Spree Jr. Spaghetti" => {
-				"Manufacturer" => "Jerseys",
-				"Brand"        => "Resiliance",
-				"Model"        => "TL174",
-				"Shirt Type"   => "Jr. Spaghetti T",
-				"Sleeve Type"  => "None",
-				"Made from"    => "90% Cotton, 10% Nylon",
-				"Fit"          => "Form",
-				"Gender"       => "Women's"
-			},
-
-			"Spree Ringer T-Shirt" => {
-				"Manufacturer" => "Jerseys",
-				"Brand"        => "Conditioned",
-				"Model"        => "TL9002",
-				"Shirt Type"   => "Ringer T",
-				"Sleeve Type"  => "Short",
-				"Made from"    => "100% Vellum",
-				"Fit"          => "Loose",
-				"Gender"       => "Men's"
+			"NMTx 5 mL Vials - 500 Pack" => {
+				"Manufacturer" => "NanoMedTrix",
+				"Brand"        => "NMTx",
+				"Model"        => "VL1001",
+				"Size"         => "5 mL",
+				"Quantity"     => "500"
 			}
 		}
 
@@ -689,18 +697,28 @@ namespace :bootstrap do
 
 		prototypes = [
 			{
-				:name       => "Shirt",
-				:properties => [ "Manufacturer", "Brand", "Model", "Shirt Type", "Sleeve Type", "Material", "Fit", "Gender" ]
+				:name       => "Nanoparticles",
+				:properties => [ "Manufacturer", "Brand", "Model" ]
 			},
 
 			{
-				:name       => "Bag",
-				:properties => [ "Type", "Size", "Material" ]
+				:name       => "Stem Cells",
+				:properties => [ "Manufacturer", "Brand", "Model" ]
 			},
 
 			{
-				:name       => "Mugs",
-				:properties => [ "Size", "Type" ]
+				:name       => "Reagent",
+				:properties => [ "Manufacturer", "Brand", "Model" ]
+			},
+
+			{
+				:name       => "Petri Dish",
+				:properties => [ "Manufacturer", "Brand", "Model", "Size", "Material", "Quantity" ]
+			},
+
+			{
+				:name       => "Vial",
+				:properties => [ "Manufacturer", "Brand", "Model", "Size", "Quantity" ]
 			}
 		]
 
@@ -719,183 +737,231 @@ namespace :bootstrap do
 	task variants: :environment do 
 		print "Loading variants... "
 
-		ror_baseball_jersey    = Spree::Product.find_by_name!( "Ruby on Rails Baseball Jersey" )
-		ror_tote               = Spree::Product.find_by_name!( "Ruby on Rails Tote" )
-		ror_bag                = Spree::Product.find_by_name!( "Ruby on Rails Bag" )
-		ror_jr_spaghetti       = Spree::Product.find_by_name!( "Ruby on Rails Jr. Spaghetti" )
-		ror_mug                = Spree::Product.find_by_name!( "Ruby on Rails Mug" )
-		ror_ringer             = Spree::Product.find_by_name!( "Ruby on Rails Ringer T-Shirt" )
-		ror_stein              = Spree::Product.find_by_name!( "Ruby on Rails Stein" )
-		spree_baseball_jersey  = Spree::Product.find_by_name!( "Spree Baseball Jersey" )
-		spree_stein            = Spree::Product.find_by_name!( "Spree Stein" )
-		spree_jr_spaghetti     = Spree::Product.find_by_name!( "Spree Jr. Spaghetti" )
-		spree_mug              = Spree::Product.find_by_name!( "Spree Mug" )
-		spree_ringer           = Spree::Product.find_by_name!( "Spree Ringer T-Shirt" )
-		spree_tote             = Spree::Product.find_by_name!( "Spree Tote" )
-		spree_bag              = Spree::Product.find_by_name!( "Spree Bag" )
-		ruby_baseball_jersey   = Spree::Product.find_by_name!( "Ruby Baseball Jersey" )
-		apache_baseball_jersey = Spree::Product.find_by_name!( "Apache Baseball Jersey" )
+		nmt_re_xxa             = Spree::Product.find_by_name!( "NMT-RE -xxa" )
+		nmt_re_xxb             = Spree::Product.find_by_name!( "NMT-RE -xxb" )
+		nmt_re_xxx             = Spree::Product.find_by_name!( "NMT-RE -xxx" )
+		nmt_msn_xxa            = Spree::Product.find_by_name!( "NMT-MSN -xxa" )
+		nmt_msn_xxb            = Spree::Product.find_by_name!( "NMT-MSN -xxb" )
+		nmt_msn_xxx            = Spree::Product.find_by_name!( "NMT-MSN -xxx" )
+		nmtx_stem_cells        = Spree::Product.find_by_name!( "NMTx Stem Cells" )
+		nmtx_reagent_one       = Spree::Product.find_by_name!( "NMTx Reagent 1" )
+		nmtx_reagent_two       = Spree::Product.find_by_name!( "NMTx Reagent 2" )
+		nmtx_reagent_three     = Spree::Product.find_by_name!( "NMTx Reagent 3" )
+		nmtx_petri_dishes      = Spree::Product.find_by_name!( "NMTx Petri Dishes - 50 Pack" )
+		nmtx_small_vials_small = Spree::Product.find_by_name!( "NMTx 2 mL Vials - 100 Pack" )
+		nmtx_small_vials_large = Spree::Product.find_by_name!( "NMTx 2 mL Vials - 500 Pack" )
+		nmtx_large_vials_small = Spree::Product.find_by_name!( "NMTx 5 mL Vials - 100 Pack" )
+		nmtx_large_vials_large = Spree::Product.find_by_name!( "NMTx 5 mL Vials - 500 Pack" )
 
-		small       = Spree::OptionValue.find_by_name!( "Small" )
-		medium      = Spree::OptionValue.find_by_name!( "Medium" )
-		large       = Spree::OptionValue.find_by_name!( "Large" )
-		extra_large = Spree::OptionValue.find_by_name!( "Extra Large" )
+		human = Spree::OptionValue.find_by_name!( "Human" )
+		mouse = Spree::OptionValue.find_by_name!( "Mouse" )
 
-		red   = Spree::OptionValue.find_by_name!( "Red" )
-		blue  = Spree::OptionValue.find_by_name!( "Blue" )
-		green = Spree::OptionValue.find_by_name!( "Green" )
+		embryonic = Spree::OptionValue.find_by_name!( "Embryonic" )
+		somatic   = Spree::OptionValue.find_by_name!( "Somatic" )
+		ipsc      = Spree::OptionValue.find_by_name!( "Induced Pluripotent" )
 
 		variants = [
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [small, red],
-				:sku           => "ROR-00001",
+				:product       => nmt_re_xxa,
+				:option_values => [ human ],
+				:sku           => "NMT-RE-00000",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [small, blue],
-				:sku           => "ROR-00002",
+				:product       => nmt_re_xxa,
+				:option_values => [ mouse ],
+				:sku           => "NMT-RE-00001",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [small, green],
-				:sku           => "ROR-00003",
+				:product       => nmt_re_xxb,
+				:option_values => [ human ],
+				:sku           => "NMT-RE-00002",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [medium, red],
-				:sku           => "ROR-00004",
+				:product       => nmt_re_xxb,
+				:option_values => [ mouse ],
+				:sku           => "NMT-RE-00003",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [medium, blue],
-				:sku           => "ROR-00005",
+				:product       => nmt_re_xxx,
+				:option_values => [ human ],
+				:sku           => "NMT-RE-00004",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [medium, green],
-				:sku           => "ROR-00006",
+				:product       => nmt_re_xxx,
+				:option_values => [ mouse ],
+				:sku           => "NMT-RE-00005",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [large, red],
-				:sku           => "ROR-00007",
+				:product       => nmt_msn_xxa,
+				:option_values => [ human ],
+				:sku           => "NMT-MSN-00000",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [large, blue],
-				:sku           => "ROR-00008",
+				:product       => nmt_msn_xxa,
+				:option_values => [ mouse ],
+				:sku           => "NMT-MSN-00001",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [large, green],
-				:sku           => "ROR-00009",
+				:product       => nmt_msn_xxb,
+				:option_values => [ human ],
+				:sku           => "NMT-MSN-00002",
 				:cost_price    => 17
 			},
 
 			{
-				:product       => ror_baseball_jersey,
-				:option_values => [extra_large, green],
-				:sku           => "ROR-00012",
+				:product       => nmt_msn_xxb,
+				:option_values => [ mouse ],
+				:sku           => "NMT-MSN-00003",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmt_msn_xxx,
+				:option_values => [ human ],
+				:sku           => "NMT-MSN-00004",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmt_msn_xxx,
+				:option_values => [ mouse ],
+				:sku           => "NMT-MSN-00005",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmtx_stem_cells,
+				:option_values => [ human, embryonic ],
+				:sku           => "NMTx-SC-00000",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmtx_stem_cells,
+				:option_values => [ human, somatic ],
+				:sku           => "NMTx-SC-00001",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmtx_stem_cells,
+				:option_values => [ human, ipsc ],
+				:sku           => "NMTx-SC-00002",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmtx_stem_cells,
+				:option_values => [ mouse, embryonic ],
+				:sku           => "NMTx-SC-00003",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmtx_stem_cells,
+				:option_values => [ mouse, somatic ],
+				:sku           => "NMTx-SC-00004",
+				:cost_price    => 17
+			},
+
+			{
+				:product       => nmtx_stem_cells,
+				:option_values => [ mouse, ipsc ],
+				:sku           => "NMTx-SC-00005",
 				:cost_price    => 17
 			}
 		]
 
 		masters = {
-			ror_baseball_jersey => {
-				:sku        => "ROR-00010",
+			nmt_re_xxa => {
+				:sku        => "NMT-RE-00006",
 				:cost_price => 17
 			},
 
-			ror_tote => {
-				:sku        => "ROR-00011",
+			nmt_re_xxb => {
+				:sku        => "NMT-RE-00007",
 				:cost_price => 17
 			},
 
-			ror_bag => {
-				:sku        => "ROR-00012",
+			nmt_re_xxx => {
+				:sku        => "NMT-RE-00008",
 				:cost_price => 21
 			},
 
-			ror_jr_spaghetti => {
-				:sku        => "ROR-00013",
+			nmt_msn_xxa => {
+				:sku        => "NMT-MSN-00006",
 				:cost_price => 17
 			},
 
-			ror_mug => {
-				:sku        => "ROR-00014",
+			nmt_msn_xxb => {
+				:sku        => "NMT-MSN-00007",
 				:cost_price => 11
 			},
 
-			ror_ringer => {
-				:sku        => "ROR-00015",
+			nmt_msn_xxx => {
+				:sku        => "NMT-MSN-00008",
 				:cost_price => 17
 			},
 
-			ror_stein => {
-				:sku        => "ROR-00016",
+			nmtx_stem_cells => {
+				:sku        => "NMTx-SC-00007",
 				:cost_price => 15
 			},
 
-			apache_baseball_jersey => {
-				:sku        => "APC-00001",
+			nmtx_reagent_one => {
+				:sku        => "NMTx-REA-00000",
 				:cost_price => 17
 			},
 
-			ruby_baseball_jersey => {
-				:sku        => "RUB-00001",
+			nmtx_reagent_two => {
+				:sku        => "NMTx-REA-00001",
 				:cost_price => 17
 			},
 
-			spree_baseball_jersey => {
-				:sku        => "SPR-00001",
+			nmtx_reagent_three => {
+				:sku        => "NMTx-REA-00002",
 				:cost_price => 17
 			},
 
-			spree_stein => {
-				:sku        => "SPR-00016",
+			nmtx_petri_dishes => {
+				:sku        => "NMTx-PD-00000",
 				:cost_price => 15
 			},
 
-			spree_jr_spaghetti => {
-				:sku        => "SPR-00013",
+			nmtx_small_vials_small => {
+				:sku        => "NMTx-SVL-00000",
 				:cost_price => 17
 			},
 
-			spree_mug => {
-				:sku        => "SPR-00014",
+			nmtx_small_vials_large => {
+				:sku        => "NMTx-SVL-00001",
 				:cost_price => 11
 			},
 
-			spree_ringer => {
-				:sku        => "SPR-00015",
+			nmtx_large_vials_small => {
+				:sku        => "NMTx-LVL-00000",
 				:cost_price => 17
 			},
 
-			spree_tote => {
-				:sku        => "SPR-00011",
+			nmtx_large_vials_large => {
+				:sku        => "NMTx-LVL-00001",
 				:cost_price => 13
-			},
-
-			spree_bag => {
-				:sku        => "SPR-00012",
-				:cost_price => 21
 			}
 		}
 
@@ -914,7 +980,7 @@ namespace :bootstrap do
 
 		location         = Spree::StockLocation.first_or_create! name: "default"
 		location.active  = true
-		location.country =  Spree::Country.where( iso: "US" ).first
+		location.country = Spree::Country.where( iso: "US" ).first
 		location.save!
 
 		Spree::Variant.all.each do | variant |
@@ -931,23 +997,21 @@ namespace :bootstrap do
 		puts "Loading assets... "
 
 		products = {}
-		products[ :ror_baseball_jersey ]    = Spree::Product.find_by_name!( "Ruby on Rails Baseball Jersey" ) 
-		products[ :ror_tote ]               = Spree::Product.find_by_name!( "Ruby on Rails Tote" )
-		products[ :ror_bag ]                = Spree::Product.find_by_name!( "Ruby on Rails Bag" )
-		products[ :ror_jr_spaghetti ]       = Spree::Product.find_by_name!( "Ruby on Rails Jr. Spaghetti" )
-		products[ :ror_mug ]                = Spree::Product.find_by_name!( "Ruby on Rails Mug" )
-		products[ :ror_ringer ]             = Spree::Product.find_by_name!( "Ruby on Rails Ringer T-Shirt" )
-		products[ :ror_stein ]              = Spree::Product.find_by_name!( "Ruby on Rails Stein" )
-		products[ :spree_baseball_jersey ]  = Spree::Product.find_by_name!( "Spree Baseball Jersey" )
-		products[ :spree_stein ]            = Spree::Product.find_by_name!( "Spree Stein" )
-		products[ :spree_jr_spaghetti ]     = Spree::Product.find_by_name!( "Spree Jr. Spaghetti" )
-		products[ :spree_mug ]              = Spree::Product.find_by_name!( "Spree Mug" )
-		products[ :spree_ringer ]           = Spree::Product.find_by_name!( "Spree Ringer T-Shirt" )
-		products[ :spree_tote ]             = Spree::Product.find_by_name!( "Spree Tote" )
-		products[ :spree_bag ]              = Spree::Product.find_by_name!( "Spree Bag" )
-		products[ :ruby_baseball_jersey ]   = Spree::Product.find_by_name!( "Ruby Baseball Jersey" )
-		products[ :apache_baseball_jersey ] = Spree::Product.find_by_name!( "Apache Baseball Jersey" )
-
+		products[ :nmt_re_xxa ]             = Spree::Product.find_by_name!( "NMT-RE -xxa" ) 
+		products[ :nmt_re_xxb ]             = Spree::Product.find_by_name!( "NMT-RE -xxb" )
+		products[ :nmt_re_xxx ]             = Spree::Product.find_by_name!( "NMT-RE -xxx" )
+		products[ :nmt_msn_xxa ]            = Spree::Product.find_by_name!( "NMT-MSN -xxa" )
+		products[ :nmt_msn_xxb ]            = Spree::Product.find_by_name!( "NMT-MSN -xxb" )
+		products[ :nmt_msn_xxx ]            = Spree::Product.find_by_name!( "NMT-MSN -xxx" )
+		products[ :nmtx_stem_cells ]        = Spree::Product.find_by_name!( "NMTx Stem Cells" )
+		products[ :nmtx_reagent_one ]       = Spree::Product.find_by_name!( "NMTx Reagent 1" )
+		products[ :nmtx_reagent_two ]       = Spree::Product.find_by_name!( "NMTx Reagent 2" )
+		products[ :nmtx_reagent_three ]     = Spree::Product.find_by_name!( "NMTx Reagent 3" )
+		products[ :nmtx_petri_dishes ]      = Spree::Product.find_by_name!( "NMTx Petri Dishes - 50 Pack" )
+		products[ :nmtx_small_vials_small ] = Spree::Product.find_by_name!( "NMTx 2 mL Vials - 100 Pack" )
+		products[ :nmtx_small_vials_large ] = Spree::Product.find_by_name!( "NMTx 2 mL Vials - 500 Pack" )
+		products[ :nmtx_large_vials_small ] = Spree::Product.find_by_name!( "NMTx 5 mL Vials - 100 Pack" )
+		products[ :nmtx_large_vials_large ] = Spree::Product.find_by_name!( "NMTx 5 mL Vials - 500 Pack" )
 
 		def image( name, type = "jpeg" )
 			images_path = Pathname.new( File.dirname( __FILE__ ) ) + "images"
@@ -958,91 +1022,66 @@ namespace :bootstrap do
 		end
 
 		images = {
-			products[ :ror_tote ].master => [
-				{ :attachment => image( "ror_tote" ) },
-				{ :attachment => image( "ror_tote_back" ) }
+			products[ :nmt_re_xxa ].master => [
+				{ :attachment => image( "nmt_re_xxa" ) }
 			],
 
-			products[ :ror_bag ].master => [
-				{ :attachment => image( "ror_bag" ) }
+			products[ :nmt_re_xxb ].master => [
+				{ :attachment => image( "nmt_re_xxb" ) }
 			],
 
-			products[ :ror_baseball_jersey ].master => [
-				{ :attachment => image( "ror_baseball" ) },
-				{ :attachment => image( "ror_baseball_back" ) }
+			products[ :nmt_re_xxx ].master => [
+				{ :attachment => image( "nmt_re_xxx" ) }
 			],
 
-			products[ :ror_jr_spaghetti ].master => [
-				{ :attachment => image( "ror_jr_spaghetti" ) }
+			products[ :nmt_msn_xxa ].master => [
+				{ :attachment => image( "nmt_msn_xxa" ) }
 			],
 
-			products[ :ror_mug ].master => [
-				{ :attachment => image( "ror_mug" ) },
-				{ :attachment => image( "ror_mug_back" ) }
+			products[ :nmt_msn_xxb ].master => [
+				{ :attachment => image( "nmt_msn_xxb" ) }
 			],
 
-			products[ :ror_ringer ].master => [
-				{ :attachment => image( "ror_ringer" ) },
-				{ :attachment => image( "ror_ringer_back" ) }
+			products[ :nmt_msn_xxx ].master => [
+				{ :attachment => image( "nmt_msn_xxx" ) }
 			],
 
-			products[ :ror_stein ].master => [
-				{ :attachment => image( "ror_stein" ) },
-				{ :attachment => image( "ror_stein_back" ) }
+			products[ :nmtx_stem_cells ].master => [
+				{ :attachment => image( "nmtx_stem_cells" ) }
 			],
 
-			products[ :apache_baseball_jersey ].master => [
-				{ :attachment => image( "apache_baseball", "png" ) }
+			products[ :nmtx_reagent_one ].master => [
+				{ :attachment => image( "nmtx_reagent_one" ) }
 			],
 
-			products[ :ruby_baseball_jersey ].master => [
-				{ :attachment => image( "ruby_baseball", "png" ) }
+			products[ :nmtx_reagent_two ].master => [
+				{ :attachment => image( "nmtx_reagent_two" ) }
 			],
 
-			products[ :spree_bag ].master => [
-				{ :attachment => image( "spree_bag" ) }
+			products[ :nmtx_reagent_three ].master => [
+				{ :attachment => image( "nmtx_reagent_three" ) }
 			],
 
-			products[ :spree_tote ].master => [
-				{ :attachment => image( "spree_tote_front" ) },
-				{ :attachment => image( "spree_tote_back" ) }
+			products[ :nmtx_petri_dishes ].master => [
+				{ :attachment => image( "nmtx_petri_dishes" ) }
 			],
 
-			products[ :spree_ringer ].master => [
-				{ :attachment => image( "spree_ringer_t" ) },
-				{ :attachment => image( "spree_ringer_t_back" ) }
+			products[ :nmtx_small_vials_small ].master => [
+				{ :attachment => image( "nmtx_small_vials" ) }
 			],
 
-			products[ :spree_jr_spaghetti ].master => [
-				{ :attachment => image( "spree_spaghetti" ) }
+			products[ :nmtx_small_vials_large ].master => [
+				{ :attachment => image( "nmtx_small_vials" ) }
 			],
 
-			products[ :spree_baseball_jersey ].master => [
-				{ :attachment => image( "spree_jersey" ) },
-				{ :attachment => image( "spree_jersey_back" ) }
+			products[ :nmtx_large_vials_small ].master => [
+				{ :attachment => image( "nmtx_large_vials" ) }
 			],
 
-			products[ :spree_stein ].master => [
-				{ :attachment => image( "spree_stein" ) },
-				{ :attachment => image( "spree_stein_back" ) }
-			],
-
-			products[ :spree_mug ].master => [
-				{ :attachment => image( "spree_mug" ) },
-				{ :attachment => image( "spree_mug_back" ) }
+			products[ :nmtx_large_vials_large ].master => [
+				{ :attachment => image( "nmtx_large_vials" ) }
 			]
 		}
-
-		products[ :ror_baseball_jersey ].variants.each do | variant |
-			color      = variant.option_value( "tshirt-color" ).downcase
-			main_image = image( "ror_baseball_jersey_#{ color }", "png" )
-			variant.images.create!( :attachment => main_image )
-
-			back_image = image( "ror_baseball_jersey_back_#{ color }", "png" )
-			if back_image
-				variant.images.create!( :attachment => back_image )
-			end
-		end
 
 		images.each do | variant, attachments |
 			print "    loading images for #{ variant.name }... "
@@ -1054,6 +1093,7 @@ namespace :bootstrap do
 			puts "done."
 		end
 
+		puts " "
 		puts "    assets loaded."
 	end
 
@@ -1101,9 +1141,9 @@ namespace :bootstrap do
 		orders << Spree::Order.create!(
 			:number           => "R123456789",
 			:email            => "spree@example.com",
-			:item_total       => 150.95,
-			:adjustment_total => 150.95,
-			:total            => 301.90,
+			:item_total       => 1809.97,
+			:adjustment_total => 131.70,
+			:total            => 1941.67,
 			:shipping_address => Spree::Address.first,
 			:billing_address  => Spree::Address.last
 		)
@@ -1111,23 +1151,41 @@ namespace :bootstrap do
 		orders << Spree::Order.create!(
 			:number           => "R987654321",
 			:email            => "spree@example.com",
-			:item_total       => 15.95,
-			:adjustment_total => 15.95,
-			:total            => 31.90,
+			:item_total       => 116.98,
+			:adjustment_total => 13.19,
+			:total            => 130.17,
 			:shipping_address => Spree::Address.first,
 			:billing_address  => Spree::Address.last
 		)
 
 		orders[ 0 ].line_items.create!(
-			:variant  => Spree::Product.find_by_name!( "Ruby on Rails Tote" ).master,
+			:variant  => Spree::Product.find_by_name!( "NMT-MSN -xxb" ).master,
 			:quantity => 1,
-			:price    => 15.99
+			:price    => 799.99
+		)
+
+		orders[ 0 ].line_items.create!(
+			:variant  => Spree::Product.find_by_name!( "NMTx Stem Cells" ).master,
+			:quantity => 1,
+			:price    => 499.99
+		)
+
+		orders[ 0 ].line_items.create!(
+			:variant  => Spree::Product.find_by_name!( "NMTx Reagent 1" ).master,
+			:quantity => 1,
+			:price    => 509.99
 		)
 
 		orders[ 1 ].line_items.create!(
-			:variant  => Spree::Product.find_by_name!( "Ruby on Rails Bag" ).master,
+			:variant  => Spree::Product.find_by_name!( "NMTx Petri Dishes - 50 Pack" ).master,
 			:quantity => 1,
-			:price    => 22.99
+			:price    => 24.99
+		)
+
+		orders[ 1 ].line_items.create!(
+			:variant  => Spree::Product.find_by_name!( "NMTx 5 mL Vials - 100 Pack" ).master,
+			:quantity => 1,
+			:price    => 91.99
 		)
 
 		orders.each( &:create_proposed_shipments )
@@ -1138,52 +1196,6 @@ namespace :bootstrap do
 
 			order.save!
 		end
-
-		puts "done."
-	end
-
-	desc "Load adjustments"
-	task adjustments: :environment do 
-		print "Loading adjustments... "
-
-		first_order = Spree::Order.find_by_number!( "R123456789" )
-		last_order  = Spree::Order.find_by_number!( "R987654321" )
-
-		first_order.adjustments.create!(
-			:amount     => 0,
-			:source     => first_order,
-			:originator => Spree::TaxRate.find_by_name!( "North America" ),
-			:label      => "Tax",
-			:state      => "open",
-			:mandatory  => true
-		)
-
-		last_order.adjustments.create!(
-			:amount     => 0,
-			:source     => last_order,
-			:originator => Spree::TaxRate.find_by_name!( "North America" ),
-			:label      => "Tax",
-			:state      => "open",
-			:mandatory  => true
-		)
-
-		first_order.adjustments.create!(
-			:amount     => 0,
-			:source     => first_order,
-			:originator => Spree::ShippingMethod.find_by_name!( "UPS Ground (USD)" ),
-			:label      => "Shipping",
-			:state      => "finalized",
-			:mandatory  => true
-		)
-
-		last_order.adjustments.create!(
-			:amount     => 0,
-			:source     => last_order,
-			:originator => Spree::ShippingMethod.find_by_name!( "UPS Ground (USD)" ),
-			:label      => "Shipping",
-			:state      => "finalized",
-			:mandatory  => true
-		)
 
 		puts "done."
 	end
@@ -1251,7 +1263,6 @@ namespace :bootstrap do
 		:assets,
 		:addresses,
 		:orders,
-		:adjustments,
 		:payments,
 		:completed
 	]
