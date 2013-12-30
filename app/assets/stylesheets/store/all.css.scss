@@ -102,13 +102,13 @@ header {
 			background-position: 0 50%;
 			text-transform: uppercase;
 			line-height: 50%;
-			letter-spacing: -2px;
+			
 			color: #d2322d;
 
+			.smaller { font-size: 16px; }
 			small { 
 				font-size: 12px;
 				text-transform: none;
-				letter-spacing: normal;
 			}
 		} 
 	}
