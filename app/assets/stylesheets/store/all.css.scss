@@ -151,18 +151,9 @@ header {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 10px;
-	height: 600px; 
 	background-color: #fff;
 	border-radius: 0;
-
-	h1 { 
-		margin: 0;
-		height: 580px;
-		background-color: $body-grey; 
-		line-height: 580px; 
-
-		small { color: #e5e5e5; }
-	}
+	text-align: center;
 }
 
 #news-headlines {
