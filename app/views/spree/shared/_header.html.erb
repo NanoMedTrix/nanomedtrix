@@ -36,6 +36,7 @@
 							</li>
 							<li><%= link_to Spree.t( :logout ), spree.logout_path %></li>
 						<% else %>
+							<li><%= link_to "#{ Spree.t( :new_customer ) }? Sign up!", spree.signup_path %></li>
 							<li>
 								<%= link_to spree.login_path do %>
 									<span class="glyphicon glyphicon-user"></span> <%= Spree.t( :login ) %>
