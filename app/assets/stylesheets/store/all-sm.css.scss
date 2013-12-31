@@ -1,9 +1,11 @@
 @import "variables";
 
 @media ( min-width: 768px ) {
-
+	
 	header {
 		.navbar { 
+			> .container > .row { padding: 0 10px; }
+			
 			.navbar-collapse {
 				background-color: transparent; 
 

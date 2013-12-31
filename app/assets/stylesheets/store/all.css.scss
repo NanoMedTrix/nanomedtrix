@@ -7,14 +7,25 @@
 .debug_dump {
 	clear: both;
 	float: left;
-	margin-top: 15px;
+	margin: 15px 0 0;
 	width: 100%;
 	@include box-sizing( border-box );
 }
 
+html,
+body { height: 100%; }
+
 body { 
 	padding-top: 37px; 
 	background-color: $body-grey; 
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  margin: 0 auto -115px; /* Negative indent footer by its height */
+  padding: 0 0 115px; /* Pad bottom by footer height */
+  min-height: 100%;
+  height: auto;  
 }
 
 header {
@@ -147,32 +158,43 @@ header {
 	}
 }
 
-#home-image-big { 
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 10px;
-	background-color: #fff;
-	border-radius: 0;
-	text-align: center;
-}
+#content {
+	> .row { padding: 0 10px; }
 
-#news-headlines {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 10px;
-	background-color: #fff;
-	background-image: none;
-	border: none;
-	border-radius: 0;
-}
+	#home-image-big { 
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding: 10px;
+		background-color: #fff;
+		border-radius: 0;
+		text-align: center;
+	}
 
-.media {
-	padding: 10px;
-	background-color: #fff;
+	#news-headlines {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding: 10px;
+		background-color: #fff;
+		background-image: none;
+		border: none;
+		border-radius: 0;
+	}
+
+	.media {
+		padding: 10px;
+		background-color: #fff;
+	}
+
+	.col-content { 
+		padding: 10px;
+		background-color: #fff; 
+
+		.page-header { margin-top: 0; }
+	}
 }
 
 .footer {
-	margin-top: 30px;
+	margin-top: 15px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	height: 100px;
@@ -180,4 +202,9 @@ header {
 	border-top: 1px solid $light-grey;
 }
 
-@import "all-small";
+@import "all-sm";
+@import "all-md";
+
+@import "login";
+@import "login-sm";
+@import "login-md";

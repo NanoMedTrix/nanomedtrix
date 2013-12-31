@@ -26,20 +26,29 @@
 		<%= yield :head %>
 	</head>
 
-	<body>
-		<%= render 'spree/shared/header' %>
+	<body id="<%= @body_id || 'default' %>">
+		<div id="wrap">
+			<%= render 'spree/shared/header' %>
 
-		<div class="container">
-			<%= render 'spree/shared/masthead' %>
+			<div id="content" class="container">
+				<div class="row">
+					<%= render 'spree/shared/masthead' %>
 
-			<%= breadcrumbs( @taxon ) %>
+					<%= breadcrumbs( @taxon ) %>
 
-			<%= yield %>
+					<%= flash_messages %>
 
-			<%= debug( params ) if Rails.env.development? %>
+					<%= yield %>
+				</div>
+
+				<% if Rails.env.development? %>
+					<div class="row">
+						<%= debug( params ) %>
+					</div>
+				<% end %>
+			</div>
 		</div>
 
-		
 		<%= render 'spree/shared/footer' %>
 		
 		<%= javascript_include_tag 'store/all' %>
