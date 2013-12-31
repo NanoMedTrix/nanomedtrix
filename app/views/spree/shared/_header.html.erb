@@ -5,7 +5,9 @@
 				<div class="navbar-header">
 					<div class="btn-group">
 						<%= content_tag :button, image_tag( 'store/us.gif' ), type: 'button', class: 'navbar-toggle btn', disabled: 'disabled' %>
-						<%= link_to 'Sign in', '#', class: 'navbar-toggle btn' %>
+						<%= link_to spree.login_path, class: 'navbar-toggle btn' do %>
+							<span class="glyphicon glyphicon-user"></span> <%= Spree.t( :login ) %>
+						<% end %>
 						<%= link_to_cart nil, "navbar-toggle btn" %>
 						<%= content_tag :button, class: 'navbar-toggle btn', data: { toggle: 'collapse', target: '.navbar-collapse' } do %>
 							<span class="sr-only">Toggle navigation</span>
