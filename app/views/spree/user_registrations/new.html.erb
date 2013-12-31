@@ -1,0 +1,23 @@
+<% @body_id = 'signup' %>
+
+<div class="col-sm-9 col-md-7">
+  <div class="col-content col-content-left">
+    <div class="page-header">
+      <h4><%= Spree.t( :new_customer ) %></h4>
+    </div>
+
+    <%= render 'spree/shared/user_form' %>
+  </div>
+</div>
+
+<div id="login-account" class="col-sm-3 col-md-5">
+  <div class="col-content col-content-right">
+    <div class="page-header">
+      <h4><%= Spree.t( :login_as_existing ) %></h4>
+    </div>
+
+    <p class="text-center">
+        <%= link_to "#{ Spree.t( :login ) } &raquo;".html_safe, spree.login_path, class: 'btn btn-lg btn-success' %> 
+    </p>
+  </div>
+</div>
