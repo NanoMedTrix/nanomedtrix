@@ -17,7 +17,7 @@ body { height: 100%; }
 
 body { 
 	padding-top: 37px; 
-	background-color: $body-grey; 
+	background-color: #fff; 
 }
 
 /* Wrapper for page content to push down footer */
@@ -111,16 +111,10 @@ header {
 			background-size: 50px 50px;
 			background-repeat: no-repeat;
 			background-position: 0 50%;
-			text-transform: uppercase;
 			line-height: 50%;
-			
 			color: #d2322d;
 
-			.smaller { font-size: 16px; }
-			small { 
-				font-size: 12px;
-				text-transform: none;
-			}
+			small { font-size: 12px; }
 		} 
 	}
 
