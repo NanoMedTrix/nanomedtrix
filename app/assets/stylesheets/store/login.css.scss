@@ -1,0 +1,11 @@
+@import "variables";
+
+#login {
+	#create-account { margin-top: 15px; }
+
+	.col-content-left,
+	.col-content-right { 
+		margin-left: -15px;
+		margin-right: -15px; 
+	}
+}

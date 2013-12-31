@@ -1,0 +1,18 @@
+@import "variables";
+
+@media ( min-width: 992px ) { 
+	
+	#login {
+		#create-account {
+			.col-content-right {
+				.btn-lg {
+					padding: 10px 16px;
+					border-radius: 6px;
+					font-size: 18px;
+					line-height: 1.33;
+				}
+			}
+		}
+	}
+
+}
