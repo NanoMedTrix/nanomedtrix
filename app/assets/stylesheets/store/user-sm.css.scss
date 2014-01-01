@@ -1,0 +1,28 @@
+@import "variables";
+
+@media ( min-width: 768px ) {
+
+	#login,
+	#signup {
+		.page-header { margin-top: 0; }
+
+		#col-left {
+			.page-header { margin-right: -10px; }
+
+			.col-content {
+				margin-left: -15px;
+				margin-right: -10px;
+			}
+		}
+
+		#col-right {
+			.page-header { margin: 0 -15px 5px -10px; }
+
+			.col-content {
+				margin-left: -10px;
+				margin-right: -15px;
+			}
+		}
+	}
+
+}

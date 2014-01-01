@@ -17,7 +17,7 @@ body { height: 100%; }
 
 body { 
 	padding-top: 37px; 
-	background-color: #fff; 
+	background-color: $body-grey; 
 }
 
 /* Wrapper for page content to push down footer */
@@ -181,10 +181,8 @@ header {
 	}
 
 	.col-content { 
-		padding: 10px;
+		padding: 30px 10px 10px;
 		background-color: #fff; 
-
-		.page-header { margin-top: 0; }
 	}
 }
 
@@ -200,6 +198,6 @@ header {
 @import "all-sm";
 @import "all-md";
 
-@import "login";
-@import "login-sm";
-@import "login-md";
+@import "user";
+@import "user-sm";
+@import "user-md";
