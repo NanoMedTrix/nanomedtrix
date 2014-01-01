@@ -6,9 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+//
 //= require store/spree_frontend
-
+//
 //= require_tree .
-
+//
+//= require holder
 //= require bootstrap
