@@ -2,7 +2,6 @@ Spree::Core::Engine.load_seed if defined?( Spree::Core )
 Spree::Auth::Engine.load_seed if defined?( Spree::Auth )
 
 puts " "
-puts "Seeding databases... "
 %w[
 	payment_methods
 	shipping_categories
@@ -24,7 +23,7 @@ puts "Seeding databases... "
 	orders
 	payments
 ].each do | fake_seed_file |
-	print "     loading #{ fake_seed_file.titleize }... "
+	print "Loading #{ fake_seed_file.titleize }... "
 	require File.join( File.dirname( __FILE__ ), 'fake', "#{ fake_seed_file }.rb" )
 	puts "done."
 end
