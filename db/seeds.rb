@@ -1,7 +1,7 @@
 if defined?( Spree::Core )
-	puts "==  Spre::Core seeds =========================================================="
+	puts "==  Spree::Core seeds ========================================================="
 	Spree::Core::Engine.load_seed 
-	puts "==  Spre::Core seeded ========================================================="
+	puts "==  Spree::Core seeded ========================================================"
 end
 
 if defined?( Spree::Auth )
