@@ -21,4 +21,5 @@
 
 en:
   spree:
+    back_to_static_pages_list: Back to Static Pages List 
     shop: Shop
