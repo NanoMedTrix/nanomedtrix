@@ -5,10 +5,11 @@
  *
 
  *= require admin/spree_backend
- *= require admin/spree_editor
  
  *= require_self
  *= require_tree .
+
+ *= require admin/spree_editor
 */
 
 #admin-menu ul > li > a {
