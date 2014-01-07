@@ -10,3 +10,8 @@
  *= require_tree .
  *= require admin/spree_editor
 */
+
+#admin-menu ul > li > a {
+	padding-left: 0;
+	padding-right: 0;
+}
