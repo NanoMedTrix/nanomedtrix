@@ -10,5 +10,4 @@
 //= require admin/spree_backend
 
 //= require_tree .
-//= require ckeditor/override
 //= require admin/spree_editor
