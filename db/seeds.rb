@@ -40,6 +40,7 @@ if ENV[ 'populate' ]
 		addresses
 		orders
 		payments
+		pages
 	].each do | filename |
 		file = File.join( File.dirname( __FILE__ ), 'seeds', "#{ filename }.rb" )
 		puts "loading ruby #{ file } "
