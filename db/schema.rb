@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106225820) do
+ActiveRecord::Schema.define(version: 20140108031423) do
 
   create_table "spree_activators", force: true do |t|
     t.string   "description"
@@ -461,7 +461,7 @@ ActiveRecord::Schema.define(version: 20140106225820) do
     t.datetime "updated_at"
   end
 
-  add_index "spree_shipping_method_categories", ["shipping_category_id"], name: "index_spree_shipping_method_categories_on_shipping_category_id"
+  add_index "spree_shipping_method_categories", ["shipping_category_id", "shipping_method_id"], name: "unique_spree_shipping_method_categories", unique: true
   add_index "spree_shipping_method_categories", ["shipping_method_id"], name: "index_spree_shipping_method_categories_on_shipping_method_id"
 
   create_table "spree_shipping_methods", force: true do |t|
@@ -679,17 +679,19 @@ ActiveRecord::Schema.define(version: 20140106225820) do
   add_index "spree_users", ["spree_api_key"], name: "index_spree_users_on_spree_api_key"
 
   create_table "spree_variants", force: true do |t|
-    t.string   "sku",                                   default: "",    null: false
-    t.decimal  "weight",        precision: 8, scale: 2
-    t.decimal  "height",        precision: 8, scale: 2
-    t.decimal  "width",         precision: 8, scale: 2
-    t.decimal  "depth",         precision: 8, scale: 2
+    t.string   "sku",                                     default: "",    null: false
+    t.decimal  "weight",          precision: 8, scale: 2
+    t.decimal  "height",          precision: 8, scale: 2
+    t.decimal  "width",           precision: 8, scale: 2
+    t.decimal  "depth",           precision: 8, scale: 2
     t.datetime "deleted_at"
-    t.boolean  "is_master",                             default: false
+    t.boolean  "is_master",                               default: false
     t.integer  "product_id"
-    t.decimal  "cost_price",    precision: 8, scale: 2
+    t.decimal  "cost_price",      precision: 8, scale: 2
     t.integer  "position"
     t.string   "cost_currency"
+    t.boolean  "track_inventory",                         default: true
+    t.datetime "updated_at"
   end
 
   add_index "spree_variants", ["product_id"], name: "index_spree_variants_on_product_id"
