@@ -1,0 +1,2 @@
+<!-- insert_top '#header-nav-left' -->
+<%= render partial: 'spree/static_content/static_content_header' %>
