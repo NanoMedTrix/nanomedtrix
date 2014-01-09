@@ -1,9 +1,23 @@
 Nanomedtrix::Application.routes.draw do
-  # This line mounts Spree's routes at the root of your application.
-  # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
-  # If you would like to change where this engine is mounted, simply change the :at option to something different.
-  #
-  # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
   mount Spree::Core::Engine, at: '/'
 
+  Spree::Core::Engine.routes.draw do
+		namespace :admin do
+			resources :news_articles
+		end
+
+		resources :news_articles
+
+		match '/news',                         to: 'news_articles#index',    as: :news
+		match '/news/feed',                    to: 'news_articles#feed',     as: :news_feed, format: :rss
+		match '/news/tag/:tag',                to: 'news_articles#tag',      as: :news_tag
+		match '/news/author/:author',          to: 'news_articles#author',   as: :news_author
+		match '/news/category/:category',      to: 'news_articles#category', as: :news_category
+		match '/news/:year/:month/:day/:slug', to: 'news_articles#show',     as: :news_entry_permalink
+		match '/news/:year(/:month)(/:day)',   to: 'news_articles#archive',  as: :news_archive, constraints: {
+																																															year:  /(19|20)\d{2}/, 
+																																															month: /[01]?\d/, 
+																																															day:   /[0-3]?\d/
+																																														}
+	end
 end

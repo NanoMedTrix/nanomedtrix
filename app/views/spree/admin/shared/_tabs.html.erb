@@ -18,6 +18,6 @@
   <%= tab :users, url: spree.admin_users_path, icon: 'icon-user' %>
 <% end %>
 
-<%= tab :pages, icon: 'icon-file' %>
+<%= tab :pages, :news_articles, label: 'Content', icon: 'icon-file' %>
 
 <%= tab :configurations, :general_settings, :mail_methods, :image_settings, :tax_categories, :tax_rates, :tax_settings, :zones, :countries, :states, :payment_methods, :taxonomies, :shipping_methods, :shipping_categories, :stock_transfers, :stock_locations, :trackers, label: 'configuration', icon: 'icon-wrench', url: spree.edit_admin_general_settings_path %>
