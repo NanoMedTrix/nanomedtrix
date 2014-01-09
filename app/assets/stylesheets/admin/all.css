@@ -15,3 +15,6 @@
 	padding-left: 0;
 	padding-right: 0;
 }
+
+#page_body,
+#product_description { min-height: 500px; }
