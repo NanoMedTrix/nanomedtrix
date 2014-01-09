@@ -1,3 +1,4 @@
+=begin
 Deface::Override.new(
 	virtual_path: 'spree/admin/pages/index',
 	name:         'content_sub_menu_index_page',
@@ -18,3 +19,4 @@ Deface::Override.new(
 	text:         "<%= render partial: 'spree/admin/shared/content_sub_menu' %>",
 	disabled:     false
 )
+=end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108031423) do
+ActiveRecord::Schema.define(version: 20140109200528) do
 
   create_table "spree_activators", force: true do |t|
     t.string   "description"
@@ -177,6 +177,20 @@ ActiveRecord::Schema.define(version: 20140108031423) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "spree_news_articles", force: true do |t|
+    t.integer  "author_id"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "body"
+    t.string   "permalink"
+    t.boolean  "visible",      default: true
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_news_articles", ["author_id"], name: "index_spree_news_articles_on_author_id"
 
   create_table "spree_option_types", force: true do |t|
     t.string   "name",         limit: 100
@@ -713,5 +727,23 @@ ActiveRecord::Schema.define(version: 20140108031423) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
 end
