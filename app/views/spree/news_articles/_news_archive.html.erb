@@ -1,0 +1,25 @@
+<ul id="news-archive">
+  <% news_archive.to_a.reverse.each do | year, months_with_articles | %>
+    <% d = DateTime.parse( "1/#{ year }" ) %>
+
+    <li> <span></span>
+      <%= link_to( year, news_archive_path( year: d.year ) ) %>
+
+      <ul class="months">
+        <% months_with_articles.each do | month, articles | %>
+          <% d = DateTime.parse( "#{ year }, #{ month }" ) %>
+
+          <li> <span></span>
+            <%= link_to I18n.l( d, format: "%B" ), news_archive_path( year: d.year, month: d.month ) %>
+
+            <ul class="posts">
+              <% articles.each do | article | %>
+                <li><%= link_to( article.title, news_article_permalink( article ) ) %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

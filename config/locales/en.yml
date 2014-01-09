@@ -1,25 +1,42 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
+  activerecord:
+    attributes:
+      spree/news_article:
+        title: Title
+        body: Body
+        summary: Summary
+        permalink: Permalink
+        published_at: Published at
+        visible: Visible
+        author_id: Author
+        tag_list: Tags
+        category_list: Categories
   spree:
+    author_id: Author
     back_to_static_pages_list: Back to Static Pages List 
+    body: Body
+    by: by
+    category_list: Categories
+    news: "News"
+    news_archive: Archive
+    news_article_author: Author
+    news_article_featured_image: Featured image
+    news_articles: "News Articles"
+    news_category: Category
+    news_new_article: "New News Article"
+    news_no_articles: "No articles found."
+    news_read_more: Read more
+    news_tag: Tag
+    posted_in: Posted in
+    permalink: Permalink
+    posted_on: Posted on
+    published_at: Published at
     shop: Shop
+    summary: Summary
+    tag_list: Tags
+    tagged: Tagged
+    title: Title
+    visible: Visible
+  time:
+    formats:
+      news_date: "%e %b %Y"

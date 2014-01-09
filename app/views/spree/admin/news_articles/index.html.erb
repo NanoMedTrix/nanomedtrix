@@ -1,0 +1,44 @@
+<% content_for :page_actions do %>  
+  <li><%= button_link_to Spree.t( :news_new_article ), new_object_url, icon: 'add' %></li>
+<% end %>
+
+<% content_for :page_title do %>
+   <%= Spree.t( :news_articles ) %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/content_sub_menu' %>
+
+<% if @news_articles.any? %>
+  <table class="index">
+    <thead>
+      <tr>
+        <th class="date"><%= Spree.t( :published_at ) %></th>
+        <th class="title"><%= Spree.t( :title ) %></th>
+        <th class=""><%= Spree.t( :path ) %></th>
+        <th class=""><%= Spree.t( :visible ) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @news_articles.each do | news_article | %>
+        <tr class="<%= cycle( 'odd', 'even' ) %>" id="<%= dom_id news_article %>">
+          <td><%= l( news_article.published_at, format: :news_date ) if news_article.published_at %></td>
+          <td><%= news_article.title %></td>
+          <td><%= link_to news_article_permalink( news_article ), news_article_permalink( news_article ) %></td>
+          <td class="align-center">
+            <%= content_tag( :i, '', class: 'icon-ok green') if news_article.visible %>
+          </td> 
+          <td class="actions">
+            <%= link_to_edit news_article, no_text: true %>
+            <%= link_to_delete news_article, no_text: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @news_articles %>
+<% else %>
+  <p><%= Spree.t( :news_no_articles ) %></p>
+<% end %>

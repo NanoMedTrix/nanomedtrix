@@ -1,0 +1,11 @@
+<ul class="recent_blog_entries">
+  <% recent_news_articles.each do | news_article | %>
+    <li>
+      <%= link_to news_article_permalink( news_article ) do %>
+        <%= news_article.title %>
+
+        <span class="blog_entry_date"><%= "#{ time_ago_in_words news_article.published_at } ago" %></span> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
