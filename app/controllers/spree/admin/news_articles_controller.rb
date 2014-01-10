@@ -12,4 +12,19 @@ class Spree::Admin::NewsArticlesController < Spree::Admin::ResourceController
 
       model_class.scoped.page( page ).per( per_page )
     end
+
+    def spree_news_articles_params
+      params.require( :spree_news_articles ).permit( Spree::PermittedAttributes.news_article_attributes.push :author_id, 
+                                                                                                             :title, 
+                                                                                                             :summary, 
+                                                                                                             :body, 
+                                                                                                             :permalink, 
+                                                                                                             :visible, 
+                                                                                                             :published_at, 
+                                                                                                             :tag_list, 
+                                                                                                             :category_list, 
+                                                                                                             :news_article_image, 
+                                                                                                             :news_article_image_attributes 
+      )
+    end
 end
