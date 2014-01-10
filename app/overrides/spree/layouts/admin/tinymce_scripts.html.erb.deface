@@ -1,2 +1,0 @@
-<!-- insert_bottom "[data-hook='admin_footer_scripts']" -->
-<%= render partial: "spree/admin/shared/tinymce", locals: { ids: [ 'product_description', 'page_body', 'news_article_body' ] } %>

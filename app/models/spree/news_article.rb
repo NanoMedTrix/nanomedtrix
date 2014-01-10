@@ -4,24 +4,12 @@ class Spree::NewsArticle < ActiveRecord::Base
   before_save :create_permalink
   before_save :set_published_at
 
-  attr_accessible :title, 
-                  :body, 
-                  :tag_list, 
-                  :visible, 
-                  :published_at, 
-                  :summary, 
-                  :permalink, 
-                  :author_id, 
-                  :category_list, 
-                  :news_article_image, 
-                  :news_article_image_attributes
-
   validates :title, presence: true
   validates :body,  presence: true
   
-  default_scope  -> { order( 'published_at DESC' ) }
-  scope :visible -> { where( visible: true ) }
-  scope :recent  ->( max = 5 ) { where( visible.limit( max ) }
+  default_scope   -> { order( 'published_at DESC' ) }
+  scope :visible, -> { where( visible: true ) }
+  scope :recent,  lambda { | max = 5 | visible.limit( max ) }
 
   if Spree.user_class
     belongs_to :author, class_name: Spree.user_class.to_s
