@@ -41,6 +41,7 @@ if ENV[ 'populate' ]
 		orders
 		payments
 		pages
+		news_articles
 	].each do | filename |
 		file = File.join( File.dirname( __FILE__ ), 'seeds', "#{ filename }.rb" )
 		puts "loading ruby #{ file } "
