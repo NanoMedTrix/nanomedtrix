@@ -37,5 +37,5 @@ gem 'spree_gateway',        :git => 'https://github.com/spree/spree_gateway.git'
 gem 'spree_auth_devise',    :git => 'https://github.com/spree/spree_auth_devise.git',    :branch => '2-1-stable'
 gem 'spree_static_content', :git => 'https://github.com/spree/spree_static_content.git', :branch => '2-1-stable'
 
-gem 'tinymce-rails'
+gem 'tinymce-rails', '~> 3.5.8.3'
 gem 'acts-as-taggable-on', '~> 3.0.1'
