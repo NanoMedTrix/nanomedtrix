@@ -1,0 +1,15 @@
+<div id="news_container">
+  <% if !@articles.empty? %>
+    <ul id="articles_entries">
+      <% @articles.each do | article | %>
+        <li>
+          <%= render partial: 'spree/articles/article', locals: { article: article } %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= paginate @articles %>
+  <% else %>
+    <p id="no_entries"><%= Spree.t( :no_articles ) %></p>
+  <% end %>
+</div>  

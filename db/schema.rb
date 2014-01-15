@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(version: 20140109200528) do
   add_index "spree_adjustments", ["adjustable_id"], name: "index_adjustments_on_order_id"
   add_index "spree_adjustments", ["order_id"], name: "index_spree_adjustments_on_order_id"
 
+  create_table "spree_articles", force: true do |t|
+    t.integer  "author_id"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "body"
+    t.string   "permalink"
+    t.boolean  "visible",      default: true
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_articles", ["author_id"], name: "index_spree_articles_on_author_id"
+
   create_table "spree_assets", force: true do |t|
     t.integer  "viewable_id"
     t.string   "viewable_type"
@@ -177,20 +191,6 @@ ActiveRecord::Schema.define(version: 20140109200528) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "spree_news_articles", force: true do |t|
-    t.integer  "author_id"
-    t.string   "title"
-    t.text     "summary"
-    t.text     "body"
-    t.string   "permalink"
-    t.boolean  "visible",      default: true
-    t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "spree_news_articles", ["author_id"], name: "index_spree_news_articles_on_author_id"
 
   create_table "spree_option_types", force: true do |t|
     t.string   "name",         limit: 100

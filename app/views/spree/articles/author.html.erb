@@ -1,0 +1,11 @@
+<% content_for :sidebar do %>
+  <%= render partial: 'spree/articles/sidebar_index' %>
+<% end %>
+
+<div class="columns twelve alpha omega article_author_info">
+  <div class="columns six alpha">
+    <h1><%= "#{ t :article_author }: #{ @author.email }" %></h1>
+  </div>
+</div>
+
+<%= render partial: 'spree/articles/articles' %>

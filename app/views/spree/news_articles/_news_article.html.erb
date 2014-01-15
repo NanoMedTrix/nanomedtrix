@@ -1,9 +1,0 @@
-<h2><%= link_to news_article.title, news_article_permalink( news_article ) %></h2>
-
-<div class="news_article_summary">
-  <%== news_article.article_summary %>
-
-  <span class="blog_read_more"><%= link_to Spree.t( :news_read_more ), news_article_permalink( news_article ) %></span>
-</div>
-
-<%= render partial: 'spree/news_articles/news_article_details', locals: { :news_article => news_article } %>

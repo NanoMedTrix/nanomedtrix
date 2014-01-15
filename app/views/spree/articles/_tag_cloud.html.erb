@@ -1,5 +1,5 @@
 <ul class="blog_tag_cloud">
-  <% tag_cloud( Spree::NewsArticle.visible.tag_counts_on( :tags ), %w( css1 css2 css3 css4 ) ) do | tag, css_class | %>
+  <% tag_cloud( Spree::Article.visible.tag_counts_on( :tags ), %w( css1 css2 css3 css4 ) ) do | tag, css_class | %>
     <li><%= link_to tag.name, news_tag_path( tag.name ), class: css_class %></li>
   <% end %>
 </ul>

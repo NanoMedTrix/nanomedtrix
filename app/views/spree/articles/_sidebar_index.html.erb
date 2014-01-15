@@ -1,0 +1,13 @@
+<div id="article_sidebar">
+  <h6>News Categories</h6>
+  <%= render partial: 'spree/articles/categories_list' %>
+
+  <h6>News Tag Cloud</h6>
+  <%= render partial: 'spree/articles/tag_cloud' %>
+  
+  <h6>Recent Articles</h6>
+  <%= render partial: 'spree/articles/recent_articles', object: Spree::Article.recent( 10 ) %>
+
+  <h6>News Archive</h6>
+  <%= render partial: 'spree/articles/news_archive', object: Spree::Article.organize_articles %>
+</div>

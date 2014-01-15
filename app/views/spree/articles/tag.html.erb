@@ -1,0 +1,7 @@
+<% content_for :sidebar do %>
+  <%= render partial: 'spree/articles/sidebar_index' %>
+<% end %>
+
+<h1><%= Spree.t( :news_tag ) %>: <%= @tag_name %></h1>
+
+<%= render partial: 'spree/articles/news_articles' %>

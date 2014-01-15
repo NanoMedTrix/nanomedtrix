@@ -1,6 +1,6 @@
-class CreateNewsArticles < ActiveRecord::Migration
+class CreateArticles < ActiveRecord::Migration
   def self.up
-    create_table :spree_news_articles do | t |
+    create_table :spree_articles do | t |
     	t.column :author_id,    :integer
       t.column :title,        :string
       t.column :summary,      :text
@@ -16,7 +16,7 @@ class CreateNewsArticles < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :spree_news_articles
+    drop_table :spree_articles
     Spree::Role.where( name: 'publisher' ).destroy_all 
   end
 end
