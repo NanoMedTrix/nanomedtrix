@@ -1,14 +1,22 @@
-<% content_for :sidebar do %>
-  <%= render partial: 'spree/articles/sidebar_show' %>
-<% end %>
+<% @body_id = 'news' %>
 
-<div id="blog_entry_container">
-  <div id="blog_entry_entry">
-    <h1><%= @article.title %></h1>
+<div id="col-left" class="col-sm-4">
+	<div class="page-header">
+		<h4><%= Spree.t( :news ) %></h4>
+	</div>
 
-    <div class="blog_entry_body">
-      <%== @article.body %>
-    </div>
+	<div class="col-content">
+  	<%= render partial: 'spree/articles/sidebar_show' %>
+  </div>
+</div>
+
+<div id="col-right" class="col-sm-8">
+  <div class="page-header">
+    <h4><%= @article.title %></h4>
+  </div>
+
+  <div class="col-content">
+  	<%== @article.body %>
 
     <%= render partial: 'spree/articles/article_details', locals: { article: @article } %>
   </div>
