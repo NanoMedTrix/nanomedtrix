@@ -12,9 +12,10 @@
 */
 
 #admin-menu ul > li > a {
-	padding-left: 0;
-	padding-right: 0;
+	padding-left:  10px;
+	padding-right: 10px;
 }
 
 #page_body,
+#news_article_body,
 #product_description { min-height: 500px; }
