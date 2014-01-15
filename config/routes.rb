@@ -15,9 +15,9 @@ Nanomedtrix::Application.routes.draw do
 		match '/news/author/:author',        to: 'articles#author',   via: 'get', as: :news_author
 		match '/news/category/:category',    to: 'articles#category', via: 'get', as: :news_category
 		match '/news/:year(/:month)(/:day)', to: 'articles#archive',  via: 'get', as: :news_archive, constraints: {
-																																																					year:  /(19|20)\d{2}/, 
-																																																					month: /[01]?\d/, 
-																																																					day:   /[0-3]?\d/
-																																																				}
+																																																	 year:  /(19|20)\d{2}/, 
+																																																	 month: /[01]?\d/, 
+																																																	 day:   /[0-3]?\d/
+																																																 }
 	end
 end
