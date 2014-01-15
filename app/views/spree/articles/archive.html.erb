@@ -1,9 +1,9 @@
 <% content_for :sidebar do %>
-  <%= render partial: 'spree/blog_entries/sidebar_index' %>
+  <%= render partial: 'spree/articles/sidebar_index' %>
 <% end %>
 
 <h1>
 	<%= Spree.t( :news_archive ) %>: <%= t( 'date.month_names' )[params[ :month ].to_i ] unless params[ :month ].blank? %> <%= params[ :year ].to_i %>
 </h1>
 
-<%= render partial: 'spree/news_articles/news_articles' %>
+<%= render partial: 'spree/articles/articles' %>

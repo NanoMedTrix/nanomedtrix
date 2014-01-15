@@ -1,6 +1,6 @@
 require 'acts-as-taggable-on'
 
-class Spree::NewsArticle < ActiveRecord::Base
+class Spree::Article < ActiveRecord::Base
   before_save :create_permalink
   before_save :set_published_at
 
@@ -17,9 +17,9 @@ class Spree::NewsArticle < ActiveRecord::Base
     belongs_to :author
   end
 
-  has_one :news_article_image, as: :viewable, dependent: :destroy, class_name: 'Spree::NewsArticleImage'
+  has_one :article_image, as: :viewable, dependent: :destroy, class_name: 'Spree::ArticleImage'
 
-  accepts_nested_attributes_for :news_article_image, reject_if: :all_blank
+  accepts_nested_attributes_for :article_image, reject_if: :all_blank
   acts_as_taggable_on           :tags, 
                                 :categories
 
@@ -55,7 +55,7 @@ class Spree::NewsArticle < ActiveRecord::Base
   end
 
   # data for news archive widget, only visible entries
-  def self.organize_news_articles
+  def self.organize_articles
     Hash.new.tap do | articles |
       years.each do | year |
         months_for( year ).each do | month |

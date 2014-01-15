@@ -24,8 +24,8 @@
 
     <% unless Rails.env.test? %>
       <script>
-        $( "#news_article_tag_list" ).select2({ tags: <%= Spree::NewsArticle.tag_counts_on( :tags ).map{ | t | t.name }.to_json.html_safe %> });
-        $( "#news_article_category_list" ).select2({ tags: <%= Spree::NewsArticle.tag_counts_on( :categories ).map{ | t | t.name }.to_json.html_safe %> });
+        $( "#article_tag_list" ).select2({ tags: <%= Spree::Article.tag_counts_on( :tags ).map{ | t | t.name }.to_json.html_safe %> });
+        $( "#article_category_list" ).select2({ tags: <%= Spree::Article.tag_counts_on( :categories ).map{ | t | t.name }.to_json.html_safe %> });
       </script>
     <% end %>
 
@@ -34,8 +34,8 @@
         <%= form.label            :published_at, Spree.t( :published_at ) %><br />
         <%= form.error_message_on :published_at %>
 
-        <% if @news_article.published_at? %>
-          <% published_at = l( @news_article.published_at, format: Spree.t( 'date_picker.format' ) ) %>
+        <% if @article.published_at? %>
+          <% published_at = l( @article.published_at, format: Spree.t( 'date_picker.format' ) ) %>
         <% else %>
           <% published_at = nil %>
         <% end %>
@@ -59,38 +59,38 @@
       <%= form.select :author_id, Spree.user_class.joins( :spree_roles ).where( "#{ Spree::Role.table_name }.name" => "publisher" ).collect { | u | [ u.email, u.id ] }, { include_blank: true }, class: 'select2' %>
     <% end %>
 
-    <%= field_set_tag Spree.t( :news_article_featured_image ) do %>
-      <% @news_article.build_news_article_image unless @news_article.news_article_image %>
+    <%= field_set_tag Spree.t( :article_featured_image ) do %>
+      <% @article.build_article_image unless @article.article_image %>
 
-      <%= form.fields_for :news_article_image do | news_article_image_field | %>
-        <%= form.field_container :news_article_image_attachment do %>
-          <% unless @news_article.news_article_image.new_record? %>
-            <div class="news_article_image_thumbnail">
-              <%= link_to image_tag( @news_article.news_article_image.attachment.url( :mini ) ), @news_article.news_article_image.attachment.url( :large ) %>
-              <%= @news_article.news_article_image.attachment_file_name %><br/>
+      <%= form.fields_for :article_image do | article_image_field | %>
+        <%= form.field_container :article_image_attachment do %>
+          <% unless @article.article_image.new_record? %>
+            <div class="article_image_thumbnail">
+              <%= link_to image_tag( @article.article_image.attachment.url( :mini ) ), @article.article_image.attachment.url( :large ) %>
+              <%= @article.article_image.attachment_file_name %><br/>
             </div>
           <% end %>
 
-          <%= news_article_image_field.file_field :attachment %>
+          <%= article_image_field.file_field :attachment %>
         <% end %>
 
-        <%= form.field_container :news_article_image_alt do %>
-          <%= news_article_image_field.label      :alt, Spree.t( :alt_text ) %><br/>
-          <%= news_article_image_field.text_field :alt %>
+        <%= form.field_container :article_image_alt do %>
+          <%= article_image_field.label      :alt, Spree.t( :alt_text ) %><br/>
+          <%= article_image_field.text_field :alt %>
         <% end %>
       <% end %>
     <% end %>
   </div>
 </div>
 
-<%= form.field_container :body do %>
-  <%= form.label            :body %> <span class="required">*</span><br />
-  <%= form.text_area        :body, { cols: 60, rows: 4, class: 'fullwidth', id: 'news_article_body' } %>
-  <%= form.error_message_on :body %>
-<% end %>
-
 <%= form.field_container :summary do %>
   <%= form.label            :summary %><br />
-  <%= form.text_area        :summary, { cols: 60, rows: 4, class: 'fullwidth', id: 'news_article_summary'} %>
+  <%= form.text_area        :summary, { cols: 60, class: 'fullwidth', id: 'article_summary' } %>
   <%= form.error_message_on :summary %>
+<% end %>
+
+<%= form.field_container :body do %>
+  <%= form.label            :body %> <span class="required">*</span><br />
+  <%= form.text_area        :body, { cols: 60, class: 'fullwidth', id: 'article_body' } %>
+  <%= form.error_message_on :body %>
 <% end %>
