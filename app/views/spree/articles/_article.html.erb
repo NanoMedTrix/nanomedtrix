@@ -1,9 +1,10 @@
-<h2><%= link_to article.title, article_permalink( article ) %></h2>
+<%= link_to article_permalink( article ), class: 'list-group-item' do %>
+	<h4 class="list-grou-item-heading">
+		<%= article.title %>
+		<small><%= render partial: 'spree/articles/article_details', locals: { article: article } %></small>
+	</h4>
 
-<div class="article_summary">
-  <%== article.article_summary %>
-
-  <span class="news_read_more"><%= link_to Spree.t( :news_read_more ), article_permalink( article ) %></span>
-</div>
-
-<%= render partial: 'spree/articles/article_details', locals: { article: article } %>
+	<p class="list-group-item-text">
+  	<%== article.article_summary %>
+  </p>
+<% end %>

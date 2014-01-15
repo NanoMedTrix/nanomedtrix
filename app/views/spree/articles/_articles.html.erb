@@ -1,15 +1,11 @@
-<div id="news_container">
+<div class="list-group">
   <% if !@articles.empty? %>
-    <ul id="articles_entries">
-      <% @articles.each do | article | %>
-        <li>
-          <%= render partial: 'spree/articles/article', locals: { article: article } %>
-        </li>
-      <% end %>
-    </ul>
+    <% @articles.each do | article | %>
+      <%= render partial: 'spree/articles/article', locals: { article: article } %>
+    <% end %>
 
     <%= paginate @articles %>
   <% else %>
-    <p id="no_entries"><%= Spree.t( :no_articles ) %></p>
+    <p class="lead" id="no_entries"><%= Spree.t( :no_articles ) %></p>
   <% end %>
 </div>  
