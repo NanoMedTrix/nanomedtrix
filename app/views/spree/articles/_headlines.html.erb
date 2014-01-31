@@ -1,0 +1,21 @@
+<div id="news-headlines" class="well well-sm">
+	<dl class="dl-horizontal">
+		<dt>News Headlines</dt>
+
+		<dd>
+			<div id="news-headlines-carousel" class="carousel" data-ride="carousel" data-interval="2000">
+				<div class="carousel-inner">
+					<div class="item active">
+						<%= link_to first_headline.title, article_permalink( first_headline ) %>
+					</div>
+
+					<% headlines.each do | article | %>
+						<div class="item">
+							<%= link_to article.title, article_permalink( article ) %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</dd>
+	</dl>
+</div>
