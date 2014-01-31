@@ -14,14 +14,13 @@
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
 		<%== meta_data_tags %>
-	
+	  <%= csrf_meta_tags %>
+
 		<%= canonical_tag %>
 
 		<%= favicon_link_tag %>
-		<%= stylesheet_link_tag 'store/all', :media => 'screen' %>
-
-		<%= csrf_meta_tags %>
-
+		<%= stylesheet_link_tag 'store/all', media: 'screen' %>
+		<%= javascript_include_tag 'store/all' %>
 		<%= render 'spree/shared/shim' %>
 
 		<%= yield :head %>
@@ -52,7 +51,6 @@
 
 		<%= render 'spree/shared/footer' %>
 		
-		<%= javascript_include_tag 'store/all' %>
 		<%= render "spree/shared/routes" %>
 		<script>
       Spree.api_key = <%= raw( try_spree_current_user.try( :spree_api_key ).to_s.inspect ) %>;
