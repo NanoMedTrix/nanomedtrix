@@ -21,6 +21,7 @@ Spree.config do |config|
 
 		config.attachment_url = ":s3_us_west_url"
 		config.s3_host_alias  = "s3.amazonaws.com"
+		config.s3_protocol    = "https"
 
 		config.s3_bucket     = ENV[ 'S3_BUCKET' ]
 		config.s3_access_key = ENV[ 'S3_KEY' ]
