@@ -2,9 +2,4 @@
 	<%= image_tag 'store/nmtx-promo-001.png', class: 'img-responsive' %>
 </div>
 
-<div id="news-headlines" class="well well-sm">
-	<dl class="dl-horizontal">
-		<dt>News Headlines</dt>
-		<dd>News Article One Title</dd>
-	</dl>
-</div>
+<%= render partial: 'spree/articles/headlines', locals: { first_headline: @first_headline, headlines: @headlines } %>
