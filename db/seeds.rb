@@ -12,13 +12,20 @@ if defined?( Spree::Auth )
 	puts "==  Spree::Auth seeded ========================================================"
 end
 
+puts " "
+puts "==  Google Analytics =========================================================="
+ga = File.join( File.dirname( __FILE__ ), 'seeds', 'google_analytics.rb' )
+puts "loading ruby #{ ga }"
+require ga
+puts "==  Google Analytics =========================================================="
+puts " "
+
 unless ENV[ 'populate' ]
-	puts " "
 	ENV[ 'populate' ] = 'yes' if agree( 'Populate database? (yes/no)' )
+	puts " "
 end
 
 if ENV[ 'populate' ]
-	puts " "
 	puts "==  Populating database ======================================================="
 	%w[
 		payment_methods
@@ -48,4 +55,5 @@ if ENV[ 'populate' ]
 		require file
 	end
 	puts "==  Populated database ========================================================"
+	puts " "
 end
