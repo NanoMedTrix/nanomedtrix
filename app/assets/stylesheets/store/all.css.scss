@@ -166,13 +166,26 @@ header {
 	}
 
 	#news-headlines {
-		margin-top: 10px;
-		margin-bottom: 10px;
-		padding: 10px;
+		margin: 10px 0;
+		padding: 0 10px;
 		background-color: #fff;
 		background-image: none;
 		border: none;
 		border-radius: 0;
+
+		dl {
+			dt {
+				padding-top: 10px;
+				padding-bottom: 5px;
+				border-bottom: 1px solid #eee;
+			}
+
+			dd .item a {
+				display: block;
+				padding: 10px 0;
+				text-transform: capitalize;
+			}
+		}
 	}
 
 	.media {

@@ -50,18 +50,26 @@
 		}
 	}
 
-	#news-headlines {
-		dl { 
-			margin-bottom: 0;
+	#content {
+		#news-headlines {
+			dl { 
+				margin-bottom: 0;
 
-			dt { 
-				padding-right: 5px; 
-				width: auto; 
-				border-right: 2px solid #000; 
-				text-align: left; 
+				dt { 
+					margin: 15px 0;
+					padding: 0 5px 0 0;
+					width: auto; 
+					border-right: 1px solid #000; 
+					border-bottom: none;
+					text-align: left; 
+				}
+
+				dd { 
+					margin-left: 125px;
+
+					.item a { padding: 15px 0; } 
+				}
 			}
-
-			dd { margin-left: 125px; }
 		}
 	}
 
