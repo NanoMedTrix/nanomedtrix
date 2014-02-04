@@ -2,12 +2,12 @@ species        = Spree::OptionType.find_by_presentation!( 'Species' )
 stem_cell_type = Spree::OptionType.find_by_presentation!( 'Type' )
 
 [ 
-	'NMT-RE -xxa',
-	'NMT-RE -xxb',
-	'NMT-RE -xxx',
-	'NMT-MSN -xxa',
-	'NMT-MSN -xxb',
-	'NMT-MSN -xxx'
+	'NMTx NMT-RE -xxa',
+	'NMTx NMT-RE -xxb',
+	'NMTx NMT-RE -xxx',
+	'NMTx NMT-MSN -xxa',
+	'NMTx NMT-MSN -xxb',
+	'NMTx NMT-MSN -xxx'
 ].each do | name |
 	product              = Spree::Product.find_by_name!( name )
 	product.option_types = [ species ]

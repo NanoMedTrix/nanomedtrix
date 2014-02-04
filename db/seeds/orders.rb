@@ -21,7 +21,7 @@ orders << Spree::Order.create!(
 )
 
 orders[ 0 ].line_items.create!(
-	variant:  Spree::Product.find_by_name!( 'NMT-MSN -xxb' ).master,
+	variant:  Spree::Product.find_by_name!( 'NMTx NMT-MSN -xxb' ).master,
 	quantity: 1,
 	price:    799.99
 )
