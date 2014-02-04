@@ -14,11 +14,11 @@ group :test do
   gem 'capybara',           '~> 2.1.0'
 end
 
-gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'sass-rails',     '~> 4.0.1'
+gem 'bootstrap-sass', '~> 3.1.0.1'
 gem 'uglifier',       '~> 2.1.1'
 gem 'coffee-rails',   '~> 4.0.1'
-gem 'jquery-rails',   '~> 3.0.4'
+gem 'jquery-rails',   '~> 3.1.0'
 gem 'turbolinks',     '~> 1.1.1'
 gem 'jbuilder',       '~> 1.0.2'
 
@@ -31,11 +31,11 @@ group :production do
   gem 'rails_12factor', '~> 0.0.2'
 end
 
-gem 'spree',                :git => 'https://github.com/spree/spree.git',                :branch => '2-1-stable'
+gem 'spree',                git: 'https://github.com/spree/spree.git',                branch: '2-1-stable'
 
-gem 'spree_gateway',        :git => 'https://github.com/spree/spree_gateway.git',        :branch => '2-1-stable'
-gem 'spree_auth_devise',    :git => 'https://github.com/spree/spree_auth_devise.git',    :branch => '2-1-stable'
-gem 'spree_static_content', :git => 'https://github.com/spree/spree_static_content.git', :branch => '2-1-stable'
+gem 'spree_gateway',        git: 'https://github.com/spree/spree_gateway.git',        branch: '2-1-stable'
+gem 'spree_auth_devise',    git: 'https://github.com/spree/spree_auth_devise.git',    branch: '2-1-stable'
+gem 'spree_static_content', git: 'https://github.com/spree/spree_static_content.git', branch: '2-1-stable'
 
-gem 'tinymce-rails', '~> 3.5.8.3'
+gem 'tinymce-rails',       '~> 3.5.8.3'
 gem 'acts-as-taggable-on', '~> 3.0.1'
