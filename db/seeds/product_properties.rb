@@ -1,37 +1,37 @@
 products = { 
-	'NMT-RE -xxa' => { 
+	'NMTx NMT-RE -xxa' => { 
 		'Manufacturer' => 'NanoMedTrix',
-		'Brand'        => 'NMT-RE',
+		'Brand'        => 'NMTx',
 		'Model'        => 'NP0000'
 	}, 
 
-	'NMT-RE -xxb' => { 
+	'NMTx NMT-RE -xxb' => { 
 		'Manufacturer' => 'NanoMedTrix',
-		'Brand'        => 'NMT-RE',
+		'Brand'        => 'NMTx',
 		'Model'        => 'NP0001'
 	}, 
 
-	'NMT-RE -xxx' => { 
+	'NMTx NMT-RE -xxx' => { 
 		'Manufacturer' => 'NanoMedTrix',
-		'Brand'        => 'NMT-RE',
+		'Brand'        => 'NMTx',
 		'Model'        => 'NP0002'
 	}, 
 
-	'NMT-MSN -xxa' => { 
+	'NMTx NMT-MSN -xxa' => { 
 		'Manufacturer' => 'NanoMedTrix',
-		'Brand'        => 'NMT-MSN',
+		'Brand'        => 'NMTx',
 		'Model'        => 'NP1000'
 	}, 
 
-	'NMT-MSN -xxb' => { 
+	'NMTx NMT-MSN -xxb' => { 
 		'Manufacturer' => 'NanoMedTrix',
-		'Brand'        => 'NMT-MSN',
+		'Brand'        => 'NMTx',
 		'Model'        => 'NP1001'
 	}, 
 
-	'NMT-MSN -xxx' => { 
+	'NMTx NMT-MSN -xxx' => { 
 		'Manufacturer' => 'NanoMedTrix',
-		'Brand'        => 'NMT-MSN',
+		'Brand'        => 'NMTx',
 		'Model'        => 'NP1002'
 	},
 

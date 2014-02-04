@@ -1,37 +1,93 @@
 <% @body_id = 'products' %>
 
-<div id="col-left" class="col-sm-3">
-  <div class="page-header">
-    <h4>All <%= Spree.t( :products ) %></h4>
+<%= render 'spree/products/featured' %>
+
+<div class="row">
+  <div class="col-sm-9">
+    <div class="row">
+      <div class="col-left col-sm-8">
+        <div class="page-header">
+          <h4>Product Catalog</h4>
+        </div>
+
+        <div class="col-content">
+          <ul id="catalog-list" class="nav nav-pills nav-stacked">
+            <% @catalog.children.map do | taxon | %>
+              <li><%= link_to taxon.name, seo_url( taxon ) %></li>
+            <% end %>
+          </ul>
+        </div>
+
+
+        <div class="page-header">
+          <h4>Services</h4>
+        </div>
+
+        <div class="col-content">
+          <ul id="services-list" class="nav nav-pills nav-stacked">
+            <% @services.children.map do | taxon | %>
+              <li><%= link_to taxon.name, seo_url( taxon ) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-mid col-sm-4">
+        <div class="page-header">
+          <h4>Most Popular Products</h4>
+        </div>
+
+        <div class="col-content">
+          <ul id="top-products-list" class="nav nav-pills nav-stacked">
+            <% @top.each do | product | %>
+              <li><%= link_to product.name, product %></li>
+            <% end %>
+          </ul>
+        </div>
+
+
+        <div class="page-header">
+          <h4>Brands</h4>
+        </div>
+
+        <div class="col-content">
+          <ul id="brand-list" class="nav nav-pills nav-stacked">
+            <% @brands.children.map do | taxon | %>
+              <li><%= link_to taxon.name, seo_url( taxon ) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-content">
-    <% if "spree/products" == params[ :controller ] && @taxon %>
-      <%= render partial: 'spree/shared/filters' %>
-    <% else %>
-      <%= render partial: 'spree/shared/taxonomies' %>
-    <% end %>
+  <div class="col-right col-sm-3">
+    <div class="page-header">
+      <h4>Recommended Products</h4>
+    </div>
+
+    <div class="col-content">
+      <ul id="recommended-list" class="nav nav-pills nav-stacked">
+        <% @recommended.each do | product | %>
+          <li><%= link_to product.name, product %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
-<div id="col-right" class="col-sm-9">
-  <div class="page-header">
-    <h4>&nbsp;</h4>
-  </div>
+<div class="row">
+  <div class="col-xs-12 page">
+    <div class="page-header">
+      <h4>Need Help Choosing?</h4>
+    </div>
 
-  <div class="col-content">
-    <% if params[ :keywords ] %>
-      <div data-hook="search_results">
-        <% if @products.empty? %>
-          <h6 class="search-results-title"><%= Spree.t( :no_products_found ) %></h6>
-        <% else %>
-          <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
+    <div class="page-content">
+      <ul id="guides-tools-list" class="nav nav-pills nav-stacked">
+        <% @guides_tools.children.map do | taxon | %>
+          <li><%= link_to taxon.name, seo_url( taxon ) %></li>
         <% end %>
-      </div>
-    <% else %>
-      <div data-hook="homepage_products">
-        <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
-      </div>
-    <% end %>
+      </ul>
+    </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ default_attrs = {
 
 products = [
 	{
-		name:              'NMT-RE -xxa',
+		name:              'NMTx NMT-RE -xxa',
 		tax_category:      bio,
 		shipping_category: shipping_category,
 		price:             249.99,
@@ -16,7 +16,7 @@ products = [
 	},
 
 	{
-		name:              'NMT-RE -xxb',
+		name:              'NMTx NMT-RE -xxb',
 		tax_category:      bio,
 		shipping_category: shipping_category,
 		price:             599.99,
@@ -24,7 +24,7 @@ products = [
 	},
 
 	{
-		name:              'NMT-RE -xxx',
+		name:              'NMTx NMT-RE -xxx',
 		tax_category:      bio,
 		shipping_category: shipping_category,
 		price:             1499.99,
@@ -32,7 +32,7 @@ products = [
 	},
 
 	{
-		name:              'NMT-MSN -xxa',
+		name:              'NMTx NMT-MSN -xxa',
 		tax_category:      bio,
 		shipping_category: shipping_category,
 		price:             349.99,
@@ -40,7 +40,7 @@ products = [
 	},
 
 	{
-		name:              'NMT-MSN -xxb',
+		name:              'NMTx NMT-MSN -xxb',
 		tax_category:      bio,
 		shipping_category: shipping_category,
 		price:             799.99,
@@ -48,7 +48,7 @@ products = [
 	},
 
 	{
-		name:              'NMT-MSN -xxx',
+		name:              'NMTx NMT-MSN -xxx',
 		tax_category:      bio,
 		shipping_category: shipping_category,
 		price:             1999.99,

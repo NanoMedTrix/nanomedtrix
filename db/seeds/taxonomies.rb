@@ -1,6 +1,7 @@
 taxonomies = [
 	{ name: 'Categories' },
-	{ name: 'Catalog' },
+	{ name: 'Services' },
+	{ name: 'Guides & Tools' },
 	{ name: 'Brand' }
 ]
 
