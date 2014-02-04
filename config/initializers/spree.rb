@@ -1,3 +1,5 @@
+require 'spree/product_filters'
+
 Spree.config do | config |
   config.site_name = "NanoMedTrix"
   config.site_url  = "pcruagxk-nanomedtrix.herokuapp.com"
