@@ -1,5 +1,5 @@
 module Spree
-  class ProductDocument < Asset
+  class Document < Asset
     validate :no_attachment_errors
 
     has_attached_file :attachment,
