@@ -20,6 +20,7 @@ en:
     body: Body
     by: by
     category_list: Categories
+    document: Document
     new_article: "New Article"
     news: "News"
     news_archive: Archive

@@ -1,12 +1,12 @@
 <% if @product and !@product.documents.empty? %>
   <table>
     <tr>
-      <td><h3><%= t( 'product_documents' ) %></h3></td>
+      <td><h3><%= Spree.t( 'product_documents' ) %></h3></td>
     </tr>
 
     <% if @product.documents.empty? %>
       <tr>
-        <td><p><%= t( 'none' ) %></p></td>
+        <td><p><%= Spree.t( 'none' ) %></p></td>
       </tr>
     <% else %>
       <% for product_document in @product.documents %>
@@ -17,34 +17,6 @@
             </p>
           </td>
         </tr>
-      <% end %>
-    <% end %>
-  </table>
-<% end %>
-
-<% if @product and !@product.documents.empty? %>
-  <table>
-    <tr>
-      <td><h3><%= t( 'variant_documents' ) %></h3></td>
-    </tr>
-    
-    <% if @product.documents.empty? %>
-      <tr>
-        <td><p><%= t( 'none' ) %></p></td>
-      </tr>
-    <% else %>
-      <% @product.variants.each do | variant | %>
-        <% variant.documents.each do | document | %>
-          <tr id="<%= spree_dom_id document %>" data-hook="docs_row">
-            <td><span class="handle"></span><%= image_tag( get_document_icon( document ), align: 'left' ) %></td>
-            
-            <% if @product.has_variants? %>
-              <td><%= variant.options_text %></td>
-            <% end %>
-
-            <td><%= link_to( image_tag( get_document_icon( document ) ) + get_document_name( document.attachment.original_filename ), document.attachment.url, { target: "_blank" } ) %></td>
-          </tr>
-        <% end %>
       <% end %>
     <% end %>
   </table>
