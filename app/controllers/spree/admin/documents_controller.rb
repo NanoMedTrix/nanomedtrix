@@ -29,6 +29,15 @@ module Spree
         def destroy_before
           @viewable = @document.viewable
         end
+
+        def spree_documents_params
+          params.require( :spree_documents ).permit( Spree::PermittedAttributes.document_attributes.push :alt, 
+                                                                                                         :attachment, 
+                                                                                                         :position, 
+                                                                                                         :viewable_type, 
+                                                                                                         :viewable_id 
+          )
+        end
     end
   end
 end
