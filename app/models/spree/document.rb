@@ -3,8 +3,8 @@ module Spree
     validate :no_attachment_errors
 
     has_attached_file :attachment,
-                      :url  => "/spree/documents/products/:id/:style/:basename.:extension",
-                      :path => ":rails_root/public/spree/documents/products/:id/:style/:basename.:extension"
+                      url:  "/assets/product/documents/:id/:style/:basename.:extension",
+                      path: ":rails_root/public/assets/product/documents/:id/:style/:basename.:extension"
 
     before_post_process :skip_thumbnail_creation
 
