@@ -1,6 +1,8 @@
 module Spree
   module Admin
     class DocumentsController < ResourceController
+      helper 'spree/admin/images'
+      
       before_filter :load_data
 
       create.before :set_viewable

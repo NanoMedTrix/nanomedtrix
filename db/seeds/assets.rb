@@ -15,79 +15,118 @@ products[ :nmtx_small_vials_large ] = Spree::Product.find_by_name!( 'NMTx 2 mL V
 products[ :nmtx_large_vials_small ] = Spree::Product.find_by_name!( 'NMTx 5 mL Vials - 100 Pack' )
 products[ :nmtx_large_vials_large ] = Spree::Product.find_by_name!( 'NMTx 5 mL Vials - 500 Pack' )
 
-def image( name, type = 'jpeg' )
-	images_path = Pathname.new( File.dirname( __FILE__ ) ) + 'images'
-	path        = images_path + "#{ name }.#{ type }"
+def asset name, type, file_ext
+	assets_path = Pathname.new( File.dirname( __FILE__ ) ) + "#{ type }"
+	path        = assets_path + "#{ name }.#{ file_ext }"
 
 	return false if !File.exist?( path )
 	File.open( path )
 end
 
-images = {
+def variant_assets product 
+	product.variants.each do | variant |
+		species  = variant.option_value( 'species' ).downcase
+		document = asset( "nmtx-product-for-#{ species }-document", 'document', 'pdf' )
+
+		variant.documents.create!( attachment: document )
+	end
+end    
+
+assets = {
 	products[ :nmt_re_xxa ].master => [
-		{ attachment: image( 'nmt_re_xxa' ) }
+		{ attachment: asset( 'nmt_re_xxa', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmt_re_xxb ].master => [
-		{ attachment: image( 'nmt_re_xxb' ) }
+		{ attachment: asset( 'nmt_re_xxb', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmt_re_xxx ].master => [
-		{ attachment: image( 'nmt_re_xxx' ) }
+		{ attachment: asset( 'nmt_re_xxx', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmt_msn_xxa ].master => [
-		{ attachment: image( 'nmt_msn_xxa' ) }
+		{ attachment: asset( 'nmt_msn_xxa', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmt_msn_xxb ].master => [
-		{ attachment: image( 'nmt_msn_xxb' ) }
+		{ attachment: asset( 'nmt_msn_xxb', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmt_msn_xxx ].master => [
-		{ attachment: image( 'nmt_msn_xxx' ) }
+		{ attachment: asset( 'nmt_msn_xxx', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_stem_cells ].master => [
-		{ attachment: image( 'nmtx_stem_cells' ) }
+		{ attachment: asset( 'nmtx_stem_cells', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_reagent_one ].master => [
-		{ attachment: image( 'nmtx_reagent_one' ) }
+		{ attachment: asset( 'nmtx_reagent_one', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_reagent_two ].master => [
-		{ attachment: image( 'nmtx_reagent_two' ) }
+		{ attachment: asset( 'nmtx_reagent_two', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_reagent_three ].master => [
-		{ attachment: image( 'nmtx_reagent_three' ) }
+		{ attachment: asset( 'nmtx_reagent_three', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_petri_dishes ].master => [
-		{ attachment: image( 'nmtx_petri_dishes' ) }
+		{ attachment: asset( 'nmtx_petri_dishes', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_small_vials_small ].master => [
-		{ attachment: image( 'nmtx_small_vials' ) }
+		{ attachment: asset( 'nmtx_small_vials', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_small_vials_large ].master => [
-		{ attachment: image( 'nmtx_small_vials' ) }
+		{ attachment: asset( 'nmtx_small_vials', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_large_vials_small ].master => [
-		{ attachment: image( 'nmtx_large_vials' ) }
+		{ attachment: asset( 'nmtx_large_vials', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	],
 
 	products[ :nmtx_large_vials_large ].master => [
-		{ attachment: image( 'nmtx_large_vials' ) }
+		{ attachment: asset( 'nmtx_large_vials', 'image', 'jpeg' ) },
+		{ attachment: asset( 'nmtx-product-document', 'document', 'pdf' ) }
 	]
 }
 
-images.each do | variant, attachments |
-	attachments.each do | attachment |
-		puts "-- loading image #{ File.expand_path( attachment[ :attachment ], __FILE__ ) }"
-		variant.images.create!( attachment )
-	end
+variant_assets( products[ :nmt_re_xxa ] )
+variant_assets( products[ :nmt_re_xxb ] )
+variant_assets( products[ :nmt_re_xxx ] )
+variant_assets( products[ :nmt_msn_xxa ] )
+variant_assets( products[ :nmt_msn_xxb ] )
+variant_assets( products[ :nmt_msn_xxx ] )
+
+products[ :nmtx_stem_cells ].variants.each do | variant |
+	species  = variant.option_value( 'species' ).downcase
+	document = asset( "nmtx-product-for-type-in-#{ species }-document", 'document', 'pdf' )
+
+	variant.documents.create!( attachment: document )
+end
+
+assets.each do | variant, attachments |
+	puts "-- loading image    #{ File.expand_path( attachments.first[ :attachment ], __FILE__ ) }"
+	variant.images.create!( attachments.first )
+
+	puts "-- loading document #{ File.expand_path( attachments.last[ :attachment ], __FILE__ ) }"
+	variant.documents.create!( attachments.last )
 end
