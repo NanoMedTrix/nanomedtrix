@@ -13,7 +13,7 @@ module Spree
         end
 
         def load_data
-          @product  = Spree::Product.where( permalin: params[ :product_id] ).first
+          @product  = Spree::Product.where( permalin: params[ :product_id ] ).first
           @variants = @product.variants.collect do | variant |
             [ variant.options_text, variant.id ]
           end
@@ -22,12 +22,12 @@ module Spree
         end
 
         def set_viewable
-          @doc.viewable_type = 'Spree::Variant'
-          @doc.viewable_id   = params[ :doc ][ :viewable_id ]
+          @document.viewable_type = 'Spree::Variant'
+          @document.viewable_id   = params[ :document ][ :viewable_id ]
         end
 
         def destroy_before
-          @viewable = @doc.viewable
+          @viewable = @document.viewable
         end
     end
   end
