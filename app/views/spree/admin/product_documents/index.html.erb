@@ -1,0 +1,81 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    jQuery( document ).ready(function() {  
+      jQuery( '#new_doc_link' ).click(function ( event ) { 
+        event.preventDefault();
+        // jQuery(this).hide();
+        
+        jQuery.ajax({
+          type: 'GET', 
+          url:  this.href, 
+          data: ({ authenticity_token: AUTH_TOKEN }), 
+          success: function( r ) { 
+            jQuery( '#docs' ).html( r );
+          } 
+        });
+      });
+    });
+  </script>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/product_sub_menu' %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Documents' } %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to_with_icon( 'icon-plus', t( :new_doc ), new_admin_product_document_url( @product ), id: 'new_doc_link', class: 'button' ) %></li>
+<% end %>
+
+<div id="docs" data-hook></div>
+
+<% unless @product.documents.any? || @product.variant_documents.any? %>
+  <div class="no-objects-found">
+    <%= t( :no_docs_found ) %>.
+  </div>
+<% else %>
+  <table class="index sortable" data-hook="docs_table" data-sortable-link="<%= update_positions_admin_product_documents_url( @product ) %>">
+    <colgroup>
+      <col style="width: 5%">
+      <col style="width: 10%">
+      
+      <% if @product.has_variants? %>
+        <col style="width: 25%">
+      <% end %>
+
+      <col style="width: 45%">
+      <col style="width: 15%">
+    </colgroup>
+
+    <thead>
+      <tr data-hook="docs_header">
+        <th colspan="2"><%= t( :doc_type ) %></th>
+
+        <% if @product.has_variants? %>
+          <th><%= Spree::Variant.model_name.human %></th>
+        <% end %>
+
+        <th><%= t( :doc_name ) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% ( @product.variant_documents ).each do | document | %>
+        <tr id="<%= spree_dom_id document %>" data-hook="docs_row" class="<%= cycle( 'odd', 'even' )%>">
+          <td class="no-border"><span class="handle"></span></td>
+          <td><%= image_tag( get_document_icon( document ), align: 'left' ) %></td>
+
+          <% if @product.has_variants? %>
+            <td><%= options_text_for( document ) %></td>
+          <% end %>
+
+          <td><%= link_to truncate( document.attachment.original_filename, length: 30 ), document.attachment.url %></td>
+          
+          <td class="actions">
+            <%= link_to_with_icon 'icon-edit', t( :edit ), edit_admin_product_document_url( @product, document ), no_text: true, data: { action: 'edit' } %>
+            <%= link_to_delete document, { url: admin_product_document_url( @product, document ), no_text: true } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
