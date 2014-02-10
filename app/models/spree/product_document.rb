@@ -1,5 +1,5 @@
 module Spree
-  class Document < Asset
+  class ProductDocument < Asset
     validate :no_attachment_errors
 
     attr_accessible :alt, :attachment, :position, :viewable_type, :viewable_id

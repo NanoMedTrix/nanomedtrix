@@ -1,7 +1,7 @@
 Spree::Product.class_eval do
-	delegate :documents, to: :master, prefix: true
+	delegate :product_documents, to: :master, prefix: true
 
-	has_many :variant_documents, source: :documents, through: :variants_including_master, order: :position
+	has_many :variant_documents, source: :product_documents, through: :variants_including_master, order: :position
 	alias_method :documents, :master_documents
 
   def self.find_by_array_of_ids ids
