@@ -13,7 +13,7 @@ module Spree
         end
 
         def load_data
-          @product  = Spree::Product.where( permalin: params[ :product_id ] ).first
+          @product  = Spree::Product.where( permalink: params[ :product_id ] ).first
           @variants = @product.variants.collect do | variant |
             [ variant.options_text, variant.id ]
           end
