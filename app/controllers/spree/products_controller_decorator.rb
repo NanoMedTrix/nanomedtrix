@@ -1,4 +1,6 @@
 Spree::ProductsController.class_eval do
+  helper 'spree/product_documents'
+  
 	after_filter :recently_viewed, only: :show
 
   def index
