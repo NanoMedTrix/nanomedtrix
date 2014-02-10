@@ -6,7 +6,7 @@ Nanomedtrix::Application.routes.draw do
 			resources :articles
 			
 			resources :products do 
-				resources :product_documents do 
+				resources :documents do 
 					collection do 
 						post :update_positions
 					end

@@ -1,6 +1,6 @@
 module Spree
   module Admin
-    class ProductDocumentsController < ResourceController
+    class DocumentsController < ResourceController
       before_filter :load_data
 
       create.before :set_viewable
