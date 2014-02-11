@@ -14,6 +14,12 @@ module Spree
     include Spree::Core::S3Support
     supports_s3 :attachment
 
+    Spree::Document.attachment_definitions[ :attachment ][ :styles ]        = ActiveSupport::JSON.decode( Spree::Config[ :attachment_styles ] ).symbolize_keys!
+    Spree::Document.attachment_definitions[ :attachment ][ :path ]          = Spree::Config[ :attachment_path ]
+    Spree::Document.attachment_definitions[ :attachment ][ :url ]           = Spree::Config[ :attachment_url ]
+    Spree::Document.attachment_definitions[ :attachment ][ :default_url ]   = Spree::Config[ :attachment_default_url ]
+    Spree::Document.attachment_definitions[ :attachment ][ :default_style ] = Spree::Config[ :attachment_default_style ]
+
     def no_attachment_errors
       unless attachment.errors.empty?
         # uncomment this to get rid of the less-than-useful interrim messages
