@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131185515) do
+ActiveRecord::Schema.define(version: 20140212213816) do
 
   create_table "spree_activators", force: true do |t|
     t.string   "description"
@@ -101,6 +101,22 @@ ActiveRecord::Schema.define(version: 20140131185515) do
 
   add_index "spree_assets", ["viewable_id"], name: "index_assets_on_viewable_id"
   add_index "spree_assets", ["viewable_type", "type"], name: "index_assets_on_viewable_type_and_type"
+
+  create_table "spree_banners", force: true do |t|
+    t.string   "alt_text"
+    t.string   "url"
+    t.string   "category"
+    t.integer  "position"
+    t.boolean  "enabled",                 default: false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_width"
+    t.integer  "attachment_height"
+    t.integer  "attachment_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_calculators", force: true do |t|
     t.string   "type"
