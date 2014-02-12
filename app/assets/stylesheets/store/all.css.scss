@@ -297,3 +297,27 @@ header {
 @import "products";
 @import "products-sm";
 @import "products-md";
+
+
+.banner {
+	background: none;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+
+		li {
+			float: left;
+			margin: 2px;
+			background: none;
+		}
+	}
+
+	img {
+		border: 0;
+		-webkit-box-shadow: 1px 2px 5px 0.6px #c1c5c8;
+		   -moz-box-shadow: 1px 2px 5px 0.6px #c1c5c8;
+		        box-shadow: 1px 2px 5px 0.6px #c1c5c8;
+	}
+}
