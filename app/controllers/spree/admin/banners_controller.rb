@@ -45,6 +45,16 @@ module Spree
           @search     = super.ransack( params[ :q ] )
           @collection = @search.result.page( params[ :page ] ).per( Spree::Config[ :admin_products_per_page ] )
         end
+
+        def spree_banners_params
+          params.require( :spree_banners ).permit( Spree::PermittedAttributes.banner_attributes.push :alt_text, 
+                                                                                                     :url,
+                                                                                                     :category,
+                                                                                                     :position,
+                                                                                                     :enabled,
+                                                                                                     :attachment
+          )
+        end
     end
   end
 end
