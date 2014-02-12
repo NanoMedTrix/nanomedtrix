@@ -1,42 +1,75 @@
 en:
   activerecord:
     attributes:
+      spree/banner:
+        category: Category
+        created_at: Created At
+        enabled: Enabled?
+        updated_at: Updated At
       spree/news_article:
-        title: Title
+        author_id: Author
         body: Body
-        summary: Summary
+        category_list: Categories
         permalink: Permalink
         published_at: Published at
-        visible: Visible
-        author_id: Author
+        summary: Summary
         tag_list: Tags
-        category_list: Categories
+        title: Title
+        visible: Visible
+    models:
+      spree/banner:
+        one: Banner
+        other: Banners
   spree:
+    add_new_banner_style: "Add New Banner Style"
     article_author: Author
     article_featured_image: Featured image
     articles: "Articles"
+    attachment: Attachment
     author_id: Author
-    back_to_static_pages_list: Back to Static Pages List 
+    back_to_banner_list: "Back To Banner List"
+    back_to_static_pages_list: Back to Static Pages List
+    banner: Banner
+    banners: Banners
+    banner_default_style: "Banner Default Style"
+    banner_default_url: "Banner Default URL" 
+    banner_path: "Banner Path"
+    banner_settings: "Banner Settings"
+    banner_settings_description: "Banner Settings Description"
+    banner_settings_warning: "You will need to regenerate thumbnails if you update the paperclip styles. Use rake paperclip:refresh:thumbnails CLASS=Spree::Banner to do this."
+    banner_settings_updated: "Banner Settings successfully updated."
+    banner_styles: "Paperclip Styles Banner"
+    banner_url: "Banner URL"
     body: Body
     by: by
+    category: Category
     category_list: Categories
     document: Document
+    enabled: Enabled?
+    images_only: "must be JPG, JPEG, PNG or GIF"
+    listing_banners: "Listing Banners"
     new_article: "New Article"
+    new_banner: "New Banner"
     news: "News"
     news_archive: Archive
     news_category: Category
     news_read_more: Read more
     news_tag: Tag
     no_articles: "No articles found."
+    notice_messages:
+      banner_cloned: "Banner has been cloned"
+      banner_not_cloned: "Banner could not be cloned"
     posted_in: Posted in
     permalink: Permalink
     posted_on: Posted on
     published_at: Published at
     shop: Shop
+    show_only_enabled: "Show only enabled"
     summary: Summary
     tag_list: Tags
     tagged: Tagged
     title: Title
+    url: Link URL
     visible: Visible
   time:
     formats:
