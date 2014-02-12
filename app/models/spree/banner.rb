@@ -21,7 +21,7 @@ module Spree
                                       content_type: [ 
                                         'image/jpeg',
                                         'image/jpg', 
-                                        'image/pjpeg'
+                                        'image/pjpeg',
                                         'image/png',
                                         'image/x-png', 
                                         'image/gif'
