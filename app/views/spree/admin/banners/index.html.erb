@@ -3,13 +3,9 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <div class="toolbar" data-hook="toolbar">
-    <ul class="actions header-action-links inline-menu">
-      <li id="new_banner_box_link">
-        <%= button_link_to Spree.t( :new_banner ), new_object_url, { remote: true, icon: 'icon-plus', id: 'admin_new_banner_box' } %>
-      </li>
-    </ul>
-  </div>
+  <li id="new_banner_link">
+    <%= button_link_to Spree.t( :new_banner ), new_object_url, { remote: true, icon: 'icon-plus', id: 'admin_new_banner' } %>
+  </li>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/banner_sub_menu' %>
@@ -57,10 +53,12 @@
   </div>
 <% end %>
 
-<div id="new_banner_box" data-hook></div>
+<div id="new_banner" data-hook></div>
+
+<%= paginate @collection %>
 
 <% if @collection.any? %>
-  <table class="index sortable" id="listing_banner_boxes" data-sortable-link="<%= update_positions_admin_banners_url() %>">
+  <table class="index sortable" id="listing_banners">
     <colgroup>
       <col style="width: 5%">
       <col style="width: 15%;">
@@ -72,24 +70,24 @@
     <thead>
       <tr data-hook="admin_banner_index_headers">
         <th colspan="2"><%= Spree.t( :thumbnail ) %></th>
-        <th><%= Spree.t( :category ) %></th>
-        <th><%= Spree.t( :url ) %></th>
+        <th><%= sort_link @search, :category, Spree.t( :category ), { default_order: 'desc' }, { title: 'admin_banners_listing_category_title' } %></th>
+        <th><%= sort_link @search, :url, Spree.t( :url ), { default_order: 'desc' }, { title: 'admin_banners_listing_url_title' } %></th>
         <th data-hook="admin_banner_index_header_actions" class="actions"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @collection.each do | banner | %>
-        <tr id="<%= spree_dom_id banner %>" data-hook="admin_banner_boxes_index_rows" class="<%= cycle( 'odd', 'even' ) %>">
+        <tr id="<%= spree_dom_id banner %>" data-hook="admin_banners_index_rows" class="<%= cycle( 'odd', 'even' ) %>">
           <td class="no-border"><span class="handle"></span></td>
           <td class="align-center"><%= image_tag( banner.attachment( :mini ) ) %></td>
           <td class="align-center"><%= banner.category rescue '' %></td>
           <td class="align-center"><%= banner.url rescue '' %></td>
 
           <td class="actions" data-hook="admin_banner_index_row_actions">
-            <%= link_to_edit banner, no_text: true, class: 'edit' %>
+            <%= link_to_edit   banner, no_text: true, class: 'edit' %>
             &nbsp;
-            <%= link_to_with_icon 'icon-copy', Spree.t( :clone ), clone_admin_banner_url( banner_box ), no_text: true, class: 'clone' %>
+            <%= link_to_clone  banner, no_text: true, class: 'clone' %>
             &nbsp;
             <%= link_to_delete banner, no_text: true %>
           </td>
