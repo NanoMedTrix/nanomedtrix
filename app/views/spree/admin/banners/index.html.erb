@@ -53,7 +53,7 @@
   </div>
 <% end %>
 
-<div id="new_banner" data-hook></div>
+<div id="new_banner_wrapper" data-hook></div>
 
 <%= paginate @collection %>
 
@@ -71,7 +71,7 @@
       <tr data-hook="admin_banner_index_headers">
         <th colspan="2"><%= Spree.t( :thumbnail ) %></th>
         <th><%= sort_link @search, :category, Spree.t( :category ), { default_order: 'desc' }, { title: 'admin_banners_listing_category_title' } %></th>
-        <th><%= sort_link @search, :url, Spree.t( :url ), { default_order: 'desc' }, { title: 'admin_banners_listing_url_title' } %></th>
+        <th><%= sort_link @search, :url,      Spree.t( :url ),      { default_order: 'desc' }, { title: 'admin_banners_listing_url_title' } %></th>
         <th data-hook="admin_banner_index_header_actions" class="actions"></th>
       </tr>
     </thead>

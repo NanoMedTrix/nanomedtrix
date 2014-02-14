@@ -1,2 +1,8 @@
-$( '#new_banner_box' ).html( '<%= escape_javascript( render template: "spree/admin/banners/new", formats: [ :html ], handlers: [ :erb ] ) %>' );
-$( '#admin_new_banner_box').parent().hide();
+$( '#new_banner_wrapper' ).html( '<%= escape_javascript( render template: "spree/admin/banners/new", formats: [ :html ], handlers: [ :erb ] ) %>' );
+
+<% unless Rails.env.test? %>
+  $( '.select2' ).select2();
+<% end %>
+
+$( '#table-filter' ).hide();
+$( '#admin_new_banner' ).parent().hide();
