@@ -1,5 +1,5 @@
-<div data-hook="admin_banner_box_form_fields" class="row">
-  <div class="left eight columns alpha" data-hook="admin_banner_box_form_left">
+<div data-hook="admin_banner_form_fields" class="row">
+  <div class="left eight columns alpha" data-hook="admin_banner_form_left">
     <%= f.field_container :category do %>
       <%= f.label            :category, raw( Spree.t( :category ) + content_tag( :span, ' *', class: 'required' ) ) %>
       <%= f.text_field       :category, class: 'fullwidth title' %>
@@ -48,3 +48,9 @@
 
   <div class="clear"></div>
 </div>
+
+<% unless Rails.env.test? %>
+  <script>
+    $( '.select2-container' ).css({ width: '20em' });
+  </script>
+<% end %>

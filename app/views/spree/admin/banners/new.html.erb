@@ -1,7 +1,8 @@
+<%= render partial: 'spree/admin/shared/banner_sub_menu' %>
 <%= render partial: 'spree/shared/error_messages', locals: { target: @banner } %>
 
 <%= form_for [ :admin, @banner ], html: { multipart: true } do | f | %>
-	<fieldset data-hook="new_banner_box">
+	<fieldset data-hook="new_banner">
 		<legend align="center"><%= Spree.t( :new_banner ) %></legend>
 
 		<%= render partial: 'form', locals: { f: f } %>
