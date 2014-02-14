@@ -4,7 +4,7 @@ Nanomedtrix::Application.routes.draw do
   Spree::Core::Engine.routes.draw do
 		namespace :admin do
 			resources :articles
-			resources :banner_settings
+			resource  :banner_settings
 			
 			resources :products do 
 				resources :documents do 

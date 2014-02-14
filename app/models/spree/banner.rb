@@ -1,32 +1,19 @@
 module Spree
   class Banner < ActiveRecord::Base
-    has_attached_file :attachment,
-                      url:  "/assets/banners/:id/:style_:basename.:extension",
-                      path: ":rails_root/public/assets/banners/:id/:style_:basename.:extension",
-                      styles: lambda { | a | {
-                        mini:   "48x48>",
-                        small:  "100x100>",
-                        large:  "800x200#",
-                        custom: "#{ a.instance.attachment_width }x#{ a.instance.attachment_height }#"
-                      } },
-                      convert_options: { all: '-strip -auto-orient' }
-
-    # save the w,h of the original image (from which others can be calculated)
-    # we need to look at the write-queue for images which have not been saved yet
-    after_post_process :find_dimensions
-
-    validates_presence_of             :category
-    validates_attachment_presence     :attachment
-    validates_attachment_content_type :attachment, 
-                                      content_type: [ 
-                                        'image/jpeg',
-                                        'image/jpg', 
-                                        'image/pjpeg',
-                                        'image/png',
-                                        'image/x-png', 
-                                        'image/gif'
-                                      ], 
-                                      message: Spree.t( :images_only )
+    validates            :category, presence: true
+    validates_attachment :attachment,
+                           presence: true,
+                           content_type: {
+                             content_type: [ 
+                               'image/jpeg',
+                               'image/jpg', 
+                               'image/pjpeg',
+                               'image/png',
+                               'image/x-png', 
+                               'image/gif'
+                             ], 
+                             message: Spree.t( :images_only )
+                           }
 
     scope :enabled, lambda { | *categories |
       if categories.empty?
@@ -36,16 +23,32 @@ module Spree
       end
     }
 
+    has_attached_file :attachment,
+                        styles: lambda { | a | {
+                          mini:   '48x48>',
+                          small:  '100x100>',
+                          large:  '800x200>',
+                          custom: "#{ a.instance.attachment_width }x#{ a.instance.attachment_height }>"
+                        } },
+                        url:  '/assets/banners/:id/:style_:basename.:extension',
+                        path: ':rails_root/public/assets/banners/:id/:style_:basename.:extension',
+                        convert_options: { all: '-strip -auto-orient' }
+
+    # save the w,h of the original image (from which others can be calculated)
+    # we need to look at the write-queue for images which have not been saved yet
+    after_post_process :find_dimensions
+
     # Load user defined paperclip settings
     include Spree::Core::S3Support
     supports_s3 :attachment
 
-    Spree::Banner.attachment_definitions[ :attachment ][ :styles ]        = ActiveSupport::JSON.decode( SpreeBanner::Config[ :banner_styles ] ).symbolize_keys!
-    Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = SpreeBanner::Config[ :banner_path ]
-    Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = SpreeBanner::Config[ :banner_url ]
-    Spree::Banner.attachment_definitions[ :attachment ][ :default_url ]   = SpreeBanner::Config[ :banner_default_url ]
-    Spree::Banner.attachment_definitions[ :attachment ][ :default_style ] = SpreeBanner::Config[ :banner_default_style ].to_sym
+    Spree::Banner.attachment_definitions[ :attachment ][ :styles ]        = ActiveSupport::JSON.decode( Spree::Config[ :banner_styles ] ).symbolize_keys!
+    Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = Spree::Config[ :banner_path ]
+    Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = Spree::Config[ :banner_url ]
+    Spree::Banner.attachment_definitions[ :attachment ][ :default_url ]   = Spree::Config[ :banner_default_url ]
+    Spree::Banner.attachment_definitions[ :attachment ][ :default_style ] = Spree::Config[ :banner_default_style ].to_sym
 
+=begin
     def initialize *args
       super *args
 
@@ -54,6 +57,7 @@ module Spree
 
       enhance_settings
     end
+=end
 
     # for adding banners which are closely related to existing ones
     # define "duplicate_extra" for site-specific actions, eg for additional fields
@@ -91,10 +95,10 @@ module Spree
       end
 
       Spree::Banner.attachment_definitions[ :attachment ][ :styles ]        = extended_hash
-      Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = SpreeBanner::Config[ :banner_path ]
-      Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = SpreeBanner::Config[ :banner_url ]
-      Spree::Banner.attachment_definitions[ :attachment ][ :default_url ]   = SpreeBanner::Config[ :banner_default_url ]
-      Spree::Banner.attachment_definitions[ :attachment ][ :default_style ] = SpreeBanner::Config[ :banner_default_style ]
+      Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = Spree::Config[ :banner_path ]
+      Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = Spree::Config[ :banner_url ]
+      Spree::Banner.attachment_definitions[ :attachment ][ :default_url ]   = Spree::Config[ :banner_default_url ]
+      Spree::Banner.attachment_definitions[ :attachment ][ :default_style ] = Spree::Config[ :banner_default_style ]
     end
 
     def self.categories_for_select

@@ -2,10 +2,14 @@ module Spree
   module Admin
     class BannersController < ResourceController
       def index
+        session[ :return_to ] = request.url
+
         respond_with @collection
       end
 
       def show
+        session[ :return_to ] ||= request.referer
+
         redirect_to action: :edit
       end
 
@@ -29,7 +33,7 @@ module Spree
 
       private
         def find_resource
-          Spree::Banner.find( params[ :id ] )
+          Banner.find( params[ :id ] )
         end
 
         def location_after_save
