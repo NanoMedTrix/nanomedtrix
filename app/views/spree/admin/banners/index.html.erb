@@ -19,7 +19,7 @@
     <%= search_form_for [ :admin, @search ] do | f | %>
       <%- locals = { f: f } %>
       
-      <div data-hook="admin_banner_index_search">
+      <div data-hook="admin_banners_index_search">
         <div class="alpha four columns">
           <div class="field">
             <%= f.label  :category_eq, Spree.t( :category ) %>
@@ -45,7 +45,7 @@
 
         <div class="clear"></div>
 
-        <div class="form-buttons actions filter-actions" data-hook="admin_banner_index_search_buttons">
+        <div class="form-buttons actions filter-actions" data-hook="admin_banners_index_search_buttons">
           <%= button Spree.t( :search ), 'icon-search' %>
         </div>
       </div>

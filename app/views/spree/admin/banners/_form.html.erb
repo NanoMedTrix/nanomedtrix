@@ -5,7 +5,7 @@
       <%= f.text_field       :category, class: 'fullwidth title' %>
       <%= f.error_message_on :category %>
     <% end %>
-
+    
     <%= f.field_container :url do %>
       <%= f.label            :url, raw( Spree.t( :url ) ) %>
       <%= f.text_field       :url, class: 'fullwidth title' %>
@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <div class="right eight columns omega" data-hook="admin_banner_box_form_right">
+  <div class="right eight columns omega" data-hook="admin_banner_form_right">
     <% unless f.object.new_record? %>
       <div data-hook="thumbnail" class="field alpha two columns">
         <%= f.label Spree.t( :thumbnail ) %><br>
@@ -44,7 +44,7 @@
 
   <div class="clear"></div>
 
-  <div data-hook="admin_banner_box_form_additional_fields"></div>
+  <div data-hook="admin_banner_form_additional_fields"></div>
 
   <div class="clear"></div>
 </div>
