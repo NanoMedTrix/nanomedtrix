@@ -1,5 +1,6 @@
 <div id="home-image-big" class="jumbotron">
-	<%= image_tag 'store/nmtx-promo-001.png', class: 'img-responsive' %>
+	<%= insert_banner category: 'test', style: 'original' %>
+	<%= image_tag 'store/nmtx-home-promo-big-default.png', class: 'img-responsive' %>
 </div>
 
 <%= render partial: 'spree/articles/headlines', locals: { first_headline: @first_headline, headlines: @headlines } %>

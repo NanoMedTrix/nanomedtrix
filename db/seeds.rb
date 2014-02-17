@@ -49,6 +49,7 @@ if ENV[ 'populate' ]
 		payments
 		pages
 		news_articles
+		banners
 	].each do | filename |
 		file = File.join( File.dirname( __FILE__ ), 'seeds', "#{ filename }.rb" )
 		puts "loading ruby #{ file } "

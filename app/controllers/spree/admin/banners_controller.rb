@@ -1,6 +1,8 @@
 module Spree
   module Admin
     class BannersController < ResourceController
+      helper_method :clone_object_url
+      
       def index
         session[ :return_to ] = request.url
 
@@ -50,6 +52,10 @@ module Spree
           @collection = @search.result.page( params[ :page ] ).per( Spree::Config[ :admin_products_per_page ] )
 
           @collection
+        end
+        
+        def clone_object_url resource
+          clone_admin_banner_url resource
         end
 
         def spree_banners_params
