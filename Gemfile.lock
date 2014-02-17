@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/spree/spree.git
-  revision: 7e34c4d4eb92b758b83f13f855cbc690eaefdd81
+  revision: bf681204028f9c32fa8d6f4d4f9493e95d1081f2
   branch: 2-1-stable
   specs:
     spree (2.1.4)
@@ -95,7 +95,7 @@ GEM
     active_utils (2.0.1)
       activesupport (>= 2.3.11)
       i18n
-    activemerchant (1.42.4)
+    activemerchant (1.42.5)
       active_utils (~> 2.0, >= 2.0.1)
       activesupport (>= 2.3.14, < 5.0.0)
       builder (>= 2.1.2, < 4.0.0)
@@ -125,7 +125,7 @@ GEM
     akami (1.2.1)
       gyoku (>= 0.4.0)
       nokogiri
-    arel (4.0.1)
+    arel (4.0.2)
     atomic (1.1.14)
     awesome_nested_set (3.0.0.rc.3)
       activerecord (>= 4.0.0, < 5)
@@ -135,7 +135,7 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
-    bootstrap-sass (3.1.0.1)
+    bootstrap-sass (3.1.0.2)
       sass (~> 3.2)
     builder (3.1.4)
     cancan (1.6.10)
@@ -147,7 +147,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    childprocess (0.4.0)
+    childprocess (0.5.1)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -183,7 +183,7 @@ GEM
       builder (>= 2.1.2)
     highline (1.6.20)
     hike (1.2.3)
-    httparty (0.12.0)
+    httparty (0.13.0)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     httpi (1.1.1)
