@@ -1,5 +1,8 @@
 module Spree
   class Document < Asset
+    ALLOWED_CONTENT_TYPES   = [ 'application/msword', 'application/vnd.ms-excel', 'application/pdf' ]
+    ALLOWED_FILE_EXTENSIONS = [ 'pdf', 'doc', 'docx', 'xls', 'xlsx' ]
+
     validate :no_attachment_errors
 
     has_attached_file :attachment,
@@ -7,12 +10,6 @@ module Spree
                       path: ":rails_root/public/assets/product/documents/:id/:style/:basename.:extension"
 
     before_post_process :skip_thumbnail_creation
-
-    ALLOWED_CONTENT_TYPES   = [ 'application/msword', 'application/vnd.ms-excel', 'application/pdf' ]
-    ALLOWED_FILE_EXTENSIONS = [ 'pdf', 'doc', 'docx', 'xls', 'xlsx' ]
-
-    #include Spree::Core::S3Support
-    #supports_s3 :attachment
 
     def no_attachment_errors
       unless attachment.errors.empty?

@@ -38,10 +38,6 @@ module Spree
     # we need to look at the write-queue for images which have not been saved yet
     after_post_process :find_dimensions
 
-    # Load user defined paperclip settings
-    #include Spree::Core::S3Support
-    #supports_s3 :attachment
-
     Spree::Banner.attachment_definitions[ :attachment ][ :styles ]        = ActiveSupport::JSON.decode( Spree::Config[ :banner_styles ] ).symbolize_keys!
     Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = Spree::Config[ :banner_path ]
     Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = Spree::Config[ :banner_url ]
