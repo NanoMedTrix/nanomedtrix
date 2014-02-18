@@ -1,5 +1,13 @@
 module Spree
   module BannersHelper
+    def insert_logo
+      logo = Spree::Banner.find_by_category( 'logo' ).attachment.url( :original ) || image_path( Spree::Config[ :logo ] )
+
+      content_tag :h3, style: "background-image: url( #{ logo } );" do 
+        'NanoMedTrix <small>Small particles for a large contrast</small>'.html_safe
+      end
+    end
+
     def insert_banner params = {}
       params[ :category ] ||= 'home'
       params[ :class ]    ||= 'banner'

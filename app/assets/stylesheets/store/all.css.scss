@@ -105,9 +105,9 @@ header {
 	#masthead-brand { 
 		h3 { 
 			margin: 0;
-			padding: 19px 0 3px 55px;
-			background-image: url( image-path( 'store/nmtx-3.png' ) );
-			background-image: none, url( image-path( 'store/nmtx-3.svg' ) ), url( image-path( 'store/nmtx-3.png' ) );
+			padding: 22px 0 12px 55px;
+			/*background-image: url( image-path( 'store/nmtx-logo.png' ) );
+			background-image: none, url( image-path( 'store/nmtx-logo.svg' ) ), url( image-path( 'store/nmtx-logo.png' ) );*/
 			background-size: 50px 50px;
 			background-repeat: no-repeat;
 			background-position: 0 50%;
@@ -118,7 +118,7 @@ header {
 		} 
 	}
 
-	#masthead-search { padding: 15px 15px 5px; }
+	#masthead-search { padding: 13px 15px 7px; }
 
 	#navigation { 
 		margin-top: 10px; 
