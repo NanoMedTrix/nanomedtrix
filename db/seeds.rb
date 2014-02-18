@@ -1,16 +1,15 @@
 if defined?( Spree::Core )
 	puts " "
-	puts "==  Spree::Core seeds ========================================================="
+	puts "==  Spree::Core ==============================================================="
 	Spree::Core::Engine.load_seed 
-	puts "==  Spree::Core seeded ========================================================"
+	puts "==  Spree::Core ==============================================================="
 end
 
-if defined?( Spree::Auth )
-	puts " "
-	puts "==  Spree::Auth seeds ========================================================="
-	Spree::Auth::Engine.load_seed 
-	puts "==  Spree::Auth seeded ========================================================"
-end
+puts " "
+puts "==  Spree::Auth ==============================================================="
+users = File.join( File.dirname( __FILE__ ), 'seeds', 'users.rb' )
+require users
+puts "==  Spree::Auth ==============================================================="
 
 puts " "
 puts "==  Google Analytics =========================================================="
