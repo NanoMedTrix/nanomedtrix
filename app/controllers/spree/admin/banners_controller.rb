@@ -1,6 +1,7 @@
 module Spree
   module Admin
     class BannersController < ResourceController
+      before_filter :load_categories
       helper_method :clone_object_url
       
       def index
@@ -36,6 +37,10 @@ module Spree
       private
         def find_resource
           Banner.find( params[ :id ] )
+        end
+
+        def load_categories
+          @categories = ActiveSupport::JSON.decode( Spree::Config[ :banner_default_categories ] ).map { | key, value | [ value, key ] }
         end
 
         def location_after_save
