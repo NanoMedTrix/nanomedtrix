@@ -1,0 +1,21 @@
+<% if content_for?( :page_title ) || content_for?( :page_actions ) %>
+  <div id="content" class="tab-header" data-hook>
+    <div class="container-fluid">
+      <div class="row">
+        <% if content_for?( :page_title ) %>
+          <div class="col-sm-6">
+            <h1><%= yield :page_title %></h1>
+          </div>
+        <% end %>
+
+        <% if content_for?( :page_actions ) %>
+          <div class="<%= content_for?( :page_title ) ? 'text-right ' : '' %>col-sm-6">
+            <ul class="inline-menu">
+              <%= yield :page_actions %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

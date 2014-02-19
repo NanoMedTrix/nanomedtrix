@@ -6,10 +6,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+//
 //= require admin/spree_backend
-
+//
 //= require_tree .
+//
+//= require holder
+//= require bootstrap
 
 $( document ).ready(function() {
 	$( '.destroy_banner_style' ).live( 'click', function( e ) {

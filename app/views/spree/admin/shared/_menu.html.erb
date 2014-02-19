@@ -1,0 +1,31 @@
+<ul class="nav nav-sidebar">
+	<% if can? :admin, Spree::Order %>
+	  <%= tab :orders, :payments, :creditcard_payments, :shipments, :credit_cards, :return_authorizations, icon: 'icon-credit-card' %>
+	<% end %>
+
+	<% if can? :admin, Spree::Product %>
+	  <%= tab :products, :option_types, :properties, :prototypes, :variants, :product_properties, icon: 'icon-tags' %>
+	<% end %>
+
+	<% if can? :admin, Spree::Promotion %>
+	  <%= tab :promotions, url: spree.admin_promotions_path, icon: 'icon-bullhorn' %>
+	<% end %>
+
+	<% if can? :admin, Spree::Admin::ReportsController %>
+	  <%= tab :reports, icon: 'icon-stats'  %>
+	<% end %>
+</ul>
+
+<ul class="nav nav-sidebar">
+	<%= tab :articles, label: 'news articles', icon: 'icon-rss' %>
+	<%= tab :pages,    label: 'pages',         icon: 'icon-file' %>
+	<%= tab :banners,  label: 'banners',       icon: 'icon-picture' %>
+</ul>
+
+<ul class="nav nav-sidebar">
+	<% if can? :admin, Spree::User %>
+	  <%= tab :users, url: spree.admin_users_path, icon: 'icon-users' %>
+	<% end %>
+
+	<%= tab :configurations, :general_settings, :mail_methods, :image_settings, :tax_categories, :tax_rates, :tax_settings, :zones, :countries, :states, :payment_methods, :taxonomies, :shipping_methods, :shipping_categories, :stock_transfers, :stock_locations, :trackers, label: 'settings', icon: 'icon-cog', url: spree.edit_admin_general_settings_path %>
+</ul>

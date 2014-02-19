@@ -1,0 +1,50 @@
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-hook>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="navbar-header col-sm-3 col-md-2">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<%= link_to spree.admin_path, class: 'navbar-brand' do %>
+				<%= image_tag( 'store/nmtx-logo.png', id: 'logo' ) %> 
+				NanoMedTrix
+			<% end %>
+		</div>
+
+		<nav class="navbar-collapse collapse">
+			<% if spree_current_user %>
+				<ul id="back-to-store-nav" class="nav navbar-nav navbar-left">
+					<li data-hook="store-frontend-link">
+						<%= link_to spree.root_path, target: '_blank' do %>
+							<span class="glyphicon glyphicon-new-window"></span> <%= Spree.t( :back_to_store ) %>
+						<% end %>
+					</li>
+				</ul>
+
+				<ul id="login-nav" class="nav navbar-nav navbar-right">
+					<li data-hook="admin-help">
+						<%= link_to '#' do %>
+							<span class="glyphicon glyphicon-question-sign"></span> Need help?
+						<% end %>
+					</li>
+
+					<li class="dropdown" data-hook="user-logged-in-as">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <%= spree_current_user.email %> <b class="caret"></b></a>
+
+						<ul class="dropdown-menu">
+							<li data-hook="user-account"><%= link_to Spree.t( :my_account ), spree.account_path %></li>
+							<li data-hook="user-edit-account"><%= link_to "#{ Spree.t( :edit ) } #{ Spree.t( :account ) }", spree.edit_user_path( spree_current_user ) %></li>
+							<li class="divider"></li>
+							<li data-hook="user-logout-link"><%= link_to Spree.t( :logout ), spree.destroy_spree_user_session_path %></li>
+						</ul>
+					</li>
+				</ul>
+			<% end %>
+		</nav>
+		</div>
+	</div>
+</header>
