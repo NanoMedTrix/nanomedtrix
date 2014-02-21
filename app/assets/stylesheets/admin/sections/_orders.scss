@@ -1,7 +1,5 @@
 // Customize orders filter
 [ data-hook='admin_orders_index_search' ] {
-  select[ data-placeholder='Status' ] { width: 100%; }
-
   .select2-container { width: 100% !important; }
 }
 

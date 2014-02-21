@@ -4,13 +4,13 @@
       <div class="row">
         <% if content_for?( :page_title ) %>
           <div class="col-sm-6">
-            <h1><%= yield :page_title %></h1>
+            <h2><%= yield :page_title %></h2>
           </div>
         <% end %>
 
         <% if content_for?( :page_actions ) %>
           <div class="<%= content_for?( :page_title ) ? 'text-right ' : '' %>col-sm-6">
-            <ul class="inline-menu">
+            <ul id="page_actions" class="inline-menu">
               <%= yield :page_actions %>
             </ul>
           </div>

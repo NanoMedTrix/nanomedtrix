@@ -8,39 +8,19 @@ input[ type='time' ],
 input[ type='email' ],
 input[ type='number' ],
 input[ type='datetime' ],
-input[ type='password' ] {
-  @include border-radius( $border-radius );
-
-  padding: 7px 10px;
-  border: 1px solid $color-txt-brd;
-  font-size: 90%;
-  color: $color-txt-text;
-
-  &:focus {
-    outline: none;
-    border-color: $color-txt-hover-brd;
-  }
-
-  &[ disabled ] { opacity: 0.7; }
-}
+input[ type='password' ] { font-size: 90%; }
 
 textarea { line-height: 19px; }
 
 .fullwidth { width: 100%; }
 
 label {
-  display: inline;
   margin-bottom: 5px;
   font-size: 85%;
   font-weight: 600;
   text-transform: uppercase;
-  color: $color-4;
-
-  &.inline { display: inline-block !important; }
-  &.block  { display: block        !important; }
+  color: #333;
 }
-
-.label-block label { display: block }
 
 .button,
 button,
@@ -174,7 +154,7 @@ fieldset {
     i { color: $color-link; }
   }
 
-  label { color: lighten( $color-body-text, 8 ); }
+  
 
   .filter-actions {
     margin-top: 15px;
