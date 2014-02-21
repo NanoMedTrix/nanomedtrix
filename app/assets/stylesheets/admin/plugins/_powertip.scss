@@ -1,0 +1,110 @@
+#powerTip {
+  @include border-radius( $border-radius );
+
+  padding: 5px 15px;
+  background-color: $color-3;
+
+  &.n:before, 
+  &.ne:before, 
+  &.nw:before {
+    bottom: -5px;
+    border-top-width: 5px;
+    border-top-color: $color-3;
+  }
+
+  &.e:before {
+    left: -5px;
+    border-right-width: 5px;
+    border-right-color: $color-3;
+  }
+
+  &.s:before, 
+  &.se:before, 
+  &.sw:before {
+    top: -5px;
+    border-bottom-width: 5px;
+    border-bottom-color: $color-3;
+  }
+
+  &.w:before {
+    right: -5px;
+    border-left-width: 5px;
+    border-left-color: $color-3;
+  }
+
+  &.ne:before, 
+  &.se:before {
+    left: -5px;
+    border-right-width: 5px;
+    border-right-color: $color-3;
+  }
+
+  &.nw:before, 
+  &.sw:before {
+    right: -5px;
+    border-left-width: 5px;
+    border-right-color: $color-3;
+  }
+
+  &.clone, 
+  &.yellow, 
+  &.cancel {
+    background-color: $color-notice;
+
+    &.n:before, 
+    &.ne:before, 
+    &.nw:before { border-top-color: $color-notice; }
+
+    &.e:before, 
+    &.nw:before, 
+    &.sw:before { border-right-color: $color-notice; }
+
+    &.s:before, 
+    &.se:before, 
+    &.sw:before { border-bottom-color: $color-notice; }
+
+    &.w:before { border-left-color: $color-notice; }
+  }
+
+  &.edit, 
+  &.green, 
+  &.capture, 
+  &.save, 
+  &.add {
+    background-color: $color-success;
+
+    &.n:before, 
+    &.ne:before, 
+    &.nw:before { border-top-color: $color-success; }
+
+    &.e:before, 
+    &.nw:before, 
+    &.sw:before { border-right-color: $color-success; }
+
+    &.s:before, 
+    &.se:before, 
+    &.sw:before { border-bottom-color: $color-success; }
+
+    &.w:before { border-left-color: $color-success; }
+  }
+
+  &.remove, 
+  &.red, 
+  &.void {
+    background-color: $color-error;
+
+    &.n:before, 
+    &.ne:before, 
+    &.nw:before { border-top-color: $color-error; }
+
+    &.e:before, 
+    &.nw:before, 
+    &.sw:before { border-right-color: $color-error; }
+
+    &.s:before, 
+    &.se:before, 
+    &.sw:before { border-bottom-color: $color-error; }
+
+    &.w:before { border-left-color: $color-error; }
+  }
+}

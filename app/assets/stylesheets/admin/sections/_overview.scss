@@ -1,0 +1,79 @@
+.preview-buttons {
+  position: absolute;  
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+
+  a { font-size: 100%; }
+}
+
+.analytics_splash {
+  opacity: 0.5; 
+  position: absolute;
+  top: 0;
+  left: -160px;
+  z-index: 0;
+  width: 1280px;
+  min-height: 880px; 
+  background: url( '/assets/analytics_dashboard_preview.jpg' ) no-repeat center top;
+}
+
+.analytics-description {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    margin: 20px 0;
+    color: $color-2;
+
+    li {
+      padding: 10px 0;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+#analytics_signup {
+  .select2-choice {
+    width: 296px;
+
+    span { margin-right: 0; }
+  }
+}
+
+// Jirafe styles
+#jirafe {
+  margin-left: -140px;
+
+  #mod-jirafe {
+    background-color: transparent;
+    color: lighten( $color-body-text, 10 );
+
+    .jBox {
+      border-radius: 3px;
+      box-shadow: none;
+    }
+
+    .boxHed, 
+    .cartDataBars, 
+    .jBox, 
+    .cartBar,  
+    #boxAbandon .pieDataHed { border-color: $color-border; }
+
+    h3.boxHeader, 
+    .valHeader { color: $color-body-text; }
+
+    #acctMenuRpts {
+      right: 0      !important;
+      left: inherit !important;
+    }
+
+    #purchaseFunnel {
+      text { fill:   $color-body-text; }
+      path { stroke: $color-border;    }
+    }
+  }
+}

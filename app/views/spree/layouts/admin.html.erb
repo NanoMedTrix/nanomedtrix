@@ -56,10 +56,20 @@
 
               <%= render partial: 'spree/admin/shared/sidebar' %>
             </div>
+
+            <% if Rails.env.development? %>
+              <div class="row">
+                <div class="col-sm-12">
+                  <%= debug( params ) %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
+
+
 
     <div data-hook="admin_footer_scripts"></div>
 

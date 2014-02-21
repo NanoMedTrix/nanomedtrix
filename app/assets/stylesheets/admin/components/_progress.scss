@@ -1,0 +1,36 @@
+#progress { 
+  display: none;
+  position: fixed;
+  top: 0;  
+  z-index: 1000;
+  opacity: 0.8;
+  width: 100%;
+
+  .wrapper {
+    @include border-radius( 10px );
+
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -100px;
+    padding: 11px 0;
+    width: 200px;
+    background-color: $color-3;
+    text-align: center;
+    color: $color-1;
+  }
+
+  #spinner {    
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -5px;
+  }
+
+  .progress-message {
+    margin-top: 20px;
+    font-size: 120%;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+  }
+}

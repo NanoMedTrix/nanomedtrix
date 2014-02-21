@@ -1,0 +1,9 @@
+/* debug dump */
+.debug_dump {
+	@include box-sizing( border-box );
+
+	clear: both;
+	float: left;
+	margin: 15px 0 0;
+	width: 100%;
+}

@@ -1,0 +1,21 @@
+#content {
+	.page {
+		.page-header {
+			margin: 0 -15px 5px -15px;
+			padding-bottom: 0; 
+			color: $dark-grey;
+		}
+
+		.page-content {
+			background-color: #fff;
+
+			> div { 
+				padding-top: 15px;
+				padding-bottom: 15px;
+				text-align: justify;
+
+				p:last-child { margin-bottom: 0; }
+			}
+		}
+	}
+}

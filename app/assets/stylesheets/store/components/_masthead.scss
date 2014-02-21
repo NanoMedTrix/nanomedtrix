@@ -1,0 +1,68 @@
+.masthead {
+	margin-bottom: 10px; 
+
+	#masthead-brand { 
+		h3 { 
+			margin: 0;
+			padding: 22px 0 12px 55px;
+			/*background-image: url( image-path( 'store/nmtx-logo.png' ) );
+			background-image: none, url( image-path( 'store/nmtx-logo.svg' ) ), url( image-path( 'store/nmtx-logo.png' ) );*/
+			background-size: 50px 50px;
+			background-repeat: no-repeat;
+			background-position: 0 50%;
+			line-height: 50%;
+			color: #d2322d;
+
+			small { font-size: 12px; }
+		} 
+	}
+
+	#masthead-search { padding: 13px 15px 7px; }
+
+	#navigation { 
+		margin-top: 10px; 
+		background-color: #fff;
+		border: 1px solid #eee;
+		border-bottom: none;
+
+		> li > a {
+			margin: 0;
+			padding: 7px 0;
+			background-color: #fff; /* Old browsers */
+			background-repeat: repeat-x; /* Repeat the gradient */
+			background-image: -webkit-gradient( linear, left top, left bottom, color-stop( 0%, #fff ), color-stop( 100%, $lighter-grey ) ); /* Chrome,Safari4+ */
+			background-image: -webkit-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* Chrome 10+,Safari 5.1+ */
+			background-image:    -moz-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* FF3.6+ */
+			background-image:      -o-linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* Opera 11.10+ */
+			background-image:         linear-gradient( top, #fff 0%, $lighter-grey 100% ); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0 ); /* IE6-9 */
+			border-bottom: 1px solid #eee;
+			font-size: 12px;
+			font-weight: 600;
+			color: $dark-grey;
+
+			&:hover,
+			&:focus {
+				background-color: $lighter-grey;
+				background-position: 0 -15px;
+				color: $darker-grey;
+			}
+		}
+	}
+}
+
+@media ( min-width: 768px ) {
+	.masthead {
+		#navigation {
+			> li {
+				> a {
+					border-right: 1px solid $light-grey;
+					border-left: 1px solid #fff;
+				}
+
+				&:first-child > a { border-left: 0;  }
+				&:last-child > a  { border-right: 0; }
+			}
+		}
+	}
+}

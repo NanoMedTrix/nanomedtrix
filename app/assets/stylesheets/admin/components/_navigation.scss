@@ -1,0 +1,39 @@
+.navbar-inverse {
+  margin-bottom: 0;
+  min-height: 40px;
+  
+  .navbar-toggle {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+
+    #logo { 
+      margin-top: -3px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  #login-nav { padding-right: 15px; }
+  
+  .nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media ( min-width: 768px ) {
+  .navbar-inverse {
+    .navbar-header { border-right: 1px solid #222;    }
+    .navbar-left   { border-left:  1px solid #4c4c4c; }
+
+    .dropdown-menu { width: 100%; }
+  }
+}

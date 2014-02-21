@@ -1,0 +1,33 @@
+html,
+body { height: 100%; }
+
+body { 
+	padding-top: 37px; 
+	background-color: $body-grey; 
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  margin: 0 auto -115px; /* Negative indent footer by its height */
+  padding: 0 0 115px; /* Pad bottom by footer height */
+  min-height: 100%;
+      height: auto;  
+}
+
+#content {
+	> .row { padding: 0 10px; }
+
+	.media {
+		padding: 10px;
+		background-color: #fff;
+	}
+
+	.col-content { 
+		padding: 30px 10px 10px;
+		background-color: #fff; 
+	}
+}
+
+@media ( min-width: 992px ) { 
+	#content > .row { padding: 0; }
+}

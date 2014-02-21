@@ -3,14 +3,14 @@ module Spree
     module TablesHelper
       def row_state state 
         case state 
-        when 'complete'
-          'success'
-        when 'cart'
-          'warning'
-        when 'canceled'
-          'danger'
-        else
-          nil
+          when 'complete'
+            'success'
+          when 'cart'
+            'warning'
+          when 'canceled'
+            'danger'
+          else
+            nil
         end
       end
     end

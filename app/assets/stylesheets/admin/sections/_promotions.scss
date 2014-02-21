@@ -1,0 +1,90 @@
+#general_fields, 
+#expiry_fields {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+#rules_container, 
+#actions_container {
+  position: relative;
+
+  fieldset { position: static !important; }
+}
+
+#actions_container {
+  .edit_promotion { margin-top: 73px; }
+}
+
+#promotion-pilicy-select { overflow: auto; }
+
+.promotion-block {
+  margin-bottom: 15px;
+  position: relative;
+  background-color: lighten( $color-border, 5 );
+  border: 1px solid $color-border;
+  border-radius: 3px;
+
+  .row { margin-bottom: 0; }
+
+  .field {
+    padding-bottom: 10px;
+
+    &.alpha {
+      margin-left: -1px;
+      padding-left: 11px;
+    }
+
+    &.omega {
+      margin-right: -1px;
+      padding-right: 11px;
+    }
+  }
+
+  &.action-remove {
+    background-color: lighten( $color-5, 50 );
+    border-color: lighten( $color-5, 45 );
+    text-decoration: line-through;
+
+    .promotion-title, 
+    input[ type='text' ], 
+    input[ type='number' ],
+    .token-input-list { border-color: lighten( $color-5, 45 ); }
+  }
+
+  .add-line-item {
+    #add_quantity {
+      margin-top: 15px;
+      width: 50px;
+    }
+
+    button.add {
+      margin-top: 30px;
+      min-width: 80px;
+
+      &:before { padding-right: 5px; }
+    }
+  }
+
+  a.delete {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    cursor: pointer;
+
+    &:hover { color: $color-error; }
+  }
+}
+
+.promotion-title {
+  padding: 0 10px;
+  border-bottom: 1px solid $color-border;
+  font-size: 85%;
+  text-align: left;
+  text-transform: uppercase;
+
+  &.no-text {
+    padding-bottom: 0;
+    border: none;
+  }
+}

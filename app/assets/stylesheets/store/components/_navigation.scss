@@ -1,0 +1,111 @@
+header {
+	.navbar { 
+		margin-bottom: 10px;
+		min-height: 0; 
+		background-color: #fff; 
+
+		.navbar-header {
+			text-align: right;
+
+			.btn {
+				margin: 0;
+				padding: 7px 10px;
+				border: none;
+				border-left: 1px solid $light-grey;
+				border-radius: 0;
+				font-size: 12px;
+
+				&:first-child { padding: 4px 12px 5px; }
+				&:last-child  { border-right: 0;       }
+
+				.icon-bar { background-color: $dark-grey; }
+				.icon-bar + .icon-bar { margin-top: 3px; }
+
+				&:hover,
+				&:focus { 
+					background-color: $body-grey; 
+
+					.icon-bar { background-color: $darker-grey; }
+				}
+			}
+
+			a.btn {
+				padding: 5px 10px 4px;
+				color: $dark-grey;
+
+				&:hover,
+				&:focus { 
+					background-color: transparent;
+					color: $darker-grey; 
+				}
+			}
+		}
+
+		.navbar-collapse {
+			background-color: $body-grey; 
+
+			.navbar-nav { 
+				margin-top: 10px;
+				margin-bottom: 10px;
+
+				> li {
+					> a {
+						margin: 2px 15px;
+						padding: 3px 15px;
+						background-color: #fff;
+						font-size: 12px;
+					}
+					
+					&:first-child > a { margin-top: 0;    }
+					&:last-child  > a { margin-bottom: 0; }
+				}
+			}
+		}
+	}
+
+	.badge { 
+		padding: 2px 5px;
+		background-color: $primary-red; 
+		border-radius: 0; 
+	} 
+}
+
+@media ( min-width: 768px ) {
+	header {
+		.navbar { 
+			> .container > .row { padding: 0 10px; }
+			
+			.navbar-collapse {
+				background-color: transparent; 
+
+				.navbar-nav { 
+					margin: 0;
+
+					> li {
+						> a {
+							margin: 0;
+							padding: 3px 15px;
+							background-color: transparent;
+							border-right: 1px solid $light-grey;
+							font-size: 12px;
+						}
+					}
+
+					&#header-nav-left > li:first-child > a { padding-left: 0; }
+
+					&#header-nav-right  { 
+						> li:first-child { border-left: 1px solid $light-grey; }
+						> li:last-child > a {
+							padding-right: 0;
+							border-right: 0; 
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media ( min-width: 992px ) { 
+	header > .navbar > .container > .row { padding: 0; }
+}

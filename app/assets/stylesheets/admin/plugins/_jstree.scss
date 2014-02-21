@@ -1,0 +1,130 @@
+#taxonomy_tree {
+  > ul, 
+  .jstree-icon { background-image: none; }
+
+  .jstree-icon { @extend [ class^='icon-' ]:before; }
+
+  .jstree-open   > .jstree-icon { @extend .icon-caret-down;  }
+  .jstree-closed > .jstree-icon { @extend .icon-caret-right; }
+
+  li {
+    background-image: none;
+
+    a {
+      margin-bottom: 10px;
+      padding: 5px 0 5px 10px;
+      width: 90%;
+      height: auto;
+      background-color: very-light( $color-3 );
+      border: 1px solid $color-border;
+      font-weight: $font-weight-bold;
+      text-shadow: none;
+      line-height: inherit;
+      color: $color-body-text;
+
+      .jstree-icon {
+        @extend .icon-move;
+
+        padding-left: 0px;
+      }
+    }
+  }
+}
+
+#vakata-dragged.jstree-apple .jstree-invalid, 
+#vakata-dragged.jstree-apple .jstree-ok,
+#jstree-marker {
+  @extend [ class^='icon-' ]:before;  
+
+  background-color: transparent !important;
+  background-image: none        !important;
+}
+
+#vakata-dragged.jstree-apple .jstree-invalid {
+  @extend .icon-remove;  
+
+  color: $color-5;
+}
+
+#vakata-dragged.jstree-apple .jstree-ok {
+  @extend .icon-ok;
+
+  color: $color-2;
+}
+
+#jstree-marker {
+  @extend .icon-caret-right;
+
+  width: 4px              !important;
+  color: $color-body-text !important;
+}
+
+#jstree-marker-line {
+  @include border-radius( $border-radius !important );
+
+  margin-top: -2px                          !important;
+  margin-left: 5px                          !important;
+  height: 0px                               !important;
+  background-color:  very-light( $color-3 ) !important;
+  border: none                              !important;
+  border-bottom: 1px solid $color-body-text !important;
+  -webkit-box-shadow: none                  !important;
+     -moz-box-shadow: none                  !important;
+          box-shadow: none                  !important;
+}
+
+#vakata-contextmenu {
+  @include border-radius( $border-radius !important );
+
+  background-color: $color-3 !important;
+  border: none               !important;
+  -webkit-box-shadow: none   !important;
+     -moz-box-shadow: none   !important;
+          box-shadow: none   !important;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    z-index: 1;
+    margin-top: -10px;
+    border-bottom: 10px solid $color-3;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+
+  a {
+    margin: 0            !important;
+    padding: 5px 10px    !important;
+    font-size: 90%       !important;
+    line-height: inherit !important;
+    color: $color-1      !important;
+
+    &:hover {
+      @include border-radius( $border-radius !important );
+
+      margin: 0                  !important;
+      padding: 5px 10px          !important;
+      background-color: $color-2 !important;
+      border: none               !important;
+      line-height: inherit       !important;
+      -webkit-box-shadow: none   !important;
+         -moz-box-shadow: none   !important;    
+    }
+  }
+
+  li:first-child a:hover:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    z-index: 1;
+    margin-top: -10px;
+    border-bottom: 10px solid $color-2;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+
+  li.vakata-separator { display: none; }
+}
