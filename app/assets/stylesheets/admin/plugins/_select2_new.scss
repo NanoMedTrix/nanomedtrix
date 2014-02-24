@@ -1,34 +1,46 @@
 .select2 {
 	&.select2-container {
 		&:hover .select2-choice, 
-		&.select2-container-active .select2-choice {
-			background-color: #eee;
-			border-color: #ccc;
-		}
+		&.select2-container-active .select2-choice { @extend .form-control:focus; }
 
 		.select2-choice {
-			padding: 6px 12px;
-			height: 34px;
-			background-color: #eee;
+			padding: 0;
+			height: auto;
+			background-color: #fff;
 			background-image: none;
 			border: 1px solid #ccc;
 			border-radius: 4px;
-			box-shadow: none;
+			outline: 0;
 			font-size: 90%;
-			line-height: inherit;
-			color: #555;
 
 			span {
 				display: block;
 				padding: 2px;
 
-				&.select2-chosen { }
+				&.select2-chosen {
+					@extend .form-control; 
+
+					margin-right: 18px;
+					width: auto; 
+					height: 32px;
+					border: 0;
+					font-size: 12px;
+					line-height: 20px;
+				}
 
 				&.select2-arrow {
-					background: transparent;
+					width: 26px;
+					background: #fff;
 					background-image: none;
 					border: 0;
+					border-left: 1px solid #ccc;
 					line-height: 26px;
+					text-align: center;
+					-webkit-user-select: none;
+					   -moz-user-select: none;
+					    -ms-user-select: none;
+					     -o-user-select: none;
+					        user-select: none;
 
 					b { 
 						@extend .caret;
@@ -36,8 +48,12 @@
 						margin-left: 0;
 					}
 
-					&:hover {
-						b { border-top-color: #333; }
+					&:hover,
+					&:focus { 
+						background-color: #eee; 
+						border-color: #adadad; 
+
+						b { border-top-color: #333; } 
 					}
 				}
 			}
@@ -48,9 +64,15 @@
 
 				position: absolute;
 				top: 12px;
+				right: 30px;
 				display: inline-block;
 				background-image: none;
 				font-size: 75%;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				     -o-user-select: none;
+				        user-select: none;
 
 				&:hover { color: #d9534f; }
 			}
@@ -58,14 +80,116 @@
 
 		&.select2-container-active {
 			.select2-choice {
-				span {
-					&.select2-chosen { }
-					&.select2-search-choice-close { }
+				span {	
 					&.select2-arrow {
+						border-color: #66afe9;
+						border-left-color: #adadad;
+						background-color: #eee;
+
 						b { color: #333; }
 					}
 				}
+
+				.select2-search-choice-close {}
 			}
 		}
+	}
+}
+
+.select2-drop {
+	z-index: 1000000;
+	margin-top: 2px;
+	padding-top: 9px;
+	padding-bottom: 5px;
+	background-clip: padding-box;
+	border-top: 1px solid;
+	border-color: #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba( 0, 0, 0, 0.175 );
+          box-shadow: 0 6px 12px rgba( 0, 0, 0, 0.175 );
+  
+	&.select2-drop-above {
+		margin-top: 0;
+		margin-bottom: -2px;
+		border-bottom: 1px solid;
+		border-color: #ccc;
+		border-radius: 4px;
+
+		.select2-results { max-height: 120px; }
+	}
+
+	.select2-search {
+		padding-left: 5px;
+		padding-right: 5px;
+		color: #555;
+
+		&:before {
+			@extend .glyphicon;
+			@extend .glyphicon-search:before;
+
+			position: absolute;
+			top: 6px;
+			left: 11px;
+			color: #ccc;
+		}
+
+		input { 
+			@extend .form-control; 
+
+			padding-top: 3px;
+			padding-bottom: 3px;
+			padding-left: 24px;
+			font-size: 90%;
+		}
+	}
+
+	.select2-results {
+		margin: 5px;
+		padding-left: 0;
+
+		li {
+			font-size: 85%;
+
+			&:nth-child( odd ) { background: #eee; }
+
+			&:hover,
+			&.select2-highlighted {
+				background-color: #357ebd;
+				background-image: -webkit-linear-gradient( top,       #428bca 0%, #357ebd 100% );
+				background-image:         linear-gradient( to bottom, #428bca 0%, #357ebd 100% );
+				background-repeat: repeat-x;
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0 );
+
+				.select2-result-label {
+					&, 
+					h6 { color: #fff; }
+				}
+			}
+
+			&.select2-searching,
+			&.select2-no-results {
+				padding: 5px;
+				background-color: transparent;
+				font-weight: 600;
+				text-align: center;
+				text-transform: uppercase;
+				color: #333;
+			}
+
+			.select2-result-label {
+				clear: both;
+				overflow: auto;
+				min-height: 22px;
+				text-transform: capitalize;
+				color: #555;
+			}
+		}
+	}
+
+	.divider {
+		overflow: hidden;
+		margin: 9px 0;
+		height: 1px;
+		background-color: #e5e5e5;
 	}
 }
