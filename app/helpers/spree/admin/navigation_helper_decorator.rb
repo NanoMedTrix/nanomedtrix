@@ -60,11 +60,7 @@ module Spree
 
       def button text, icon_name = nil, button_type = 'submit', options = {}
         button_tag options.merge( type: button_type, class: "btn btn-default" ) do 
-          if !icon_name
-            raw "<span class='glyphicon glyph#{ icon_name }'></span> #{ text }"
-          else
-            text
-          end
+          icon_name ? raw( "<span class='glyphicon glyph#{ icon_name }'></span> #{ text }" ) : text
         end
       end
 

@@ -1,15 +1,34 @@
-#table-filter-left { border-right: 1px solid #eee; }
+#table-filter {
+	fieldset {
+		margin-bottom: 27px;
+		border-bottom: 1px solid #ccc;
 
-#form-date {
-	#form-date-from { padding-right: 0; }
+		#table-filter-left { border-right: 1px solid #ccc; }
 
-	#form-date-arrow {
-		.btn,
-		.btn:hover { 
-			color: #555;
-			cursor: default; 
+		#form-date {
+			#form-date-from { padding-right: 0; }
+
+			#form-date-arrow {
+				.btn,
+				.btn:hover { 
+					color: #555;
+					cursor: default; 
+				}
+			}
+
+			#form-date-to { padding-left: 0; }
+		}
+
+		.actions {
+			margin-bottom: -17px;
+
+			.btn {
+				-webkit-box-shadow: 0 0 0 15px #fff;
+				   -moz-box-shadow: 0 0 0 15px #fff;
+				    -ms-box-shadow: 0 0 0 15px #fff;
+				     -o-box-shadow: 0 0 0 15px #fff;
+				        box-shadow: 0 0 0 15px #fff;
+			}
 		}
 	}
-
-	#form-date-to { padding-left: 0; }
 }
