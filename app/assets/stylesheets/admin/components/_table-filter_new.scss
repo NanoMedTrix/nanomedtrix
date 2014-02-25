@@ -1,0 +1,15 @@
+#table-filter-left { border-right: 1px solid #eee; }
+
+#form-date {
+	#form-date-from { padding-right: 0; }
+
+	#form-date-arrow {
+		.btn,
+		.btn:hover { 
+			color: #555;
+			cursor: default; 
+		}
+	}
+
+	#form-date-to { padding-left: 0; }
+}

@@ -53,11 +53,6 @@ body { padding-top: 40px; }
  *  These should be moved to the relevant partial when it is time
  *  Here now to override correctly
  */
-#table-filter-left { border-right: 1px solid #eee; }
-
-#form-date-from { padding-right: 0; }
-#form-date-to   { padding-left: 0; }
-
 #page_body,
 #article_body,
 #product_description { min-height: 500px; }

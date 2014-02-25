@@ -9,7 +9,6 @@
 
 @import 'components/states';
 @import 'components/actions';
-@import 'components/date-picker';
 @import 'components/messages';
 @import 'components/pagination';
 @import 'components/progress';
@@ -41,9 +40,11 @@
 @import 'shared/icons';
 @import 'shared/layout';
 
+@import 'components/date-picker';
 @import 'components/navigation';
 @import 'components/sidebar';               /* main sidebar is there, content sidebar still present */
 @import 'components/debug';
+@import 'components/table-filter_new';
 
 @import 'plugins/select2_new';
 
