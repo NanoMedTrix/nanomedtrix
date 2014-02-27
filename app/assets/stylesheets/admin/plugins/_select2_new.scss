@@ -1,7 +1,7 @@
 .select2 {
 	&.select2-container {
-		&:hover .select2-choice, 
-		&.select2-container-active .select2-choice { @extend .form-control:focus; }
+		&:hover .select2-choice .select2-arrow     { @extend .select2-arrow:hover; }
+		&.select2-container-active .select2-choice { @extend .form-control:focus;  }
 
 		.select2-choice {
 			padding: 0;
@@ -51,7 +51,6 @@
 					&:hover,
 					&:focus { 
 						background-color: #eee; 
-						border-color: #adadad; 
 
 						b { border-top-color: #333; } 
 					}
@@ -89,8 +88,17 @@
 						b { color: #333; }
 					}
 				}
+			}
 
-				.select2-search-choice-close {}
+			&.select2-drop-above {
+				span {
+					&.select2-arrow {
+						b {
+							border-top: 0;
+							border-bottom: 4px solid;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -105,8 +113,8 @@
 	border-top: 1px solid;
 	border-color: #ccc;
 	border-radius: 4px;
-	-webkit-box-shadow: 0 6px 12px rgba( 0, 0, 0, 0.175 );
-          box-shadow: 0 6px 12px rgba( 0, 0, 0, 0.175 );
+	-webkit-box-shadow: 0 6px 12px rgba( 0, 0, 0, 0.175 ) !important;
+          box-shadow: 0 6px 12px rgba( 0, 0, 0, 0.175 ) !important;
   
 	.select2-search {
 		padding-left: 5px;
@@ -177,17 +185,15 @@
 	}
 
 	&.select2-drop-above {
-		top: 39px !important;
-		margin-top: 0;
+		margin-top: -2px;
 		border-bottom: 1px solid;
-		border-color: #ccc;
+		border-color: #ccc !important;
 		border-radius: 4px;
 
 		.select2-search {
 			input { margin-top: 0; }
 		}
 
-		//.select2-search:before { top: 10px; }
 		.select2-results { max-height: 120px; }
 	}
 
@@ -198,4 +204,3 @@
 		background-color: #ccc;
 	}
 }
-

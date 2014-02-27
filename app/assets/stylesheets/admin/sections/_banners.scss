@@ -1,0 +1,13 @@
+// Customize banners filter
+[ data-hook='admin_banners_index_search' ] {
+  .select2-container { width: 100% !important; }
+
+  .checkbox {
+  	text-align: center;
+
+  	input[ type='checkbox' ] {
+  		float: none;
+  		margin-right: 8px;
+  	}
+  }
+}
