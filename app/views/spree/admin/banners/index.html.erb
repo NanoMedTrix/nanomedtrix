@@ -51,54 +51,60 @@
   </div>
 <% end %>
 
-<div class="col-sm-9">
-<div id="new_banner_wrapper" data-hook></div>
+<div class="col-sm-12">
+  <div id="new_banner_wrapper" class="row" data-hook></div>
 
-<%= paginate @collection %>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="sub-header"><%= Spree.t( :banners ) %></h4>
 
-<% if @collection.any? %>
-  <table class="index sortable" id="listing_banners">
-    <colgroup>
-      <col style="width: 5%">
-      <col style="width: 15%;">
-      <col style="width: 10%;">
-      <col style="width: 10%;">
-      <col style="width: 17%;">
-    </colgroup>
-  
-    <thead>
-      <tr data-hook="admin_banner_index_headers">
-        <th colspan="2"><%= Spree.t( :thumbnail ) %></th>
-        <th><%= sort_link @search, :category, Spree.t( :category ), { default_order: 'desc' }, { title: 'admin_banners_listing_category_title' } %></th>
-        <th><%= sort_link @search, :url,      Spree.t( :url ),      { default_order: 'desc' }, { title: 'admin_banners_listing_url_title' } %></th>
-        <th data-hook="admin_banner_index_header_actions" class="actions"></th>
-      </tr>
-    </thead>
+      <%= paginate @collection %>
+        
+      <% if @collection.any? %>
+        <table class="index sortable" id="listing_banners">
+          <colgroup>
+            <col style="width: 5%">
+            <col style="width: 15%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+            <col style="width: 17%;">
+          </colgroup>
+        
+          <thead>
+            <tr data-hook="admin_banner_index_headers">
+              <th colspan="2"><%= Spree.t( :thumbnail ) %></th>
+              <th><%= sort_link @search, :category, Spree.t( :category ), { default_order: 'desc' }, { title: 'admin_banners_listing_category_title' } %></th>
+              <th><%= sort_link @search, :url,      Spree.t( :url ),      { default_order: 'desc' }, { title: 'admin_banners_listing_url_title' } %></th>
+              <th data-hook="admin_banner_index_header_actions" class="actions"></th>
+            </tr>
+          </thead>
 
-    <tbody>
-      <% @collection.each do | banner | %>
-        <tr id="<%= spree_dom_id banner %>" data-hook="admin_banners_index_rows" class="<%= cycle( 'odd', 'even' ) %>">
-          <td class="no-border"><span class="handle"></span></td>
-          <td class="align-center"><%= image_tag( banner.attachment( :mini ) ) %></td>
-          <td class="align-center"><%= banner.category rescue '' %></td>
-          <td class="align-center"><%= banner.url rescue '' %></td>
+          <tbody>
+            <% @collection.each do | banner | %>
+              <tr id="<%= spree_dom_id banner %>" data-hook="admin_banners_index_rows" class="<%= cycle( 'odd', 'even' ) %>">
+                <td class="no-border"><span class="handle"></span></td>
+                <td class="align-center"><%= image_tag( banner.attachment( :mini ) ) %></td>
+                <td class="align-center"><%= banner.category rescue '' %></td>
+                <td class="align-center"><%= banner.url rescue '' %></td>
 
-          <td class="actions" data-hook="admin_banner_index_row_actions">
-            <%= link_to_edit   banner, no_text: true, class: 'edit' %>
-            &nbsp;
-            <%= link_to_clone  banner, no_text: true, class: 'clone' %>
-            &nbsp;
-            <%= link_to_delete banner, no_text: true %>
-          </td>
-        </tr>
+                <td class="actions" data-hook="admin_banner_index_row_actions">
+                  <%= link_to_edit   banner, no_text: true, class: 'edit' %>
+                  &nbsp;
+                  <%= link_to_clone  banner, no_text: true, class: 'clone' %>
+                  &nbsp;
+                  <%= link_to_delete banner, no_text: true %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="no-objects-found">
+          <%= Spree.t( :no_results ) %>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <div class="no-objects-found">
-    <%= Spree.t( :no_results ) %>
+      
+      <%= paginate @collection %>
+    </div>
   </div>
-<% end %>
-
-<%= paginate @collection %>
 </div>
