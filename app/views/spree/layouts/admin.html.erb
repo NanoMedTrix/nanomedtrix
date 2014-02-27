@@ -46,12 +46,14 @@
 
           <div class="container-fluid">
             <div class="row">
-              <%= render partial: 'spree/admin/shared/table_filter' %>
-            </div>
+              <div class="<%= if content_for?( :sidebar ) || content_for?( :sidebar_table_filter ) then 'col-sm-9' else 'col-sm-12' end %>">
+                <div class="row">
+                  <%= render partial: 'spree/admin/shared/table_filter' %>
+                </div>
 
-            <div class="row">
-              <div class="<%= if content_for?( :sidebar ) then 'col-sm-9' else 'col-sm-12' end %>">
-                <%= yield %>
+                <div class="row">
+                  <%= yield %>
+                </div>
               </div>
 
               <%= render partial: 'spree/admin/shared/sidebar' %>

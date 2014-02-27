@@ -12,7 +12,7 @@
   <%= Spree.t( :search ) %>
 <% end %>
 
-<% content_for :table_filter do %>
+<% content_for :sidebar_table_filter do %>
   <div data-hook="admin_banner_sidebar">
     <%= search_form_for [ :admin, @search ] do | f | %>
       <%- locals = { f: f } %>
@@ -51,6 +51,7 @@
   </div>
 <% end %>
 
+<div class="col-sm-9">
 <div id="new_banner_wrapper" data-hook></div>
 
 <%= paginate @collection %>
@@ -100,3 +101,4 @@
 <% end %>
 
 <%= paginate @collection %>
+</div>

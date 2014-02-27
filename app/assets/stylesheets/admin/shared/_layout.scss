@@ -4,13 +4,13 @@ body { padding-top: 40px; }
 
 /* Main content */
 .main { 
-	padding: 20px; 
+	padding: 5px; 
 
 	.tab-header {
 		position: relative;
-		margin: -20px -20px 20px  !important;
-		padding: 30px 20px        !important;
-		background-color: #eee    !important;
+		margin: -5px -20px 20px !important;
+		padding: 30px 20px      !important;
+		background-color: #eee  !important;
 		border-bottom: 1px solid #ccc;
 		text-align: center;
 		text-shadow: 0 1px 0 rgba( 0, 0, 0, 0.1 );
@@ -36,8 +36,8 @@ body { padding-top: 40px; }
 
 @media ( min-width: 768px ) {
 	.main {
-		padding-right: 30px;
-		padding-left: 30px;
+		padding-right: 15px;
+		padding-left: 15px;
 
 		.tab-header {
 			margin-left: -30px !important;
