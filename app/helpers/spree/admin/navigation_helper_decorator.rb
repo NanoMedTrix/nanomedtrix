@@ -60,6 +60,13 @@ module Spree
         link_to_with_icon 'icon-edit', Spree.t( :edit ), url, options
       end
 
+      def link_to_edit_url url, options = {}
+        options[ :data ]  = { action: 'edit' }
+        options[ :class ] = 'btn btn-default'
+
+        link_to_with_icon 'icon-edit', Spree.t( :edit ), url, options
+      end
+
       def link_to_delete resource, options = {}
         url  = options[ :url ]  || object_url( resource )
         name = options[ :name ] || Spree.t( :delete )
