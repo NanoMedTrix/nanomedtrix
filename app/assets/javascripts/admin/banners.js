@@ -40,3 +40,54 @@ jQuery(function( $ ) {
 		return html;
 	};
 });
+
+
+$( document ).ready(function() {
+	// Fix sortable helper
+  var fixHelper = function( e, ui ) {
+    ui.children().each(function() {
+      $( this ).width( $( this ).width() );
+    });
+
+    return ui;
+  }
+  
+	$( 'table.sort' ).ready(function() {
+		var td_count = $( this ).find( 'tbody tr:first-child td' ).length;
+
+		$( 'table.sort tbody' ).sortable({
+			handle:      '.sort-handle',
+			helper:      fixHelper,
+			placeholder: 'ui-sortable-placeholder',
+			update: function( event, ui ) {
+				$( '#progress' ).show();
+
+				positions = {};
+
+				$.each( $( 'table.sort tbody tr' ), function( position, obj ) {
+					reg   = /spree_(\w+_?)+_(\d+)/;
+					parts = reg.exec( $( obj ).attr( 'id' ) );
+
+					if ( parts ) { positions[ 'positions[' + parts[ 2 ] + ']' ] = position; }
+				});
+
+				$.ajax({
+					type:     'POST',
+					dataType: 'script',
+					url: $( ui.item ).closest( 'table.sort' ).data( 'sortable-link' ),
+					data: positions,
+					success: function( data ) { 
+						$( '#progress' ).hide(); 
+					}
+				});
+			},
+			start: function ( event, ui ) {
+				// Set correct height for placehoder (from dragged tr)
+				ui.placeholder.height( ui.item.height() );
+
+				// Fix placeholder content to make it correct width
+				ui.placeholder.html( '<td colspan="' + ( td_count - 1 ) + '"></td><td class="actions"></td>' );
+			}
+		});
+	});
+});

@@ -6,7 +6,6 @@
 	</li>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/banner_sub_menu' %>
 <%= render partial: 'spree/shared/error_messages', locals: { target: @banner } %>
 
 <%= form_for [ :admin, @banner ], method: :put, html: { multipart: true } do | f | %>

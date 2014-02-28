@@ -1,6 +1,7 @@
 Spree::HomeController.class_eval do 
   def index
-  	@headlines = Spree::Article.recent
+  	@carousel       = Spree::Banner.enabled( 'home_carousel' ).order( :position )
+  	@headlines      = Spree::Article.recent
   	@first_headline = @headlines.shift
   end
 end

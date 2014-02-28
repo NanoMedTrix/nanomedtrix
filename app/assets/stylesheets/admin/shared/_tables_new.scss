@@ -1,0 +1,52 @@
+.table {
+	thead th.actions,
+	tbody td.actions {
+		background-color: transparent;
+		border: 0 !important;
+	}
+
+	thead {
+		th {
+			background-color: #eee;
+			border: 1px solid #ccc !important;
+			color: #555;
+		}
+	}
+
+	tbody {
+		tr {
+			td {
+				border: 1px solid #ccc;
+				vertical-align: middle !important;
+				color: #555;
+
+				&.actions {
+					.btn {
+						border-radius: 0;
+						color: #555;
+
+						&.btn-default { 
+							border-color: #ccc;
+
+							&:hover,
+							&:focus { color: #333; } 
+						}
+
+						&.btn-danger  { color: #fff; }
+					}
+				}
+			}
+
+			&.highlight {
+				&.action-edit  {	@extend .success; }
+				&.action-clone { @extend .warning;  }
+
+				&.action-remove {
+					@extend .danger;
+
+					text-decoration: line-through;
+				}
+			}
+		}
+	}
+}

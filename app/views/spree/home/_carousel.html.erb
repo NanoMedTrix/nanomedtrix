@@ -1,0 +1,23 @@
+<ol class="carousel-indicators">
+  <% banners.each do | banner | %>
+    <%= content_tag :li, '', data: { target: '#home-carousel', slide_to: banner.position }, class: banner.position == 0 ? 'active' : nil %>
+  <% end %>
+</ol>
+
+<div class="carousel-inner">
+  <% banners.each do | banner | %>
+    <div class="item <%= banner.position == 0 ? 'active' : nil %>">
+      <%= image_tag banner.attachment.url( :home_carousel ), alt: banner.alt_text.presence || nil %>
+
+      <% if !banner.caption.empty? %>
+        <div class="carousel-caption">
+          <h3><%= "Slide #{ banner.position + 1 } Label" %></h3>
+
+          <p><%= banner.caption %></p>
+
+          <div class="carousel-caption-bg"></div>
+        </div>        
+      <% end %>
+    </div>
+  <% end %>
+</div>

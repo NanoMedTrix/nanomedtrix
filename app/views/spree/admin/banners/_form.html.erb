@@ -35,6 +35,12 @@
       <%= f.error_message_on :alt_text %>
     <% end %>
 
+    <%= f.field_container :caption do %>
+      <%= f.label            :caption, Spree.t( :caption ) %>
+      <%= f.text_field       :caption, { rows: '13', class: 'fullwidth' } %>
+      <%= f.error_message_on :caption %>
+    <% end %>
+
     <%= f.field_container :enabled do %>
       <%= f.check_box        :enabled %>
       <%= f.label            :enabled, Spree.t( :enabled ) %><br />

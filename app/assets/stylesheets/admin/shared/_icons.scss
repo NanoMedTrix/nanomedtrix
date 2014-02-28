@@ -14,6 +14,7 @@
   font-style: normal;
 }
 
+.glyphicon-bars,
 .glyphicon-copy,
 .glyphicon-rss,
 .glyphicon-users {
@@ -21,6 +22,7 @@
 	&:before { font-family: FontAwesome; }
 }
 
+.glyphicon-bars:before  { content: '\f0c9'; }
 .glyphicon-copy:before  { content: '\f0c5'; }
 .glyphicon-rss:before   { content: '\f09e'; }
 .glyphicon-users:before { content: '\f0c0'; }

@@ -7,6 +7,11 @@ Spree::ProductsController.class_eval do
     @searcher = build_searcher( params )
     @products = @searcher.retrieve_products
 
+    @featured_banners = Spree::Banner.enabled( 'products_featured' ).order( :position )
+    @featured_large   = @featured_banners.shift
+    @featured_small   = @featured_banners.shift
+    @featured_wide    = @featured_banners.shift
+
     @catalog      = Spree::Taxonomy.includes( root: :children ).find_by_name!( 'Categories' ).root
     @services     = Spree::Taxonomy.includes( root: :children ).find_by_name!( 'Services' ).root
     @guides_tools = Spree::Taxonomy.includes( root: :children ).find_by_name!( 'Guides & Tools' ).root

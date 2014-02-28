@@ -46,6 +46,7 @@ en:
     category_list: Categories
     document: Document
     enabled: Enabled?
+    filter: Filter
     images_only: "must be JPG, JPEG, PNG or GIF"
     listing_banners: "Listing Banners"
     new_article: "New Article"

@@ -7,7 +7,7 @@ module Spree
       def index
         session[ :return_to ] = request.url
 
-        respond_with @collection
+        @collection
       end
 
       def show
@@ -40,7 +40,7 @@ module Spree
         end
 
         def load_categories
-          @categories = ActiveSupport::JSON.decode( Spree::Config[ :banner_default_categories ] ).map { | key, value | [ value, key ] }
+          @categories = Spree::Banner.categories
         end
 
         def location_after_save
@@ -48,13 +48,17 @@ module Spree
         end
 
         def collection
-          return @collection if @collection.present?
+          @collection = {}
 
           params[ :q ]       ||= {}
-          params[ :q ][ :s ] ||= 'category, position asc'
+          params[ :q ][ :s ] ||= 'position asc'
+          
+          Spree::Banner.categories.each do | key, value |
+            params[ :q ][ :category_eq ] = key
 
-          @search     = super.ransack( params[ :q ] )
-          @collection = @search.result.page( params[ :page ] ).per( Spree::Config[ :admin_products_per_page ] )
+            @search            = super.ransack( params[ :q ] )
+            @collection[ key ] = @search.result
+          end
 
           @collection
         end
@@ -64,7 +68,8 @@ module Spree
         end
 
         def spree_banners_params
-          params.require( :spree_banners ).permit( Spree::PermittedAttributes.banner_attributes.push :alt_text, 
+          params.require( :spree_banners ).permit( Spree::PermittedAttributes.banner_attributes.push :caption,
+                                                                                                     :alt_text, 
                                                                                                      :url,
                                                                                                      :category,
                                                                                                      :position,
