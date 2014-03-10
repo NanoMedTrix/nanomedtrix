@@ -23,12 +23,16 @@ module Spree
       end
     }
 
+    scope :with_category, ->( category ) { where( category: category ) }
+
     has_attached_file :attachment,
                         styles: lambda { | a | {
-                          mini:   '48x48>',
-                          small:  '100x100>',
-                          large:  '800x200>',
-                          custom: "#{ a.instance.attachment_width }x#{ a.instance.attachment_height }>"
+                          mini:           '48x48#',
+                          home_carousel:  '800x450>',
+                          featured_small: '270x240#',
+                          featured_wide:  '560x130#',
+                          featured_large: '560x390#',
+                          custom: "#{ a.instance.attachment_width }x#{ a.instance.attachment_height }#"
                         } },
                         url:  '/assets/banners/:id/:style_:basename.:extension',
                         path: ':rails_root/public/assets/banners/:id/:style_:basename.:extension',
@@ -42,18 +46,14 @@ module Spree
     Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = Spree::Config[ :banner_path ]
     Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = Spree::Config[ :banner_url ]
     Spree::Banner.attachment_definitions[ :attachment ][ :default_url ]   = Spree::Config[ :banner_default_url ]
-    Spree::Banner.attachment_definitions[ :attachment ][ :default_style ] = Spree::Config[ :banner_default_style ].to_sym
 
-=begin
     def initialize *args
       super *args
 
-      last_banner   = Banner.last
+      category      = self.category
+      last_banner   = Spree::Banner.with_category( category ).last
       self.position = last_banner ? last_banner.position + 1 : 0
-
-      enhance_settings
     end
-=end
 
     # for adding banners which are closely related to existing ones
     # define "duplicate_extra" for site-specific actions, eg for additional fields
@@ -94,7 +94,10 @@ module Spree
       Spree::Banner.attachment_definitions[ :attachment ][ :path ]          = Spree::Config[ :banner_path ]
       Spree::Banner.attachment_definitions[ :attachment ][ :url ]           = Spree::Config[ :banner_url ]
       Spree::Banner.attachment_definitions[ :attachment ][ :default_url ]   = Spree::Config[ :banner_default_url ]
-      Spree::Banner.attachment_definitions[ :attachment ][ :default_style ] = Spree::Config[ :banner_default_style ]
+    end
+
+    def self.categories 
+      ActiveSupport::JSON.decode( Spree::Config[ :banner_default_categories ] )
     end
 
     def self.categories_for_select

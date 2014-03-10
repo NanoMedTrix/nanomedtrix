@@ -5,13 +5,13 @@
 <div id="featured" class="col-sm-12">
 	<div class="row">
 		<div id="col-left" class="col-sm-6">
-			<img data-src="holder.js/100%x400/sky" class="img-responsive img-thumbnail" alt="Main Feature" style="width: 100%; height: 400px;">
+			<%= image_tag @featured_large.attachment.url( :featured_large ), alt: @featured_large.alt_text.presence || nil, class: 'img-responsive img-thumbnail' %>
 		</div>
 
 		<div id="col-right" class="col-sm-6">
 			<div class="row">
 				<div id="col-right-left" class="col-sm-6">
-					<img data-src="holder.js/100%x250/social" class="img-responsive img-thumbnail" alt="Feature Two" style="width: 100%; height: 250px;">
+					<%= image_tag @featured_small.attachment.url( :featured_small ), alt: @featured_small.alt_text.presence || nil, class: 'img-responsive img-thumbnail' %>
 				</div>
 
 				<div id="col-right-right" class="col-sm-6">
@@ -41,7 +41,7 @@
 
 			<div class="row">
 				<div id="col-right-bottom" class="col-sm-12">
-					<img data-src="holder.js/100%x140/lava" class="img-responsive img-thumbnail" alt="Feature Three" style="width: 100%; height: 140px;">
+					<%= image_tag @featured_wide.attachment.url( :featured_wide ), alt: @featured_wide.alt_text.presence || nil, class: 'img-responsive img-thumbnail' %>
 				</div>
 			</div>
 		</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217200806) do
+ActiveRecord::Schema.define(version: 20140228044944) do
 
   create_table "spree_activators", force: true do |t|
     t.string   "description"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20140217200806) do
     t.datetime "attachment_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "caption"
   end
 
   create_table "spree_calculators", force: true do |t|

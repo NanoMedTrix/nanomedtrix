@@ -44,6 +44,32 @@ module Spree
         content_tag( 'li', link, data: { hook: "#{ titleized_label.tr( ' ', '_' ).downcase! }_tab" }, class: css_classes.empty? ? nil : css_classes.join( ' ' ) )
       end
 
+      def link_to_clone resource, options = {}
+        options[ :data ]  = { action: 'clone' }
+        options[ :class ] = 'btn btn-default'
+
+        link_to_with_icon 'icon-copy', Spree.t( :clone ), clone_object_url( resource ), options
+      end
+
+      def link_to_edit resource, options = {}
+        url = options[ :url ] || edit_object_url( resource )
+
+        options[ :data ]  = { action: 'edit' }
+        options[ :class ] = 'btn btn-default'
+
+        link_to_with_icon 'icon-edit', Spree.t( :edit ), url, options
+      end
+
+      def link_to_delete resource, options = {}
+        url  = options[ :url ]  || object_url( resource )
+        name = options[ :name ] || Spree.t( :delete )
+
+        options[ :data ]  = { confirm: Spree.t( :are_you_sure ), action: 'remove' }
+        options[ :class ] = 'btn btn-danger delete-resource'
+      
+        link_to_with_icon 'icon-trash', name, url, options
+      end
+
       def link_to_with_icon icon_name, text, url, options = {}
         options[ :class ]  = ( options[ :class ].to_s + " with-tip" ).strip
         options[ :title ]  = text if options[ :no_text ]

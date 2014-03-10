@@ -1,11 +1,27 @@
-<% if content_for?( :sidebar ) %>
-	<aside id="sidebar" data-hook class="four columns">
-		<% if content_for?( :sidebar_title ) %>
-			<h5 class="sidebar-title">
-				<span><%= yield :sidebar_title %></span>
-			</h5>
+<% if content_for?( :sidebar_table_filter ) || content_for?( :sidebar ) %>
+	<div class="col-sm-3" data-hook>
+		<% if content_for?( :sidebar_table_filter ) %>
+			<div class="row">
+				<div id="table-filter" class="col-sm-12" data-hook>
+					<fieldset>
+						<h4 class="sub-header"><%= yield :table_filter_title %></h4>
+
+						<%= yield :sidebar_table_filter %>
+					</fieldset>
+				</div>
+			</div>
 		<% end %>
 
-		<%= yield :sidebar %>
-	</aside>
+		<% if content_for?( :sidebar ) %>
+			<div id="sidebar" class="row" data-hook>
+				<div class="col-sm-12">
+					<% if content_for?( :sidebar_title ) %>
+						<h4 class="sub-header"><%= yield :sidebar_title %></h4>
+					<% end %>
+
+					<%= yield :sidebar %>
+				</div>
+			</div>
+		<% end %>
+	</div>
 <% end %>
