@@ -2,6 +2,7 @@ module Spree
   module Admin
     class BannersController < ResourceController
       before_filter :load_categories
+      create.before :update_position
       helper_method :clone_object_url
       
       def index
@@ -45,6 +46,13 @@ module Spree
 
         def location_after_save
           edit_admin_banner_url( @banner )
+        end
+
+        def update_position
+          c = params[ :banner ][ :category ]
+          p = Spree::Banner.with_category( c ).last.position + 1
+
+          params[ :banner ][ :position ] = p 
         end
 
         def collection

@@ -2,7 +2,7 @@
   <div class="left eight columns alpha" data-hook="admin_banner_form_left">
     <%= f.field_container :category do %>
       <%= f.label            :category, raw( Spree.t( :category ) + content_tag( :span, ' *', class: 'required' ) ) %>
-      <%= f.select           :category, @categories, {}, class: 'select2 fullwidth' %>
+      <%= f.select           :category, @categories.invert, {}, class: 'select2 fullwidth' %>
       <%= f.error_message_on :category %>
     <% end %>
     
