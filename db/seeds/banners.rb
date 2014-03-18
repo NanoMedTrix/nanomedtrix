@@ -28,6 +28,13 @@ Spree::Banner.create!(
 	caption:    Faker::Lorem.paragraph,
 	enabled:    true
 )
+Spree::Banner.create!(
+	category:   'home_carousel',
+	position:   3,
+	attachment: File.open( Pathname.new( File.dirname( __FILE__ ) ) + 'banner' + 'nmtx-promo-004.jpg' ),
+	caption:    Faker::Lorem.paragraph,
+	enabled:    true
+)
 
 Spree::Banner.create!(
 	category:   'products_featured',
