@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore compiled assets
+/public
+
 # Ignore Spree development asset precompile
 /public/spree
 
